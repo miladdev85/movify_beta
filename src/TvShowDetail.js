@@ -12,7 +12,7 @@ function TvShowDetail({ tvshow }) {
     <div style={backgroundStyle} className="fade__in">
       <div className="container">
         <div className="row py-3">
-          <div className="col-12 col-md-4 m-0 p-0 ">
+          <div className="col-12 col-md-4 m-0 p-0">
             <img
               src={
                 tvshow.poster_path
@@ -23,7 +23,7 @@ function TvShowDetail({ tvshow }) {
               className="img-fluid p-2 rounded"
             />
           </div>
-          <div className="col d-flex flex-column text-white justify-content-center px-2 pt-2 pt-lg-0">
+          <div className="col d-flex flex-column text-white justify-content-center pt-2 pt-lg-0">
             <h2 className="font-weight-bold">
               {tvshow.name}{" "}
               {tvshow.first_air_date && (

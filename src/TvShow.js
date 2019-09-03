@@ -61,10 +61,10 @@ function TvShow({ match }) {
                 <Subtitle text={"Season Info"} />
                 <TvSeasonInfo tvshow={item} />
                 {recs.length > 0 && (
-                  <>
+                  <div>
                     <Subtitle text={"Recommendations"} />
                     <TvRecs recs={recs} />
-                  </>
+                  </div>
                 )}
               </div>
 

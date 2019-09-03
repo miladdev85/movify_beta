@@ -74,10 +74,8 @@ class TvList extends Component {
         {isDownloading ? (
           <Loading />
         ) : (
-          <div className="container">
-            <div className="row mt-5">
-              <TvListItem items={items} col="col-6 col-md-4 col-lg-2 p-2" imgHeight="278px" />
-            </div>
+          <div className="container mt-4">
+            <TvListItem items={items} col="col-6 col-md-4 col-lg-2 p-2" imgHeight="278px" />
           </div>
         )}
       </>

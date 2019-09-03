@@ -6,10 +6,10 @@ function TvListItem({ items, col, imgHeight }) {
   const displayItems = (items, col, height) => {
     return items.map(item => {
       return (
-        <div key={item.id} className={`${col} pb-2`}>
+        <div key={item.id} className={`${col}`}>
           <Link to={`/tv/details/${item.id}`} className="text-reset poster__link">
             <img
-              style={{ maxHeight: `${height}` }}
+              style={{ minHeight: `${height}` }}
               src={
                 item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : no_pic
               }
