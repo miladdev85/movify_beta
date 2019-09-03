@@ -22,7 +22,7 @@ function TvSeasonInfo({ tvshow }) {
   const displaySeasonCard = (season, item) => {
     return (
       <div className="container">
-        <div className="row border-right">
+        <div className="row">
           <div className="col-4 col-lg-2 p-0">
             <img
               src={
@@ -38,7 +38,7 @@ function TvSeasonInfo({ tvshow }) {
           </div>
           <div className="col-8 col-lg-10 d-flex flex-column justify-content-center">
             <h6 className="font-weight-bold">{season.name}</h6>
-            <p className="small">
+            <p className="text-muted small">
               {season.air_date && season.air_date.substring(0, 4)} | {season.episode_count} Ep.
             </p>
             <p>{seasonOverview(season, item.name)}</p>
