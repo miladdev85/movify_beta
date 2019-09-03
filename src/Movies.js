@@ -14,8 +14,8 @@ const Movies = props => {
   const selectedItem = movieItem => {
     if (item.id !== movieItem.id) {
       setItem(movieItem);
+      scrollToCast();
     }
-    scrollToCast();
   };
 
   const scrollToListRef = useRef(null);
@@ -32,7 +32,7 @@ const Movies = props => {
     <div className="fade__in">
       <Slider type="movie" />
       <div className="container">
-        <div className="row" ref={scrollToListRef}>
+        <div className="row">
           <div className="col-md-3 py-md-2">
             <div className="row">
               <div className="col-8 offset-2">
@@ -41,7 +41,7 @@ const Movies = props => {
               </div>
             </div>
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9" ref={scrollToListRef}>
             <Genres />
             <MainList />
           </div>
