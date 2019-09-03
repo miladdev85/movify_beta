@@ -9,8 +9,8 @@ function PopularPeople(props) {
       <div className="row">
         {props.people.length > 0 &&
           props.people.map(person => (
-            <div key={person.id} className="col p-2 m-1 people__list ">
-              <div className="" style={{ width: "12rem" }}>
+            <div key={person.id} className="col-6 pb-2 p-md-2 col-md people__list">
+              <div className="" style={{ width: "10rem" }}>
                 <Link className="people__link text-reset" to={`/people/${person.id}`}>
                   <img
                     src={`http://image.tmdb.org/t/p/original${person.profile_path}`}

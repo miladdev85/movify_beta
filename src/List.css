@@ -28,6 +28,15 @@
   height: 275px;
 }
 
+.poster__img2 {
+  max-height: 275px;
+}
+
+.poster__link2 {
+  max-height: 350px;
+  animation: fadeIn ease 1s;
+}
+
 .poster__link:hover {
   text-decoration: none;
   filter: brightness(130%);

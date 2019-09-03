@@ -20,7 +20,7 @@ function TvShowDetail({ tvshow }) {
                   : "https://static-assets.noovie.com/images/no-poster.png"
               }
               alt=""
-              className="img-fluid p-1 "
+              className="img-fluid rounded"
             />
           </div>
           <div className="col d-flex flex-column text-white justify-content-center">

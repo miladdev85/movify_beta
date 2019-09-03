@@ -29,7 +29,7 @@ const PeopleBiography = React.memo(({ person }) => {
     <div className="bg-light">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-sm-12 col-md-6 col-lg-3 my-5 imdb__container">
+          <div className="col-sm-12 col-md-6 col-lg-3 mt-3 imdb__container">
             <a
               href={`https://www.imdb.com/name/${person.imdb_id}`}
               target="_blank"
@@ -41,7 +41,7 @@ const PeopleBiography = React.memo(({ person }) => {
                     ? `http://image.tmdb.org/t/p/original${person.profile_path}`
                     : "https://blog.ramboll.com/fehmarnbelt/wp-content/themes/ramboll2/images/profile-img.jpg"
                 }
-                className="img-fluid imdb__image"
+                className="img-fluid imdb__image rounded"
                 alt={person.name}
               />
               <div className="imdb__back">

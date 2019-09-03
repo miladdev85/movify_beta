@@ -14,8 +14,8 @@ const Movies = props => {
   const selectedItem = movieItem => {
     if (item.id !== movieItem.id) {
       setItem(movieItem);
-      scrollToCast();
     }
+    scrollToCast();
   };
 
   const scrollToListRef = useRef(null);
