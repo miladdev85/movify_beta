@@ -14,7 +14,7 @@ function TvListItem({ items, col, imgHeight }) {
                 item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : no_pic
               }
               alt={item.name}
-              className="img-fluid rounded fade__in"
+              className="img-fluid  fade__in"
             />
             <p className="item__title">{item.name}</p>
           </Link>
