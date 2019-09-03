@@ -18,7 +18,7 @@ function TvListItem({ items, col, imgHeight }) {
               alt={item.name}
               className="img-fluid rounded fade__in"
             />
-            <p className="">{item.name}</p>
+            <p className="item__title">{item.name}</p>
           </Link>
         </div>
       );

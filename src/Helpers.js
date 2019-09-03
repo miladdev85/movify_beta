@@ -28,7 +28,7 @@ export const genreHelper = {
     return `${baseUrl}vote_average.desc&include_adult=false&include_video=false&page=${page}&vote_count.gte=5000&with_genres=${genreArr}`;
   }
 };
-
+console.log(API);
 export const mediaHelper = {
   discoverMovieUrl: `https://api.themoviedb.org/3/discover/movie?api_key=${API}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2018&vote_count.gte=3000`,
   discoverTvUrl: `https://api.themoviedb.org/3/discover/tv?api_key=${API}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`,

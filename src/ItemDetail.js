@@ -44,7 +44,7 @@ const ItemDetail = React.memo(props => {
             {props.item.genres.map(genre => (
               <span
                 key={genre.id}
-                className="badge badge-pill badge-light genre__badge p-2 m-1"
+                className="ml-auto badge badge-pill badge-light genre__badge p-2 m-1"
                 onClick={() => modifyGenre(genre.id)}
               >
                 {genre.name}
@@ -52,10 +52,6 @@ const ItemDetail = React.memo(props => {
             ))}
           </div>
         </div>
-        {/* <div className="d-flex flex-wrap mt-1 mb-3 ram">
-         
-          
-        </div> */}
 
         <h5 className="mt-2">Overview</h5>
         <span className="item__text pt-3">{props.item.overview}</span>
