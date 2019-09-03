@@ -22,7 +22,7 @@ function TvSeasonInfo({ tvshow }) {
   const displaySeasonCard = (season, item) => {
     return (
       <div className="container">
-        <div className="row shadow-sm">
+        <div className="row border-right">
           <div className="col-4 col-lg-2 p-0">
             <img
               src={
