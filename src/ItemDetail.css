@@ -1,0 +1,30 @@
+.rating {
+  font-weight: 400;
+}
+
+.item__text {
+  font-size: 1em;
+  color: rgb(121, 121, 121);
+}
+
+.genre__badge {
+  font-weight: 400;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.genre__badge:hover {
+  font-weight: 400;
+  background-color: #dfdfdf;
+  cursor: pointer;
+}
+
+.scroll__up {
+  color: rgb(168, 164, 164);
+  cursor: pointer;
+}
+
+.detail__container {
+  min-height: 380px;
+}

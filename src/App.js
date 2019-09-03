@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import Header from "./Header";
+import People from "./People";
+import Keyword from "./Keyword";
+import Movies from "./Movies";
+import Tv from "./Tv";
+import Search from "./Search";
+import Footer from "./Footer";
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Route path="/people" component={People} />
+      <Route exact path={"/"} render={() => <Redirect to="/movies/popular" />} />
+      <Route path="/movies/:type" component={Movies} />
+      <Route path="/tv" component={Tv} />
+      <Route path="/search" component={Search} />
+      <Route path="/keyword/:id" component={Keyword} />
+      <div className="py-5 mt-5" />
+      <Footer />
     </div>
   );
 }
