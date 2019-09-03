@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const API = "135ac5a382508cc54a7904fcc0f76479";
+export const API = process.env.REACT_APP_TMDB_API_KEY;
 export const baseUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&language=en-US&region=US&sort_by=`;
 export const today = moment().format("YYYY-MM-DD");
 export const nextMonth = moment()
