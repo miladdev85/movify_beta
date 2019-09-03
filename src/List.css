@@ -26,6 +26,7 @@
 
 .poster__img {
   height: 275px;
+  animation: fadeIn ease 1.5s;
 }
 
 .poster__img2 {

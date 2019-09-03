@@ -16,7 +16,7 @@ function TvListItem({ items, col, imgHeight }) {
                   : no_pic
               }
               alt={item.name}
-              className="img-fluid rounded"
+              className="img-fluid rounded fade__in"
             />
             <p className="">{item.name}</p>
           </Link>
