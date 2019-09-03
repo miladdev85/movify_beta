@@ -76,7 +76,7 @@ class TvList extends Component {
         ) : (
           <div className="container">
             <div className="row mt-5">
-              <TvListItem items={items} col="col-6 col-md-4 col-lg-3 p-1" imgHeight="158px" />
+              <TvListItem items={items} col="col-6 col-md-4 col-lg-2 p-2" imgHeight="278px" />
             </div>
           </div>
         )}

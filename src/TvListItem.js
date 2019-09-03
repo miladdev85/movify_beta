@@ -11,9 +11,7 @@ function TvListItem({ items, col, imgHeight }) {
             <img
               style={{ maxHeight: `${height}` }}
               src={
-                item.backdrop_path
-                  ? `https://image.tmdb.org/t/p/original${item.backdrop_path}`
-                  : no_pic
+                item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : no_pic
               }
               alt={item.name}
               className="img-fluid rounded fade__in"
