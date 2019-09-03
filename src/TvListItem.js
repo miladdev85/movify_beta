@@ -6,15 +6,15 @@ function TvListItem({ items, col, imgHeight }) {
   const displayItems = (items, col, height) => {
     return items.map(item => {
       return (
-        <div key={item.id} className={`${col}`}>
+        <div key={item.id} className={`${col} pb-2`}>
           <Link to={`/tv/details/${item.id}`} className="text-reset poster__link">
             <img
-              style={{ minHeight: `${height}` }}
+              style={{ maxHeight: `${height}` }}
               src={
                 item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` : no_pic
               }
               alt={item.name}
-              className="img-fluid  fade__in"
+              className="img-fluid rounded fade__in"
             />
             <p className="item__title">{item.name}</p>
           </Link>
@@ -23,7 +23,7 @@ function TvListItem({ items, col, imgHeight }) {
     });
   };
 
-  return <>{displayItems(items, col, imgHeight)}</>;
+  return <div className="row">{displayItems(items, col, imgHeight)}</div>;
 }
 
 export default TvListItem;
