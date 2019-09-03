@@ -37,8 +37,8 @@ function TvSeasonInfo({ tvshow }) {
             />
           </div>
           <div className="col-8 col-lg-10 d-flex flex-column justify-content-center">
-            <h5 className="font-weight-bold">{season.name}</h5>
-            <p className="font-weight-bold small">
+            <h6 className="font-weight-bold">{season.name}</h6>
+            <p className="small">
               {season.air_date && season.air_date.substring(0, 4)} | {season.episode_count} Ep.
             </p>
             <p>{seasonOverview(season, item.name)}</p>
