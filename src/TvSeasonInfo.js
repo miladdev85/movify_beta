@@ -23,7 +23,7 @@ function TvSeasonInfo({ tvshow }) {
     return (
       <div className="container">
         <div className="row shadow-sm">
-          <div className="col-4 col-lg-2 p-0">
+          <div className="col-5 col-lg-2 p-0">
             <img
               src={
                 season.poster_path
@@ -36,8 +36,9 @@ function TvSeasonInfo({ tvshow }) {
               className="img-fluid"
             />
           </div>
-          <div className="col-8 col-lg-10 d-flex flex-column justify-content-center">
-            <h6 className="font-weight-bold">{season.name}</h6>
+          <div className="col-7 col-lg-10 d-flex flex-column justify-content-center">
+            <h5 className="font-weight-bold">{displayTitle(tvshow, lastSeason)}</h5>
+            <h6>{season.name}</h6>
             <p className="text-muted small">
               {season.air_date && season.air_date.substring(0, 4)} | {season.episode_count} Ep.
             </p>
@@ -64,12 +65,7 @@ function TvSeasonInfo({ tvshow }) {
     }
   };
 
-  return (
-    <div className="mb-5">
-      <h5 className="font-weight-bold">{displayTitle(tvshow, lastSeason)}</h5>
-      {displaySeasonCard(lastSeason, tvshow)}
-    </div>
-  );
+  return <div className="my-5">{displaySeasonCard(lastSeason, tvshow)}</div>;
 }
 
 export default TvSeasonInfo;
