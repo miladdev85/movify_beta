@@ -34,7 +34,7 @@ const ItemInfo = ({ location, selectedItem, scrollTo }) => {
       {isDownloading === false && item.id && (
         <div className="item__container">
           <CastList casts={casts} from="movies" />
-          <Subtitle text={item.title} />
+          <Subtitle text="Details" />
           <ItemDetail item={item} scrollTo={scrollTo} />
         </div>
       )}

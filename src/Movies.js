@@ -52,11 +52,11 @@ const Movies = props => {
             path={`/:item/:type`}
             render={props => (
               <div ref={scrollToCastRef}>
-                <Subtitle text={`Top Casts in ${item.title}`} />
+                <Subtitle text={`Top Casts`} />
                 <ItemInfo {...props} selectedItem={selectedItem} scrollTo={scrollToList} />
                 <div className="row">
                   <div className="col-12 col-lg-8">
-                    <Subtitle text={`Similar movies`} />
+                    <Subtitle text={`Similar Movies`} />
                     <Similar {...props} />
                   </div>
                   <div className="col">
