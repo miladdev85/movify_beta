@@ -2,7 +2,7 @@ import React from "react";
 
 function PeopleInfo({ person }) {
   return (
-    <div className="col-3 detail__box">
+    <div className="d-none d-md-block col-3 detail__box">
       <p className="font-weight-bold mt-3">Personal Info</p>
       <p className="mb-1 personal__title">Known For</p>
       <p className="small mb-2 personal__text">{person.known_for_department}</p>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import TvListItem from "./TvListItem";
+import MediaListItem from "./MediaListItem";
 import Loading from "./Loading";
 import SadFace from "./SadFace";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper, genericBottomScroll } from "./Helpers";
 import axios from "axios";
 import throttle from "lodash.throttle";
 
@@ -38,9 +38,9 @@ class TvList extends Component {
   }
 
   handleScroll = () => {
-    const { page, items } = this.state;
-    const element = document.documentElement;
-    if (items.length && window.innerHeight + element.scrollTop > element.offsetHeight - 700) {
+    const { items, page } = this.state;
+    let nearBottom = genericBottomScroll(items, document.documentElement);
+    if (nearBottom) {
       this.setState({ page: page + 1 }, () => this.getTvShows());
     }
   };
@@ -75,7 +75,12 @@ class TvList extends Component {
           <Loading />
         ) : (
           <div className="container mt-4">
-            <TvListItem items={items} col="col-6 col-md-4 col-lg-2 p-2" imgHeight="278px" />
+            <MediaListItem
+              from="tv"
+              items={items}
+              col="col-6 col-md-4 col-lg-2 p-2"
+              imgHeight="278px"
+            />
           </div>
         )}
       </>

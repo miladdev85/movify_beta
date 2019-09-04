@@ -1,78 +1,16 @@
-import React, { useState, useRef } from "react";
-import { Route } from "react-router-dom";
-import Slider from "./Slider";
-import Subtitle from "./Subtitle";
-import DiscoverMenu from "./DiscoverMenu";
-import Trailer from "./Trailer";
-import MainList from "./MainList";
-import Genres from "./Genres";
-import ItemInfo from "./ItemInfo";
-import Similar from "./Similar";
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import MoviesLandingPage from "./MoviesLandingPage";
+import Movie from "./Movie";
 
-const Movies = props => {
-  const [item, setItem] = useState({});
-  const selectedItem = movieItem => {
-    if (item.id !== movieItem.id) {
-      setItem(movieItem);
-      scrollToCast();
-    }
-  };
-
-  const scrollToListRef = useRef(null);
-  const scrollToList = ref => {
-    window.scrollTo({ top: scrollToListRef.current.offsetTop, behavior: "smooth" });
-  };
-
-  const scrollToCastRef = useRef(null);
-  const scrollToCast = () => {
-    window.scrollTo({ top: scrollToCastRef.current.offsetTop, behavior: "smooth" });
-  };
-
+function Tv() {
   return (
-    <div className="fade__in">
-      <Slider type="movie" />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-3 py-md-2">
-            <div className="row">
-              <div className="col-8 offset-2">
-                <Subtitle text="Discover" />
-                <DiscoverMenu />
-              </div>
-            </div>
-          </div>
-          <div className="col-md-9" ref={scrollToListRef}>
-            <Genres />
-            <MainList />
-          </div>
-        </div>
-
-        {props.location.search.includes("details=") && (
-          <Route
-            path={`/:item/:type`}
-            render={props => (
-              <div ref={scrollToCastRef}>
-                <Subtitle text={`Top Casts`} />
-                <ItemInfo {...props} selectedItem={selectedItem} scrollTo={scrollToList} />
-                <div className="row">
-                  <div className="col-12 col-lg-8">
-                    <Subtitle text={`Similar Movies`} />
-                    <Similar {...props} />
-                  </div>
-                  <div className="col">
-                    <div>
-                      <Subtitle text="Trailer" />
-                    </div>
-                    <Trailer {...props} />
-                  </div>
-                </div>
-              </div>
-            )}
-          />
-        )}
-      </div>
+    <div>
+      <Route exact path="/movies" render={() => <Redirect to="/movies/popular" />} />
+      <Route exact path="/movies/:section" component={MoviesLandingPage} />
+      <Route path="/movies/details/:id" component={Movie} />
     </div>
   );
-};
+}
 
-export default Movies;
+export default Tv;

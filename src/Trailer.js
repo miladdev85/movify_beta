@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { genreHelper } from "./Helpers";
-import queryString from "query-string";
 import SadFace from "./SadFace";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "./Trailer.css";
 
-const getTrailer = async (id, setTrailer) => {
-  const response = await axios.get(genreHelper.trailerUrl(id));
-  setTrailer(response.data.results[0]);
-};
-
-function Trailer(props) {
+function Trailer({ match }) {
   const [trailer, setTrailer] = useState({});
-  const searchQuery = queryString.parse(props.location.search);
 
   useEffect(() => {
-    getTrailer(searchQuery.details, setTrailer);
-  }, [searchQuery.details]);
+    const getTrailer = async () => {
+      const response = await axios.get(genreHelper.trailerUrl(match.params.id));
+      setTrailer(response.data.results[0]);
+    };
+    getTrailer();
+  }, [match.params.id]);
 
   if (!trailer) return <SadFace />;
 
@@ -24,7 +22,7 @@ function Trailer(props) {
     <div>
       {trailer.key && (
         <>
-          <div className="embed-responsive embed-responsive-4by3 mb-3" style={{ height: "275px" }}>
+          <div className="embed-responsive embed-responsive-4by3 mb-3" style={{ height: "205px" }}>
             <iframe
               title={trailer.key}
               className="embed-responsive-item rounded"
@@ -43,4 +41,4 @@ function Trailer(props) {
   );
 }
 
-export default Trailer;
+export default withRouter(Trailer);

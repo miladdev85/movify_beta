@@ -7,7 +7,6 @@ function Slideshow({ type, location, match, items, showIndex, direction, handleS
   const getToLink = item => {
     const parsedQuery = queryString.parse(location.search);
     let toLink;
-
     if (type === "movie") {
       toLink = {
         pathname: match.url,

@@ -1,37 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { withRouter } from "react-router-dom";
 import { genreHelper } from "./Helpers";
-import ListItem from "./ListItem";
-import Loading from "./Loading";
+import MovieList from "./MovieList";
+import SadFace from "./SadFace";
 import queryString from "query-string";
 import axios from "axios";
 
-const MainList = props => {
+const MoviesLandingPageList = props => {
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [spreadItems, setSpreadItems] = useState(false);
   const parsedQuery = queryString.parse(props.location.search);
   const prevGenreRef = useRef();
-  const prevTypeRef = useRef();
+  const prevSectionRef = useRef();
 
   useEffect(() => {
     prevGenreRef.current = parsedQuery.genre;
-    prevTypeRef.current = props.match.params.type;
+    prevSectionRef.current = props.match.params.section;
   });
 
   const prevGenre = prevGenreRef.current;
-  const prevType = prevTypeRef.current;
+  const prevSection = prevSectionRef.current;
 
-  const addPage = () => {
-    setPage(page + 1);
-  };
+  const addPage = useCallback(() => {
+    setPage(p => p + 1);
+  }, [setPage]);
 
   const getMovies = async () => {
     let url;
-    switch (props.match.params.type) {
+    switch (props.match.params.section) {
       case "new-releases":
         url = genreHelper.newReleasesUrl(page, parsedQuery.genre);
+        break;
+      case "swedish":
+        url = genreHelper.swedishUrl(page, parsedQuery.genre);
         break;
       case "coming-soon":
         url = genreHelper.comingSoonUrl(page, parsedQuery.genre);
@@ -42,25 +44,25 @@ const MainList = props => {
       case "top-rated":
         url = genreHelper.topRatedUrl(page, parsedQuery.genre);
         break;
+      case "old-movies":
+        url = genreHelper.oldiesUrl(page, parsedQuery.genre);
+        break;
       default:
         url = genreHelper.popularUrl(parsedQuery.genre);
     }
 
     let response = await axios.get(url);
-
-    if (page === 1) {
+    if (response.data.page === 1) {
       setItems(response.data.results);
     } else {
-      setItems([...items, ...response.data.results]);
+      setItems(items => [...items, ...response.data.results]);
     }
 
-    if (response.data.results.length === 20) {
+    if (response.data.page < response.data.total_pages) {
       setSpreadItems(true);
     } else {
       setSpreadItems(false);
     }
-
-    setIsLoading(false);
   };
 
   /* eslint-disable */
@@ -76,27 +78,25 @@ const MainList = props => {
   useEffect(() => {
     if (
       prevGenre !== parsedQuery.genre ||
-      (prevType !== undefined && prevType !== props.match.params.type)
+      (prevSection !== undefined && prevSection !== props.match.params.section)
     ) {
-      setPage(0);
+      if (page === 0) {
+        return;
+      } else {
+        setPage(0);
+      }
     }
-  }, [props.match.params.type, parsedQuery.genre, prevGenre, prevType]);
+  }, [props.match.params.section, parsedQuery.genre, prevGenre, prevSection, page]);
 
   return (
     <>
-      {isLoading ? (
-        <Loading />
+      {items.length === 0 ? (
+        <SadFace />
       ) : (
-        <ListItem
-          items={items}
-          {...props}
-          isLoading={isLoading}
-          addPage={addPage}
-          spreadItems={spreadItems}
-        />
+        <MovieList items={items} {...props} addPage={addPage} spreadItems={spreadItems} />
       )}
     </>
   );
 };
 
-export default withRouter(MainList);
+export default withRouter(MoviesLandingPageList);

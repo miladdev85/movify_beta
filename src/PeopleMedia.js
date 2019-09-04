@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function PeopleMedia({ showMovies, displayItems, person, toggle }) {
   return (
-    <div className="col-9 bg-white px-4 detail__box">
+    <div className="col-12 col-md-9 bg-white px-4 detail__box">
       <div className="d-flex justify-content-between">
         <p className="font-weight-bold mt-3">Known for</p>
         {person.topTvCredits.length > 0 && (
@@ -31,7 +31,7 @@ function PeopleMedia({ showMovies, displayItems, person, toggle }) {
               <Link
                 key={item.credit_id}
                 className="col-6 col-lg-3 text-decoration-none text-reset poster__link2"
-                to={showMovies ? `/movies/popular/?details=${item.id}` : `/tv/details/${item.id}`}
+                to={showMovies ? `/movies/details/${item.id}` : `/tv/details/${item.id}`}
               >
                 <img
                   src={

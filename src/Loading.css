@@ -1,0 +1,8 @@
+.ball__container {
+  min-height: 600px;
+}
+.ball {
+  background-color: rgb(175, 175, 175);
+  width: 5rem;
+  height: 5rem;
+}

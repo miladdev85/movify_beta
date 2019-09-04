@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TvShowDetail({ tvshow }) {
+function TvShowHero({ tvshow }) {
   const backgroundStyle = {
     backgroundImage: `linear-gradient(to right, rgb(0, 0, 0), #020202bf),
     url(https://image.tmdb.org/t/p/original${tvshow.backdrop_path})`,
@@ -62,4 +62,4 @@ function TvShowDetail({ tvshow }) {
   );
 }
 
-export default TvShowDetail;
+export default TvShowHero;

@@ -5,20 +5,23 @@ import "./DiscoverMenu.css";
 
 function DiscoverMenu(props) {
   const parsedQuery = queryString.parse(props.location.search);
+  delete parsedQuery.details;
   const linksArr = [
     { url: `/movies/popular`, text: "Most Popular" },
     { url: `/movies/new-releases`, text: "New Releases" },
     { url: `/movies/coming-soon`, text: "Coming Soon" },
-    { url: `/movies/top-rated`, text: "Highest Rated" }
+    { url: `/movies/top-rated`, text: "Highest Rated" },
+    { url: `/movies/swedish`, text: "Swedish" },
+    { url: `/movies/old-movies`, text: "Oldies" }
   ];
   return (
-    <ul className="list-unstyled list-inline mb-1 text-muted">
+    <ul className="list-unstyled list-inline mb-1 text-muted d-flex d-md-inline-block">
       {linksArr.map(link => (
         <li key={link.url}>
           <NavLink
             to={{
               pathname: link.url,
-              search: queryString.stringify({ ...parsedQuery, details: undefined })
+              search: queryString.stringify({ ...parsedQuery })
             }}
             className="discover list-inline-item p-2 p-sm-2 mb-2 btn rounded-pill btn-sm nav-link"
           >

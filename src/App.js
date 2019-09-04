@@ -14,10 +14,10 @@ function App() {
   return (
     <div>
       <Header />
-      <Route path="/people" component={People} />
-      <Route exact path={"/"} render={() => <Redirect to="/movies/popular" />} />
-      <Route path="/movies/:type" component={Movies} />
+      <Route exact path={"/"} render={() => <Redirect to="/movies" />} />
+      <Route path="/movies" component={Movies} />
       <Route path="/tv" component={Tv} />
+      <Route path="/people" component={People} />
       <Route path="/search" component={Search} />
       <Route path="/keyword/:id" component={Keyword} />
       <div className="py-5 mt-5" />

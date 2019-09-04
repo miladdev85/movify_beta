@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TvShowInfo({ tvshow, keywords }) {
+function TvShowFacts({ tvshow, keywords }) {
   return (
     <div>
       <h6>Status</h6>
@@ -72,4 +72,4 @@ function TvShowInfo({ tvshow, keywords }) {
   );
 }
 
-export default TvShowInfo;
+export default TvShowFacts;

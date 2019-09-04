@@ -8,7 +8,7 @@ function Header() {
     <nav className="navbar navbar-expand navbar-light bg-light font-weight-bold border-bottom px-2">
       <ul className="container navbar-nav justify-content-around">
         <li className="nav-item">
-          <NavLink activeClassName="text-info" to="/movies/popular" className="nav-link">
+          <NavLink activeClassName="text-info" to="/movies" className="nav-link">
             Movies
           </NavLink>
         </li>

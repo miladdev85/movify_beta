@@ -1,41 +1,34 @@
 import React, { useState, useEffect } from "react";
-import ListItem from "./ListItem";
+import MovieList from "./MoviesLandingPageList";
+import { withRouter } from "react-router-dom";
 import SadFace from "./SadFace";
-import { API } from "./Helpers";
+import Subtitle from "./Subtitle";
+import { getSimilarItems } from "./Prova";
 import queryString from "query-string";
 import Loading from "./Loading";
 import axios from "axios";
 
-function Similar(props) {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+function Similar({ match }) {
+  const [items, setItems] = useState([]);
+  const [isDownloading, setIsDownloading] = useState(true);
   const [error, setError] = useState(false);
-  const queryObj = queryString.parse(props.location.search);
 
   useEffect(() => {
-    const getSimilarMovies = async () => {
-      try {
-        let response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${queryObj.details}/similar?api_key=${API}&language=en-US&page=1`
-        );
-        setMovies(response.data.results);
-      } catch (error) {
-        setError(error);
-      }
-      setIsLoading(false);
-    };
-    getSimilarMovies();
-  }, [queryObj.details]);
+    getSimilarItems("movie", match.params.id, setItems, setIsDownloading, setError);
+  }, [match.params.id]);
 
   return (
     <>
-      {isLoading === false && error && <SadFace />}
-      {isLoading && <Loading />}
-      {isLoading === false && error === false && (
-        <ListItem items={movies} {...props} fromSimilar={true} isLoading={isLoading} />
+      {isDownloading === false && error && <SadFace />}
+      {isDownloading && <Loading />}
+      {isDownloading === false && error === false && (
+        <>
+          <Subtitle text={"Similar Movies"} />
+          <MovieList items={items} fromSimilar={true} isDownloading={isDownloading} />
+        </>
       )}
     </>
   );
 }
 
-export default Similar;
+export default withRouter(Similar);
