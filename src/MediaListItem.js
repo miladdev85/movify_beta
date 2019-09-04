@@ -7,7 +7,7 @@ function MediaListItem({ items, col, imgHeight, from }) {
       return (
         <div key={item.id} className={`${col}`}>
           <Link
-            to={`${from === "tv" ? `/tv/details/${item.id}` : `/movie/details/${item.id}`}`}
+            to={`${from === "tv" ? `/tv/details/${item.id}` : `/movies/details/${item.id}`}`}
             className="text-reset poster__link"
           >
             <img
