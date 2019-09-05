@@ -19,7 +19,7 @@ function PersonItem({ item }) {
         </Link>
       </div>
       <div className="col mt-2">
-        <div className="d-flex flex-column" style={{ minHeight: "280px" }}>
+        <div className="d-flex flex-column" style={{ minHeight: "98%" }}>
           <Link className="text-reset text-decoration-none" to={`/people/${item.id}`}>
             <h5>{item.name}</h5>
           </Link>

@@ -64,13 +64,7 @@ export class Search extends Component {
             <SearchListMenu handleChange={this.handleFilter} filterBy={filterBy} />
             <div className="row">
               {this.displayResults().map(item => {
-                return (
-                  <SearchListItem
-                    key={item.id + item.media_type}
-                    item={item}
-                    col="col-12 offset-lg-1 col-lg-5"
-                  />
-                );
+                return <SearchListItem key={item.id + item.media_type} item={item} />;
               })}
             </div>
           </>

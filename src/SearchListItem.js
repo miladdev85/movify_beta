@@ -3,7 +3,7 @@ import TvItem from "./TvItem";
 import MovieItem from "./MovieItem";
 import PersonItem from "./PersonItem";
 
-function SearchListItem({ item, col }) {
+function SearchListItem({ item }) {
   const mediaType = object => {
     if (object.media_type === "person") {
       return <PersonItem item={object} />;
@@ -16,7 +16,7 @@ function SearchListItem({ item, col }) {
 
   if (!item.id) return null;
   return (
-    <div className={`${col} shadow-sm my-3`}>
+    <div className="col-12 offset-lg-1 col-lg-5 shadow-sm my-3">
       <div className="row">{mediaType(item)}</div>
     </div>
   );
