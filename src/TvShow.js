@@ -14,7 +14,6 @@ function TvShow({ match }) {
   const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
-  console.log(match);
   useEffect(() => {
     window.scrollTo(0, 0);
     if (parseInt(match.params.id, 10) !== item.id) {
@@ -24,8 +23,6 @@ function TvShow({ match }) {
           const showResponse = await axios.get(tvHelper.tvShowUrl(match.params.id));
 
           const keywordResponse = await axios.get(tvHelper.getTvKeywords(match.params.id));
-
-          console.log(showResponse.data);
           setItem(showResponse.data);
 
           setKeywords(keywordResponse.data.results);
@@ -57,7 +54,7 @@ function TvShow({ match }) {
                 <Cast from="tv" />
                 <Subtitle text={"Season Info"} />
                 <TvSeasonInfo tvshow={item} />
-                <MediaRecs />
+                <MediaRecs from="tv" />
               </div>
 
               <div className="d-none d-md-block col-2 pl-4">

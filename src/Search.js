@@ -32,6 +32,7 @@ export class Search extends Component {
   }
 
   getSearch = async query => {
+    console.log(searchHelper.searchUrl(query));
     const response = await axios.get(searchHelper.searchUrl(query));
     this.setState({ isDownloading: false, items: response.data.results });
   };

@@ -1,31 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import CastList from "./CastList";
 import Loading from "./Loading";
 import SadFace from "./SadFace";
-import { getCasts } from "./Prova";
+import { mediaHelper } from "./Helpers";
+import axios from "axios";
 
-function Cast({ match, from }) {
-  const [casts, setCasts] = useState([]);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [error, setError] = useState(false);
+class Cast extends Component {
+  state = {
+    casts: [],
+    isDownloading: false,
+    error: false
+  };
 
-  useEffect(() => {
-    setIsDownloading(true);
-    getCasts(from, match.params.id, setCasts, setIsDownloading, setError);
-  }, [match.params.id, from]);
+  componentDidMount() {
+    this.setState({ isDownloading: true }, () => this.getCasts());
+  }
 
-  return (
-    <>
-      {isDownloading && <Loading />}
-      {isDownloading === false && error && <SadFace />}
-      {isDownloading === false && casts.length > 0 && (
-        <div className="">
-          <CastList casts={casts} from={from} />
-        </div>
-      )}
-    </>
-  );
+  getCasts = async () => {
+    const { from, match } = this.props;
+    try {
+      let response = await axios.get(mediaHelper.mediaCastsUrl(from, match.params.id));
+      response.data.cast.sort((a, b) => a.order - b.order);
+      response = response.data.cast.splice(0, 6);
+      this.setState({ casts: response, isDownloading: false });
+    } catch (error) {
+      this.setState({ error: true, isDownloading: false });
+    }
+  };
+
+  render() {
+    const { isDownloading, error, casts } = this.state;
+    const { from } = this.props;
+    return (
+      <>
+        {isDownloading && <Loading />}
+        {isDownloading === false && error && <SadFace />}
+        {isDownloading === false && casts.length > 0 && (
+          <div>
+            <CastList casts={casts} from={from} />
+          </div>
+        )}
+      </>
+    );
+  }
 }
 
 export default withRouter(Cast);

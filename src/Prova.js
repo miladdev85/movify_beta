@@ -13,7 +13,6 @@ export const getItem = async (type, id, setItem, setIsDownloading, setError) => 
 };
 
 export const getSimilarItems = async (type, id, setItems, setIsDownloading, setError) => {
-  console.log("getting similar movies");
   setIsDownloading(true);
   try {
     const response = await axios.get(mediaHelper.mediaSimilarUrl(type, id));
@@ -25,7 +24,6 @@ export const getSimilarItems = async (type, id, setItems, setIsDownloading, setE
 };
 
 export const getRecommendations = async (type, id, setItems, setIsDownloading, setError) => {
-  console.log("getting recs movies");
   setIsDownloading(true);
   try {
     const response = await axios.get(mediaHelper.mediaRecommendationsUrl(type, id));
@@ -37,7 +35,6 @@ export const getRecommendations = async (type, id, setItems, setIsDownloading, s
 };
 
 export const getCasts = async (type, id, setCasts, setIsDownloading, setError) => {
-  console.log("getting cast");
   try {
     let response = await axios.get(
       `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${API}`

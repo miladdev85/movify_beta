@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 import "./List.css";
 
-const MovieList = React.memo(({ location, fromSimilar, items, match, addPage, spreadItems }) => {
+const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems }) => {
   const [startPosition, setStartPosition] = useState(0);
   const [endPosition, setEndPosition] = useState(3);
   const queryObj = queryString.parse(location.search);
-
   const resetPositionState = () => {
     setStartPosition(0);
     setEndPosition(3);
@@ -17,7 +16,7 @@ const MovieList = React.memo(({ location, fromSimilar, items, match, addPage, sp
     if (fromSimilar) {
       resetPositionState();
     }
-  }, [queryObj.details, fromSimilar]);
+  }, [fromSimilar]);
 
   useEffect(() => {
     resetPositionState();
@@ -32,7 +31,13 @@ const MovieList = React.memo(({ location, fromSimilar, items, match, addPage, sp
             key={item.id}
             className={`col-6 col-lg-3  ${fromSimilar ? "list__container2  " : "list__container"}`}
           >
-            <Link to={`/movies/details/${item.id}`} className="text-decoration-none poster__link">
+            <Link
+              to={{
+                pathname: `/movies/details/${item.id}`,
+                search: `?from=${match.params.section || queryObj.from}`
+              }}
+              className="text-decoration-none poster__link"
+            >
               <img
                 src={
                   item.poster_path
@@ -85,6 +90,6 @@ const MovieList = React.memo(({ location, fromSimilar, items, match, addPage, sp
       </div>
     </>
   );
-});
+};
 
-export default MovieList;
+export default withRouter(MovieList);

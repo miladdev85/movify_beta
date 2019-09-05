@@ -9,6 +9,7 @@ import axios from "axios";
 const MoviesLandingPageList = props => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(0);
+  const [isDownloading, setIsDownloading] = useState(false);
   const [spreadItems, setSpreadItems] = useState(false);
   const parsedQuery = queryString.parse(props.location.search);
   const prevGenreRef = useRef();
@@ -27,6 +28,7 @@ const MoviesLandingPageList = props => {
   }, [setPage]);
 
   const getMovies = async () => {
+    setIsDownloading(true);
     let url;
     switch (props.match.params.section) {
       case "new-releases":
@@ -63,6 +65,7 @@ const MoviesLandingPageList = props => {
     } else {
       setSpreadItems(false);
     }
+    setIsDownloading(false);
   };
 
   /* eslint-disable */
@@ -90,9 +93,8 @@ const MoviesLandingPageList = props => {
 
   return (
     <>
-      {items.length === 0 ? (
-        <SadFace />
-      ) : (
+      {isDownloading === false && items.length === 0 && <SadFace />}
+      {items.length > 0 && (
         <MovieList items={items} {...props} addPage={addPage} spreadItems={spreadItems} />
       )}
     </>

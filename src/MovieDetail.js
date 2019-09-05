@@ -1,7 +1,10 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import queryString from "query-string";
 
 function MovieDetail(props) {
+  const queryObj = queryString.parse(props.location.search);
+
   return (
     <div className="row detail__container mt-4">
       <div className="col-lg-7 mb-3">
@@ -31,7 +34,10 @@ function MovieDetail(props) {
           {props.item.genres.map(genre => (
             <Link
               key={genre.id}
-              to={{ pathname: "/movies/popular", search: `?genre=${genre.id}` }}
+              to={{
+                pathname: `/movies/${queryObj.from || "popular"}`,
+                search: `?genre=${genre.id}`
+              }}
               className="badge badge-pill badge-light genre__badge p-2 mx-1"
             >
               {genre.name}

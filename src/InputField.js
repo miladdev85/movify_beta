@@ -38,6 +38,7 @@ function InputField(props) {
             placeholder={props.placeholder}
             aria-label={props.placeholder}
             aria-describedby="button-addon2"
+            autoFocus
           />
           <div className="input-group-append">
             <button className="btn btn-outline-success" type="submit" id="button-addon2">

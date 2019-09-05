@@ -1,25 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { getRecommendations } from "./Prova";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react";
+import { mediaHelper } from "./Helpers";
 import MediaListItem from "./MediaListItem";
+import { withRouter } from "react-router-dom";
 import Subtitle from "./Subtitle";
+import axios from "axios";
 
-function MediaRecs({ match, location }) {
-  const [items, setItems] = useState([]);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [error, setError] = useState(false);
-  const type = match.url.includes("/tv/") ? "tv" : "movie";
+class MediaRecs extends Component {
+  state = {
+    items: [],
+    error: false,
+    isDownloading: false
+  };
 
-  useEffect(() => {
-    getRecommendations(type, match.params.id, setItems, setIsDownloading, setError);
-  }, [match.params.id]);
+  componentDidMount() {
+    this.setState({ isDownloading: true }, () => this.getRecommendations());
+  }
 
-  return (
-    <>
-      <Subtitle text={"Recommendations"} />
-      <MediaListItem from={type} items={items} col="col-6 col-lg-2 pb-2" imgHeight="200px" />
-    </>
-  );
+  getRecommendations = async () => {
+    const { match, from } = this.props;
+    try {
+      const response = await axios.get(mediaHelper.mediaRecommendationsUrl(from, match.params.id));
+      this.setState({ items: response.data.results, isDownloading: false });
+    } catch (error) {
+      this.setState({ error: true, isDownloading: false });
+    }
+  };
+
+  render() {
+    const { items } = this.state;
+    const { from } = this.props;
+    return (
+      <>
+        <Subtitle text={"Recommendations"} />
+        <MediaListItem
+          from={from}
+          items={items}
+          col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
+          imgHeight="200px"
+        />
+      </>
+    );
+  }
 }
 
 export default withRouter(MediaRecs);

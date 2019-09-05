@@ -15,7 +15,7 @@ function DiscoverMenu(props) {
     { url: `/movies/old-movies`, text: "Oldies" }
   ];
   return (
-    <ul className="list-unstyled list-inline mb-1 text-muted d-flex d-md-inline-block">
+    <ul className="list-unstyled list-inline mb-1 text-muted d-flex flex-wrap d-md-inline-block">
       {linksArr.map(link => (
         <li key={link.url}>
           <NavLink

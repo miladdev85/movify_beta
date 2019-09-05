@@ -47,12 +47,18 @@ export const mediaHelper = {
   mediaRecommendationsUrl: function(type, id) {
     return `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=${API}&language=en-US`;
   },
+  mediaCastsUrl: function(type, id) {
+    return `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${API}`;
+  },
   sectionTvUrl: function(urlParam, page) {
     const section = urlParam.replace(/-/g, "_");
     return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&&language=en-US&page=${page}`;
   },
   withKeyword: function(type, keyword) {
     return `https://api.themoviedb.org/3/discover/${type}?api_key=${API}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_keywords=${keyword}`;
+  },
+  trailerUrl: function(id) {
+    return `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API}&language=en-US`;
   }
 };
 
@@ -78,7 +84,7 @@ export const movieHelper = {
 
 export const searchHelper = {
   searchUrl: function(query) {
-    return `https://api.themoviedb.org/3/search/multi?${API}&language=en-US&query=${query}&page=1&include_adult=false`;
+    return `https://api.themoviedb.org/3/search/multi?api_key=${API}&language=en-US&query=${query}&page=1&include_adult=false`;
   }
 };
 

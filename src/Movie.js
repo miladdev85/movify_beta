@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import MovieDetail from "./MovieDetail";
 import Subtitle from "./Subtitle";
 import Trailer from "./Trailer";
-import Similar from "./Similar";
+import SimilarClass from "./SimilarClass";
 import Cast from "./Cast";
 import MediaRecs from "./MediaRecs";
 import SadFace from "./SadFace";
@@ -15,8 +15,12 @@ const Movie = ({ match }) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
+    let didCancel = false;
     window.scrollTo(0, 0);
-    getItem("movie", match.params.id, setItem, setIsDownloading, setError);
+    if (didCancel === false) {
+      getItem("movie", match.params.id, setItem, setIsDownloading, setError);
+    }
+    return () => (didCancel = true);
   }, [match.params.id]);
 
   return (
@@ -33,7 +37,7 @@ const Movie = ({ match }) => {
             <MovieDetail item={item} />
             <div className="row">
               <div className="col-12 col-md-7">
-                <Similar />
+                <SimilarClass from="movie" />
               </div>
               <div className="col">
                 <Subtitle text="Trailer" />
@@ -42,7 +46,7 @@ const Movie = ({ match }) => {
             </div>
             <div className="row">
               <div className="col">
-                <MediaRecs />
+                <MediaRecs from="movie" />
               </div>
             </div>
           </div>
