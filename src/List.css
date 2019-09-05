@@ -23,6 +23,10 @@
   min-height: 350px;
   animation: fadeIn ease 1s;
 }
+.poster__link:hover {
+  text-decoration: none;
+  filter: brightness(130%);
+}
 
 .list__container {
   min-height: 370px;
@@ -46,7 +50,7 @@
   animation: fadeIn ease 1s;
 }
 
-.poster__link:hover {
+.poster__link2:hover {
   text-decoration: none;
   filter: brightness(130%);
 }

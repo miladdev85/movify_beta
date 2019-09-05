@@ -28,22 +28,23 @@ function PeopleMedia({ showMovies, displayItems, person, toggle }) {
         {person.id &&
           displayItems.map(item => {
             return (
-              <Link
-                key={item.credit_id}
-                className="col-6 col-lg-3 text-decoration-none text-reset poster__link2"
-                to={showMovies ? `/movies/details/${item.id}` : `/tv/details/${item.id}`}
-              >
-                <img
-                  src={
-                    item.poster_path
-                      ? `https://image.tmdb.org/t/p/original${item.poster_path}`
-                      : "https://static-assets.noovie.com/images/no-poster.png"
-                  }
-                  alt={`${item.title} poster`}
-                  className={`img-fluid poster__img2 rounded`}
-                />
-                <p className="py-1 font-weight-light">{item.title || item.name}</p>
-              </Link>
+              <div key={item.credit_id} className="col-6 col-lg-4 col-xl-3">
+                <Link
+                  className="text-decoration-none text-reset poster__link2"
+                  to={showMovies ? `/movies/details/${item.id}` : `/tv/details/${item.id}`}
+                >
+                  <img
+                    src={
+                      item.poster_path
+                        ? `https://image.tmdb.org/t/p/original${item.poster_path}`
+                        : "https://static-assets.noovie.com/images/no-poster.png"
+                    }
+                    alt={`${item.title} poster`}
+                    className={`img-fluid poster__img rounded`}
+                  />
+                  <p className="py-1 font-weight-light">{item.title || item.name}</p>
+                </Link>
+              </div>
             );
           })}
       </div>
