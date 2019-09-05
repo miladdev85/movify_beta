@@ -28,10 +28,7 @@ function PersonItem({ item }) {
           <ul className="list-unstyled">
             {item.known_for.map(media => (
               <li key={media.id}>
-                <Link
-                  to={`/movies/popular/?details=${media.id}`}
-                  className="text-muted small px-0 pb-1"
-                >
+                <Link to={`/movies/details/${media.id}`} className="text-muted small px-0 pb-1">
                   {media.title}
                 </Link>
               </li>
