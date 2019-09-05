@@ -42,7 +42,13 @@
 }
 
 .poster__img2 {
-  max-height: 275px;
+  /* max-height: 275px; */
+  min-height: 223px;
+}
+
+.poster__img2:hover {
+  text-decoration: none;
+  filter: brightness(130%);
 }
 
 .poster__link2 {

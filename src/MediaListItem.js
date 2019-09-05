@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MediaListItem({ items, col, imgHeight, from }) {
-  const displayItems = (items, col, height) => {
+  const displayItems = () => {
     return items.map(item => {
       return (
         <div key={item.id} className={`${col}`}>
@@ -11,7 +11,7 @@ function MediaListItem({ items, col, imgHeight, from }) {
             className="text-reset poster__link"
           >
             <img
-              style={{ minHeight: `${height}` }}
+              style={{ height: `${imgHeight}` }}
               src={
                 item.poster_path
                   ? `https://image.tmdb.org/t/p/original${item.poster_path}`
@@ -27,7 +27,7 @@ function MediaListItem({ items, col, imgHeight, from }) {
     });
   };
 
-  return <div className="row">{displayItems(items, col, imgHeight)}</div>;
+  return <div className="row">{displayItems()}</div>;
 }
 
 export default MediaListItem;

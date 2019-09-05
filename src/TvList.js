@@ -33,6 +33,7 @@ class TvList extends Component {
     const oldUrl = prevProps.match.params.section;
 
     if (newUrl !== oldUrl) {
+      window.addEventListener("scroll", this.throttledScroll);
       this.setState({ items: [], page: 1, isDownloading: true }, () => this.getTvShows());
     }
   }
@@ -78,7 +79,7 @@ class TvList extends Component {
             <MediaListItem
               from="tv"
               items={items}
-              col="col-6 col-md-4 col-lg-2 p-2"
+              col="col-6 col-md-4 col-lg-3 col-xl-2 p-2"
               imgHeight="278px"
             />
           </div>

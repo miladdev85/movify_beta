@@ -35,10 +35,6 @@
   box-shadow: 1px 0px 3px 0px rgb(214, 214, 214);
 }
 
-.detail__box img:hover {
-  filter: brightness(130%);
-}
-
 .personal__title {
   font-size: 0.9rem;
   color: rgb(0, 0, 0);
