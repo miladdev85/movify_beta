@@ -38,7 +38,7 @@ const PeopleBiography = React.memo(({ person }) => {
               <img
                 src={
                   person.profile_path
-                    ? `http://image.tmdb.org/t/p/original${person.profile_path}`
+                    ? `https://image.tmdb.org/t/p/original${person.profile_path}`
                     : "https://blog.ramboll.com/fehmarnbelt/wp-content/themes/ramboll2/images/profile-img.jpg"
                 }
                 className="img-fluid imdb__image rounded"

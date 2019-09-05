@@ -16,7 +16,7 @@ function PopularPeople({ people }) {
                   <img
                     src={
                       person.profile_path
-                        ? `http://image.tmdb.org/t/p/original${person.profile_path}`
+                        ? `https://image.tmdb.org/t/p/original${person.profile_path}`
                         : pop_img
                     }
                     className="img-fluid popular_people_img rounded"

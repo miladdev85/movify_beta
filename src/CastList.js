@@ -16,7 +16,7 @@ const CastList = React.memo(props => {
                 <img
                   src={
                     cast.profile_path
-                      ? `http://image.tmdb.org/t/p/original${cast.profile_path}`
+                      ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
                       : "https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                   }
                   alt=""

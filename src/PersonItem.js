@@ -11,7 +11,7 @@ function PersonItem({ item }) {
             className="img-fluid cast__effect"
             src={
               item.profile_path
-                ? `http://image.tmdb.org/t/p/original${item.profile_path}`
+                ? `https://image.tmdb.org/t/p/original${item.profile_path}`
                 : "https://sprucegrovelandscaping.com/wp-content/uploads/2016/04/Photo-Not-Available.jpg"
             }
             alt={item.name}
