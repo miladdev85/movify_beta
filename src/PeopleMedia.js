@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import MediaListItem from "./MediaListItem";
 
 function PeopleMedia({ showMovies, displayItems, person, toggle }) {

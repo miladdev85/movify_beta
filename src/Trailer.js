@@ -30,7 +30,7 @@ class Trailer extends Component {
           <>
             <div
               className="embed-responsive embed-responsive-4by3 mb-3"
-              style={{ height: "205px" }}
+              style={{ height: "225px" }}
             >
               <iframe
                 title={trailer.key}

@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 import "./List.css";
 
-const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems }) => {
+const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, col }) => {
   const [startPosition, setStartPosition] = useState(0);
   const [endPosition, setEndPosition] = useState(3);
   const queryObj = queryString.parse(location.search);
@@ -29,7 +29,7 @@ const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems }
         return (
           <div
             key={item.id}
-            className={`col-6 col-lg-3  ${fromSimilar ? "list__container2  " : "list__container"}`}
+            className={`${col} ${fromSimilar ? "list__container2  " : "list__container"}`}
           >
             <Link
               to={{

@@ -95,7 +95,13 @@ const MoviesLandingPageList = props => {
     <>
       {isDownloading === false && items.length === 0 && <SadFace />}
       {items.length > 0 && (
-        <MovieList items={items} {...props} addPage={addPage} spreadItems={spreadItems} />
+        <MovieList
+          col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"
+          items={items}
+          {...props}
+          addPage={addPage}
+          spreadItems={spreadItems}
+        />
       )}
     </>
   );

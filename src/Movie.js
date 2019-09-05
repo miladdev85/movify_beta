@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import MovieDetail from "./MovieDetail";
 import Subtitle from "./Subtitle";
 import Trailer from "./Trailer";
-import SimilarClass from "./SimilarClass";
+import Similar from "./Similar";
 import Cast from "./Cast";
 import MediaRecs from "./MediaRecs";
 import SadFace from "./SadFace";
@@ -36,8 +36,8 @@ const Movie = ({ match }) => {
             <Subtitle text="Details" />
             <MovieDetail item={item} />
             <div className="row">
-              <div className="col-12 col-md-7">
-                <SimilarClass from="movie" />
+              <div className="col-12 col-xl-7">
+                <Similar from="movie" />
               </div>
               <div className="col">
                 <Subtitle text="Trailer" />

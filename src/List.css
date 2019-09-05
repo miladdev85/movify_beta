@@ -23,17 +23,13 @@
   min-height: 350px;
   animation: fadeIn ease 1s;
 }
-.poster__link:hover {
-  text-decoration: none;
-  filter: brightness(130%);
-}
 
 .list__container {
   min-height: 370px;
 }
 
 .list__container2 {
-  min-height: 290px;
+  min-height: 305px;
 }
 
 .poster__img {
@@ -42,13 +38,8 @@
 }
 
 .poster__img2 {
-  /* max-height: 275px; */
-  min-height: 223px;
-}
-
-.poster__img2:hover {
-  text-decoration: none;
-  filter: brightness(130%);
+  min-height: 225px;
+  max-height: 275px;
 }
 
 .poster__link2 {
@@ -56,7 +47,7 @@
   animation: fadeIn ease 1s;
 }
 
-.poster__link2:hover {
+.poster__link:hover {
   text-decoration: none;
   filter: brightness(130%);
 }
