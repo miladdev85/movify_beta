@@ -58,7 +58,6 @@ function Genres(props) {
           <div key={genre.id} className={`nav-item px-1 mb-2`}>
             <button
               type="button"
-              onMouseDown={e => e.preventDefault()}
               onClick={() => addGenre(genre.id)}
               className={`btn btn__col btn-outline-primary rounded-pill btn-sm ${selectedGenres.includes(
                 genre.id
