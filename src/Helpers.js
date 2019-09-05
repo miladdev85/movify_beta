@@ -1,5 +1,4 @@
 import moment from "moment";
-
 export const API = process.env.REACT_APP_TMDB_API_KEY;
 export const baseUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&language=en-US&region=US&sort_by=`;
 export const today = moment().format("YYYY-MM-DD");
@@ -52,7 +51,14 @@ export const mediaHelper = {
   },
   sectionTvUrl: function(urlParam, page) {
     const section = urlParam.replace(/-/g, "_");
-    return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&&language=en-US&page=${page}`;
+    return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&language=en-US&page=${page}`;
+  },
+  sectionTvUrlTest: function(urlParam) {
+    const section = urlParam.replace(/-/g, "_");
+    return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&language=en-US`;
+  },
+  addPagination: function(url, page) {
+    return `${url}&page=${page}`;
   },
   withKeyword: function(type, keyword) {
     return `https://api.themoviedb.org/3/discover/${type}?api_key=${API}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_keywords=${keyword}`;

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import MediaListItem from "./MediaListItem";
-import { withRouter } from "react-router-dom";
 import Loading from "./Loading";
+import { withRouter } from "react-router-dom";
 import SadFace from "./SadFace";
 import { mediaHelper, genericBottomScroll } from "./Helpers";
 import axios from "axios";
 import throttle from "lodash.throttle";
 
-class TvList extends Component {
+class GetMore extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,11 +20,13 @@ class TvList extends Component {
   }
 
   componentDidMount() {
+    console.log("i mountzzz");
     window.addEventListener("scroll", this.throttledScroll);
-    this.setState({ isDownloading: true }, () => this.getTvShows());
+    this.setState({ isDownloading: true }, () => this.getItems());
   }
 
   componentWillUnmount() {
+    console.log("i unmounted");
     window.removeEventListener("scroll", this.throttledScroll);
   }
 
@@ -35,7 +37,7 @@ class TvList extends Component {
 
     if (newUrl !== oldUrl) {
       window.addEventListener("scroll", this.throttledScroll);
-      this.setState({ items: [], page: 1, isDownloading: true }, () => this.getTvShows());
+      this.setState({ items: [], page: 1, isDownloading: true }, () => this.getItems());
     }
   }
 
@@ -43,23 +45,29 @@ class TvList extends Component {
     const { items, page } = this.state;
     let nearBottom = genericBottomScroll(items, document.documentElement);
     if (nearBottom) {
-      this.setState({ page: page + 1 }, () => this.getTvShows());
+      this.setState({ page: page + 1 }, () => this.getItems());
     }
   };
 
-  getTvShows = async () => {
+  getItems = async () => {
     const { page, items } = this.state;
-    const { match } = this.props;
+    const { fetchUrl } = this.props;
+    console.log("getting items");
     try {
-      const response = await axios.get(mediaHelper.sectionTvUrl(match.params.section, page));
-      if (response.data.results.length < 20) {
+      const response = await axios.get(mediaHelper.addPagination(fetchUrl, page));
+
+      const filteredResponse = response.data.results.filter(
+        item => !items.find(i => i.id === item.id)
+      );
+
+      if (response.data.total_pages === page) {
         window.removeEventListener("scroll", this.throttledScroll);
       }
 
       this.setState({
         error: false,
         isDownloading: false,
-        items: [...items, ...response.data.results]
+        items: [...items, ...filteredResponse]
       });
     } catch (err) {
       this.setState({ isDownloading: false, error: true });
@@ -68,7 +76,10 @@ class TvList extends Component {
 
   render() {
     const { items, isDownloading, error } = this.state;
-    if (error) return <SadFace />;
+    const { col, match, imgHeight } = this.props;
+    const source = match.path.includes("/tv/") ? "tv" : "movie";
+
+    if (error || items.length === 0) return <SadFace />;
 
     return (
       <>
@@ -76,12 +87,7 @@ class TvList extends Component {
           <Loading />
         ) : (
           <div className="container mt-4">
-            <MediaListItem
-              from="tv"
-              items={items}
-              col="col-6 col-md-4 col-lg-3 col-xl-2 p-2"
-              imgHeight="278px"
-            />
+            <MediaListItem from={source} items={items} col={col} imgHeight={imgHeight} />
           </div>
         )}
       </>
@@ -89,4 +95,4 @@ class TvList extends Component {
   }
 }
 
-export default withRouter(TvList);
+export default withRouter(GetMore);

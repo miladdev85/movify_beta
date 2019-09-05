@@ -6,7 +6,9 @@ import Subtitle from "./Subtitle";
 import Trailer from "./Trailer";
 import Similar from "./Similar";
 import Cast from "./Cast";
-import MediaRecs from "./MediaRecs";
+import GetMore from "./GetMore";
+import { mediaHelper } from "./Helpers";
+// import MediaRecs from "./MediaRecs";
 import SadFace from "./SadFace";
 import { getItem } from "./Prova";
 
@@ -22,7 +24,6 @@ const Movie = ({ match }) => {
     }
     return () => (didCancel = true);
   }, [match.params.id]);
-
   return (
     <div>
       {isDownloading && <Loading />}
@@ -46,7 +47,13 @@ const Movie = ({ match }) => {
             </div>
             <div className="row">
               <div className="col">
-                <MediaRecs from="movie" />
+                <Subtitle text={"Recommendations"} />
+                <GetMore
+                  fetchUrl={mediaHelper.mediaRecommendationsUrl("movie", match.params.id)}
+                  col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
+                  imgHeight="235px"
+                />
+                {/* <MediaRecs from="movie" /> */}
               </div>
             </div>
           </div>

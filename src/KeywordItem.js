@@ -5,24 +5,24 @@ import "./KeywordItem.css";
 
 function KeywordItem({ items, type }) {
   const displayItems = type => {
-    let linkType = type === "movie" ? "/movies/popular?details=" : "/tv/details/";
+    let linkType = type === "movie" ? "/movies/details/" : "/tv/details/";
     return items.map(item => (
       <div key={item.id} className="row mb-4 fade__in">
         <div className="col-10 offset-1 bg-light keyword__link">
           <Link to={`${linkType}${item.id}`} className="text-decoration-none text-reset ">
             <div className="row shadow-sm">
-              <div className="col-4 col-lg-1 p-0">
+              <div className="col-4 col-md-3 col-lg-2 p-0">
                 <img
                   src={
                     item.poster_path
                       ? `https://image.tmdb.org/t/p/original${item.poster_path}`
                       : "https://static-assets.noovie.com/images/no-poster.png"
                   }
-                  alt=""
+                  alt={`${item.name || item.title} poster`}
                   className="img-fluid"
                 />
               </div>
-              <div className="col col-lg-11 d-flex flex-column justify-content-around">
+              <div className="col-8 col-md-9 col-lg-10 d-flex flex-column justify-content-around">
                 <h6 className="font-weight-bold">{item.name || item.title}</h6>
                 <p className="text-secondary">
                   {textFormat(item.overview, item.name || item.title)}

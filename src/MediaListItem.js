@@ -2,14 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MediaListItem({ items, col, imgHeight, from }) {
+  const linkType = from === "tv" ? "tv" : "movies";
   const displayItems = () => {
     return items.map(item => {
       return (
         <div key={item.id} className={`${col}`}>
-          <Link
-            to={`${from === "tv" ? `/tv/details/${item.id}` : `/movies/details/${item.id}`}`}
-            className="text-reset poster__link"
-          >
+          <Link to={`${`/${linkType}/details/${item.id}`}`} className="text-reset poster__link">
             <img
               style={{ height: `${imgHeight}` }}
               src={

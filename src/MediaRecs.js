@@ -8,8 +8,8 @@ import axios from "axios";
 class MediaRecs extends Component {
   state = {
     items: [],
-    error: false,
-    isDownloading: false
+    isDownloading: false,
+    error: false
   };
 
   componentDidMount() {
