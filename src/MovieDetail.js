@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
+import "./MovieDetail.css";
 
 function MovieDetail(props) {
   const queryObj = queryString.parse(props.location.search);

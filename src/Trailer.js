@@ -39,12 +39,16 @@ class Trailer extends Component {
                 src={`https://www.youtube.com/embed/${trailer.key}`}
               />
             </div>
-            <div className="d-flex">
-              <span className="badge genre__badge p-2 ">
+            <div className="d-flex ">
+              <span className="badge p-2 bg-light text-secondary font-weight-light ">
                 {trailer.size > 720 ? "Full HD" : "HD"}
               </span>
-              <span className="badge genre__badge p-2 mx-1">{trailer.iso_3166_1}</span>
-              <span className="badge genre__badge p-2 ml-auto">{trailer.site}</span>
+              <span className="badge p-2 bg-light text-secondary font-weight-light  mx-1">
+                {trailer.iso_3166_1}
+              </span>
+              <span className="badge p-2 bg-light text-secondary font-weight-light  ml-auto">
+                {trailer.site}
+              </span>
             </div>
           </>
         ) : (
