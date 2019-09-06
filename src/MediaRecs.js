@@ -28,21 +28,17 @@ class MediaRecs extends Component {
     const { page } = this.state;
     const { match } = this.props;
     try {
-      console.log("getting resc");
       const response = await axios.get(
         mediaHelper.mediaRecommendationsUrl(this.source, match.params.id, page)
       );
-      console.log(response.data.results);
+
       const shouldSpread = page < response.data.total_pages ? true : false;
 
-      this.setState(
-        {
-          spreadItems: shouldSpread,
-          items: [...this.state.items, ...response.data.results],
-          isDownloading: false
-        },
-        () => console.log(this.state.items)
-      );
+      this.setState({
+        spreadItems: shouldSpread,
+        items: [...this.state.items, ...response.data.results],
+        isDownloading: false
+      });
     } catch (error) {
       this.setState({ error: true, isDownloading: false });
     }
