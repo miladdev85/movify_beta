@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import MediaHero from "./MediaHero";
 
 function TvShowHero({ tvshow }) {
-  console.log(tvshow);
   return (
     <MediaHero
       backdrop={tvshow.backdrop_path}

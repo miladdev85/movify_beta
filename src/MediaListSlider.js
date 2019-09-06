@@ -7,11 +7,12 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
   const [startPosition, setStartPosition] = useState(0);
   const [endPosition, setEndPosition] = useState(3);
   const queryObj = queryString.parse(location.search);
+  const source = match.path.includes("/movies/") ? "movie" : "tv";
   const resetPositionState = () => {
     setStartPosition(0);
     setEndPosition(3);
   };
-
+  console.log(items);
   useEffect(() => {
     if (fromRecs) {
       resetPositionState();
@@ -22,6 +23,29 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
     resetPositionState();
   }, [match.params.section, queryObj.genre]);
 
+  const defineLinkPath = id => {
+    if (source === "movie") {
+      return {
+        pathname: `/movies/details/${id}`,
+        search: `?from=${match.params.section || queryObj.from || "popular"}`
+      };
+    } else {
+      return {
+        pathname: `/tv/details/${id}`
+      };
+    }
+  };
+
+  const defineReleaseDate = item => {
+    if (source === "movie") {
+      return match.params.type === "coming-soon"
+        ? item.release_date
+        : item.release_date.substring(0, 4);
+    } else {
+      return item.first_air_date.substring(0, 4);
+    }
+  };
+
   const itemsToDisplay = () => {
     return items
       .filter((item, index) => index >= startPosition && index <= endPosition)
@@ -31,13 +55,7 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
             key={item.id}
             className={`${col} ${fromRecs ? "container__recs" : "container__slider"}`}
           >
-            <Link
-              to={{
-                pathname: `/movies/details/${item.id}`,
-                search: `?from=${match.params.section || queryObj.from || "popular"}`
-              }}
-              className="text-decoration-none poster__link"
-            >
+            <Link to={defineLinkPath(item.id)} className="text-decoration-none poster__link">
               <img
                 src={
                   item.poster_path
@@ -45,14 +63,10 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
                     : "https://static-assets.noovie.com/images/no-poster.png"
                 }
                 alt={`${item.title} poster`}
-                className={`img-fluid ${fromRecs ? "poster__img2 " : "poster__img"} rounded`}
+                className={`img-fluid ${fromRecs ? "recs_poster__img" : "poster__img"} rounded`}
               />
-              <p className="item__title">{item.title}</p>
-              <p className="item__subtitle">
-                {match.params.type === "coming-soon"
-                  ? item.release_date
-                  : item.release_date.substring(0, 4)}
-              </p>
+              <p className="item__title">{item.title || item.name}</p>
+              <p className="item__subtitle">{defineReleaseDate(item)}</p>
             </Link>
           </div>
         );

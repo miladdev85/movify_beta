@@ -8,7 +8,7 @@
 .item__subtitle {
   font-weight: 500;
   font-size: 0.9em;
-  margin: 0 0 2px 3px;
+  margin: 0 0 2px 0px;
   color: rgb(153, 153, 153);
 }
 
@@ -21,7 +21,7 @@
 
 .poster__link {
   min-height: 350px;
-  animation: fadeIn ease 1s;
+  animation: fadeIn ease 1.3s;
 }
 
 .container__slider {
@@ -37,7 +37,7 @@
   animation: fadeIn ease 1.5s;
 }
 
-.poster__img2 {
+.recs_poster__img {
   min-height: 225px;
   max-height: 275px;
 }

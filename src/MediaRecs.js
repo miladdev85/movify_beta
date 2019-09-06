@@ -34,9 +34,10 @@ class MediaRecs extends Component {
     const { isDownloading, error, items } = this.state;
     return (
       <>
-        {isDownloading === false && error && <SadFace />}
+        {!isDownloading && error && <SadFace />}
+        {!isDownloading && items.length === 0 && <SadFace />}
         {isDownloading && <Loading />}
-        {isDownloading === false && error === false && (
+        {!isDownloading && !error && (
           <MediaListSlider
             col="col-6 col-md-3 col-lg-3"
             items={items}

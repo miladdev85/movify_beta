@@ -47,7 +47,7 @@ const Movie = ({ match }) => {
             <MovieDetail item={item} />
             <div className="row">
               <div className="col-12 col-xl-7">
-                <Subtitle text={"Recommendations"} />
+                <Subtitle text="Recommended Movies" />
                 <MediaRecs />
               </div>
               <div className="col">
@@ -57,7 +57,7 @@ const Movie = ({ match }) => {
             </div>
             <div className="row">
               <div className="col">
-                <Subtitle text={"Similar Movies"} />
+                <Subtitle text="Similar Movies" />
                 <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaSimilarUrl(source, match.params.id)}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"

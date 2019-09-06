@@ -53,7 +53,7 @@ const MoviesLandingPageList = props => {
         url = genreHelper.popularUrl(parsedQuery.genre);
     }
 
-    let response = await axios.get(url);
+    const response = await axios.get(url);
     if (response.data.page === 1) {
       setItems(response.data.results);
     } else {
@@ -98,7 +98,6 @@ const MoviesLandingPageList = props => {
         <MediaListSlider
           col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"
           items={items}
-          {...props}
           addPage={addPage}
           spreadItems={spreadItems}
         />
