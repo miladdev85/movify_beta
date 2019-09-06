@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MovieHero from "./MovieHero";
+import MediaHero from "./MediaHero";
 import Loading from "./Loading";
 import MovieDetail from "./MovieDetail";
 import Subtitle from "./Subtitle";
@@ -29,7 +29,14 @@ const Movie = ({ match }) => {
       {isDownloading === false && error && <SadFace />}
       {isDownloading === false && item.id && (
         <div className="fade__in">
-          <MovieHero item={item} />
+          <MediaHero
+            backdrop={item.backdrop_path}
+            image={item.poster_path}
+            title={item.title}
+            year={item.release_date}
+            genres={item.genres}
+            text={item.overview}
+          />
           <div className="container">
             <Subtitle text="Top Cast" />
             <Cast from="movie" />
@@ -52,7 +59,6 @@ const Movie = ({ match }) => {
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="235px"
                 />
-                {/* <MediaRecs from="movie" /> */}
               </div>
             </div>
           </div>

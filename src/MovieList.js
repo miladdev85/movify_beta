@@ -34,7 +34,7 @@ const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, 
             <Link
               to={{
                 pathname: `/movies/details/${item.id}`,
-                search: `?from=${match.params.section || queryObj.from}`
+                search: `?from=${match.params.section || queryObj.from || "popular"}`
               }}
               className="text-decoration-none poster__link"
             >
