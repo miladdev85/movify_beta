@@ -12,7 +12,7 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
     setStartPosition(0);
     setEndPosition(3);
   };
-  console.log(items);
+
   useEffect(() => {
     if (fromRecs) {
       resetPositionState();

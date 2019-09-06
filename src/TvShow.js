@@ -22,12 +22,9 @@ function TvShow({ match }) {
       const getTvShow = async () => {
         try {
           const showResponse = await axios.get(tvHelper.tvShowUrl(match.params.id));
-
           const keywordResponse = await axios.get(tvHelper.getTvKeywords(match.params.id));
           setItem(showResponse.data);
-
           setKeywords(keywordResponse.data.results);
-
           setIsLoading(false);
         } catch (err) {
           setIsLoading(false);
