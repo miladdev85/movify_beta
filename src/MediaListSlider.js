@@ -14,12 +14,6 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
   };
 
   useEffect(() => {
-    if (fromRecs) {
-      resetPositionState();
-    }
-  }, [fromRecs]);
-
-  useEffect(() => {
     resetPositionState();
   }, [match.params.section, queryObj.genre]);
 

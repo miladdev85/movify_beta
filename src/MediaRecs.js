@@ -9,7 +9,9 @@ import axios from "axios";
 class MediaRecs extends Component {
   state = {
     items: [],
+    page: 1,
     isDownloading: false,
+    spreadItems: false,
     error: false
   };
   source = this.props.match.path.includes("/movies/") ? "movie" : "tv";
@@ -18,20 +20,36 @@ class MediaRecs extends Component {
     this.setState({ isDownloading: true }, () => this.getRecommendedItems());
   }
 
+  addPage = () => {
+    this.setState({ page: this.state.page + 1 }, () => this.getRecommendedItems());
+  };
+
   getRecommendedItems = async () => {
+    const { page } = this.state;
     const { match } = this.props;
     try {
+      console.log("getting resc");
       const response = await axios.get(
-        mediaHelper.mediaRecommendationsUrl(this.source, match.params.id)
+        mediaHelper.mediaRecommendationsUrl(this.source, match.params.id, page)
       );
-      this.setState({ items: response.data.results, isDownloading: false });
+      console.log(response.data.results);
+      const shouldSpread = page < response.data.total_pages ? true : false;
+
+      this.setState(
+        {
+          spreadItems: shouldSpread,
+          items: [...this.state.items, ...response.data.results],
+          isDownloading: false
+        },
+        () => console.log(this.state.items)
+      );
     } catch (error) {
       this.setState({ error: true, isDownloading: false });
     }
   };
 
   render() {
-    const { isDownloading, error, items } = this.state;
+    const { isDownloading, error, items, spreadItems } = this.state;
     return (
       <>
         {!isDownloading && error && <SadFace />}
@@ -42,7 +60,8 @@ class MediaRecs extends Component {
             col="col-6 col-md-3 col-lg-3"
             items={items}
             fromRecs={true}
-            isDownloading={isDownloading}
+            addPage={this.addPage}
+            spreadItems={spreadItems}
           />
         )}
       </>

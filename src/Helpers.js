@@ -43,8 +43,8 @@ export const mediaHelper = {
   mediaSimilarUrl: function(type, id) {
     return `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${API}&language=en-US`;
   },
-  mediaRecommendationsUrl: function(type, id) {
-    return `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=${API}&language=en-US`;
+  mediaRecommendationsUrl: function(type, id, page) {
+    return `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=${API}&language=en-US&page=${page}`;
   },
   mediaCastsUrl: function(type, id) {
     return `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${API}`;
