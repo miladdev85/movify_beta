@@ -1,11 +1,9 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
-import queryString from "query-string";
 
-function Slideshow({ type, location, match, items, showIndex, direction, handleSelect }) {
+function Slideshow({ type, items, showIndex, direction, handleSelect }) {
   const getToLink = id => {
-    const parsedQuery = queryString.parse(location.search);
     let toLink;
     if (type === "movie") {
       toLink = {
