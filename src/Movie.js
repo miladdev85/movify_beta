@@ -6,9 +6,8 @@ import Subtitle from "./Subtitle";
 import Trailer from "./Trailer";
 import Similar from "./Similar";
 import Cast from "./Cast";
-import GetMore from "./GetMore";
+import MoreMediaFetcher from "./MoreMediaFetcher";
 import { mediaHelper } from "./Helpers";
-// import MediaRecs from "./MediaRecs";
 import SadFace from "./SadFace";
 import { getItem } from "./Prova";
 
@@ -48,7 +47,7 @@ const Movie = ({ match }) => {
             <div className="row">
               <div className="col">
                 <Subtitle text={"Recommendations"} />
-                <GetMore
+                <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaRecommendationsUrl("movie", match.params.id)}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="235px"

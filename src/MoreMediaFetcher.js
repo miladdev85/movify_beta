@@ -7,7 +7,7 @@ import { mediaHelper, genericBottomScroll } from "./Helpers";
 import axios from "axios";
 import throttle from "lodash.throttle";
 
-class GetMore extends Component {
+class MoreMediaFetcher extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,13 +20,11 @@ class GetMore extends Component {
   }
 
   componentDidMount() {
-    console.log("i mountzzz");
     window.addEventListener("scroll", this.throttledScroll);
     this.setState({ isDownloading: true }, () => this.getItems());
   }
 
   componentWillUnmount() {
-    console.log("i unmounted");
     window.removeEventListener("scroll", this.throttledScroll);
   }
 
@@ -52,7 +50,6 @@ class GetMore extends Component {
   getItems = async () => {
     const { page, items } = this.state;
     const { fetchUrl } = this.props;
-    console.log("getting items");
     try {
       const response = await axios.get(mediaHelper.addPagination(fetchUrl, page));
 
@@ -95,4 +92,4 @@ class GetMore extends Component {
   }
 }
 
-export default withRouter(GetMore);
+export default withRouter(MoreMediaFetcher);

@@ -5,8 +5,8 @@ import Loading from "./Loading";
 import TvShowHero from "./TvShowHero";
 import Subtitle from "./Subtitle";
 import TvSeasonInfo from "./TvSeasonInfo";
-import MediaRecs from "./MediaRecs";
-import { tvHelper } from "./Helpers";
+import MoreMediaFetcher from "./MoreMediaFetcher";
+import { tvHelper, mediaHelper } from "./Helpers";
 import axios from "axios";
 import "./TvShow.css";
 
@@ -54,7 +54,12 @@ function TvShow({ match }) {
                 <Cast from="tv" />
                 <Subtitle text={"Season Info"} />
                 <TvSeasonInfo tvshow={item} />
-                <MediaRecs from="tv" />
+                <Subtitle text={"Recommendations"} />
+                <MoreMediaFetcher
+                  fetchUrl={mediaHelper.mediaRecommendationsUrl("tv", match.params.id)}
+                  col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
+                  imgHeight="200px"
+                />
               </div>
 
               <div className="d-none d-md-block col-2 pl-4">
