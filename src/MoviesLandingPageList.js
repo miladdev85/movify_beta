@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { withRouter } from "react-router-dom";
 import { genreHelper } from "./Helpers";
-import MovieList from "./MovieList";
+import MediaListSlider from "./MediaListSlider";
 import SadFace from "./SadFace";
 import queryString from "query-string";
 import axios from "axios";
@@ -95,7 +95,7 @@ const MoviesLandingPageList = props => {
     <>
       {isDownloading === false && items.length === 0 && <SadFace />}
       {items.length > 0 && (
-        <MovieList
+        <MediaListSlider
           col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"
           items={items}
           {...props}

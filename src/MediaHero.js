@@ -1,7 +1,7 @@
 import React from "react";
 import "./MediaHero.css";
 
-function MediaHero({ backdrop, image, title, year = "", genres = [], text, children }) {
+function MediaHero({ backdrop, image, title, year, genres = [], text, children }) {
   const backgroundStyle = {
     backgroundImage: `linear-gradient(to right, rgb(0, 0, 0), #020202bf),
         url(https://image.tmdb.org/t/p/original${backdrop})`,

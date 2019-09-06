@@ -9,7 +9,7 @@ function TvShowHero({ tvshow }) {
       backdrop={tvshow.backdrop_path}
       image={tvshow.poster_path}
       title={tvshow.name}
-      year={tvshow.first_air_date}
+      year={tvshow.first_air_date || ""}
       genres={tvshow.genres}
       text={tvshow.overview}
       createdBy={tvshow.created_by}

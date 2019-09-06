@@ -24,12 +24,12 @@
   animation: fadeIn ease 1s;
 }
 
-.list__container {
+.container__slider {
   min-height: 370px;
 }
 
-.list__container2 {
-  min-height: 305px;
+.container__recs {
+  min-height: 320px;
 }
 
 .poster__img {
@@ -60,10 +60,6 @@
   object-fit: cover;
   height: 110px;
   width: 110px;
-}
-
-.general__link:hover {
-  text-decoration: none;
 }
 
 .cast__effect:hover {

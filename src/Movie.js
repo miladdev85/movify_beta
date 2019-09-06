@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import MovieDetail from "./MovieDetail";
 import Subtitle from "./Subtitle";
 import Trailer from "./Trailer";
-import Similar from "./Similar";
+import MediaRecs from "./MediaRecs";
 import Cast from "./Cast";
 import MoreMediaFetcher from "./MoreMediaFetcher";
 import { mediaHelper } from "./Helpers";
@@ -23,6 +23,9 @@ const Movie = ({ match }) => {
     }
     return () => (didCancel = true);
   }, [match.params.id]);
+
+  const source = match.path.includes("/movies/") ? "movie" : "tv";
+
   return (
     <div>
       {isDownloading && <Loading />}
@@ -39,12 +42,13 @@ const Movie = ({ match }) => {
           />
           <div className="container">
             <Subtitle text="Top Cast" />
-            <Cast from="movie" />
+            <Cast />
             <Subtitle text="Details" />
             <MovieDetail item={item} />
             <div className="row">
               <div className="col-12 col-xl-7">
-                <Similar from="movie" />
+                <Subtitle text={"Recommendations"} />
+                <MediaRecs />
               </div>
               <div className="col">
                 <Subtitle text="Trailer" />
@@ -53,9 +57,9 @@ const Movie = ({ match }) => {
             </div>
             <div className="row">
               <div className="col">
-                <Subtitle text={"Recommendations"} />
+                <Subtitle text={"Similar Movies"} />
                 <MoreMediaFetcher
-                  fetchUrl={mediaHelper.mediaRecommendationsUrl("movie", match.params.id)}
+                  fetchUrl={mediaHelper.mediaSimilarUrl(source, match.params.id)}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="235px"
                 />

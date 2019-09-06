@@ -26,7 +26,7 @@ function TvSeasonInfo({ tvshow }) {
           <div className="col-5 col-lg-2 p-0">
             <img
               src={
-                season.poster_path
+                item.poster_path && season.poster_path
                   ? `https://image.tmdb.org/t/p/original${season.poster_path}`
                   : item.poster_path
                   ? `https://image.tmdb.org/t/p/original${item.poster_path}`
@@ -65,7 +65,7 @@ function TvSeasonInfo({ tvshow }) {
     }
   };
 
-  return <div className="my-4">{displaySeasonCard(lastSeason, tvshow)}</div>;
+  return <div className="my-4">{lastSeason && displaySeasonCard(lastSeason, tvshow)}</div>;
 }
 
 export default TvSeasonInfo;

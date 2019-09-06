@@ -6,21 +6,24 @@ import Loading from "./Loading";
 import { mediaHelper } from "./Helpers";
 import axios from "axios";
 
-class Similar extends Component {
+class MediaRecs extends Component {
   state = {
     items: [],
     isDownloading: false,
     error: false
   };
+  source = this.props.match.path.includes("/movies/") ? "movie" : "tv";
 
   componentDidMount() {
-    this.setState({ isDownloading: true }, () => this.getSimilarItems());
+    this.setState({ isDownloading: true }, () => this.getRecommendedItems());
   }
 
-  getSimilarItems = async () => {
-    const { match, from } = this.props;
+  getRecommendedItems = async () => {
+    const { match } = this.props;
     try {
-      const response = await axios.get(mediaHelper.mediaSimilarUrl(from, match.params.id));
+      const response = await axios.get(
+        mediaHelper.mediaRecommendationsUrl(this.source, match.params.id)
+      );
       this.setState({ items: response.data.results, isDownloading: false });
     } catch (error) {
       this.setState({ error: true, isDownloading: false });
@@ -37,7 +40,7 @@ class Similar extends Component {
           <MediaListSlider
             col="col-6 col-md-3 col-lg-3"
             items={items}
-            fromSimilar={true}
+            fromRecs={true}
             isDownloading={isDownloading}
           />
         )}
@@ -46,4 +49,4 @@ class Similar extends Component {
   }
 }
 
-export default withRouter(Similar);
+export default withRouter(MediaRecs);

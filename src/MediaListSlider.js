@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 import "./List.css";
 
-const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, col }) => {
+const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItems, col }) => {
   const [startPosition, setStartPosition] = useState(0);
   const [endPosition, setEndPosition] = useState(3);
   const queryObj = queryString.parse(location.search);
@@ -13,10 +13,10 @@ const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, 
   };
 
   useEffect(() => {
-    if (fromSimilar) {
+    if (fromRecs) {
       resetPositionState();
     }
-  }, [fromSimilar]);
+  }, [fromRecs]);
 
   useEffect(() => {
     resetPositionState();
@@ -29,7 +29,7 @@ const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, 
         return (
           <div
             key={item.id}
-            className={`${col} ${fromSimilar ? "list__container2  " : "list__container"}`}
+            className={`${col} ${fromRecs ? "container__recs" : "container__slider"}`}
           >
             <Link
               to={{
@@ -45,7 +45,7 @@ const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, 
                     : "https://static-assets.noovie.com/images/no-poster.png"
                 }
                 alt={`${item.title} poster`}
-                className={`img-fluid ${fromSimilar ? "poster__img2 " : "poster__img"} rounded`}
+                className={`img-fluid ${fromRecs ? "poster__img2 " : "poster__img"} rounded`}
               />
               <p className="item__title">{item.title}</p>
               <p className="item__subtitle">
@@ -92,4 +92,4 @@ const MovieList = ({ location, fromSimilar, items, match, addPage, spreadItems, 
   );
 };
 
-export default withRouter(MovieList);
+export default withRouter(MediaListSlider);

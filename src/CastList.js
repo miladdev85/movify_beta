@@ -11,7 +11,7 @@ const CastList = React.memo(props => {
             <div key={cast.credit_id} className="text-center col-4 col-md-3 col-lg-2 mb-sm-1 ">
               <Link
                 to={{ pathname: `/people/${cast.id}`, search: `?from=${props.from}` }}
-                className="general__link cast__effect "
+                className="text-decoration-none cast__effect"
               >
                 <img
                   src={
