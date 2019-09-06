@@ -1,22 +1,8 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { Link } from "react-router-dom";
+import ParsedLink from "./ParsedLink";
 
-function Slideshow({ type, items, showIndex, direction, handleSelect }) {
-  const getToLink = id => {
-    let toLink;
-    if (type === "movie") {
-      toLink = {
-        pathname: `/movies/details/${id}`
-      };
-    } else {
-      toLink = {
-        pathname: `/tv/details/${id}`
-      };
-    }
-    return toLink;
-  };
-
+function Slideshow({ items, showIndex, direction, handleSelect }) {
   const slideShow = items.map(item => {
     return (
       <Carousel.Item key={item.id} className="slider__container">
@@ -26,9 +12,9 @@ function Slideshow({ type, items, showIndex, direction, handleSelect }) {
           alt="First slide"
         />
         <Carousel.Caption>
-          <Link to={getToLink(item.id)} className="text-reset text-decoration-none">
+          <ParsedLink id={item.id} className="text-reset text-decoration-none">
             <h3 className="m-0 hvr-wobble-horizontal d-inline-block">{item.title || item.name}</h3>
-          </Link>
+          </ParsedLink>
           <div>
             <span className="small">
               {item.genres.map(genre => (

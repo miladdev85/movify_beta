@@ -9,9 +9,9 @@ function DiscoverMenu(props) {
   const linksArr = [
     { url: `/movies/popular`, text: "Most Popular" },
     { url: `/movies/new-releases`, text: "New Releases" },
+    { url: `/movies/swedish`, text: "Swedish" },
     { url: `/movies/coming-soon`, text: "Coming Soon" },
     { url: `/movies/top-rated`, text: "Highest Rated" },
-    { url: `/movies/swedish`, text: "Swedish" },
     { url: `/movies/old-movies`, text: "Oldies" }
   ];
   return (
