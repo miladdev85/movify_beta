@@ -8,10 +8,10 @@ const CastList = React.memo(props => {
       <div className="row pt-2">
         {props.casts.map(cast => {
           return (
-            <div key={cast.credit_id} className="text-center col-4 col-md-3 col-lg-2 mb-sm-1 ">
+            <div key={cast.credit_id} className="text-center col-4 col-md-3 col-lg-2 mb-sm-1">
               <Link
                 to={{ pathname: `/people/${cast.id}`, search: `?from=${props.from}` }}
-                className="text-decoration-none cast__effect"
+                className="text-decoration-none brightness"
               >
                 <img
                   src={
@@ -20,7 +20,7 @@ const CastList = React.memo(props => {
                       : "https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                   }
                   alt=""
-                  className="img-fluid rounded-circle cast__image "
+                  className="img-fluid rounded-circle cast__image"
                 />
                 <p className="item__title">{cast.name}</p>
                 <p className="item__subtitle">{cast.character}</p>

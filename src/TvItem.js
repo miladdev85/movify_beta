@@ -9,7 +9,7 @@ function TvItem({ item }) {
         <Link to={`/tv/details/${item.id}`}>
           <img
             style={{ minHeight: "298px" }}
-            className="img-fluid cast__effect"
+            className="img-fluid brightness"
             src={
               item.poster_path
                 ? `https://image.tmdb.org/t/p/original${item.poster_path}`

@@ -8,7 +8,7 @@ function PersonItem({ item }) {
         <Link to={`/people/${item.id}`}>
           <img
             style={{ minHeight: "298px" }}
-            className="img-fluid cast__effect"
+            className="img-fluid brightness"
             src={
               item.profile_path
                 ? `https://image.tmdb.org/t/p/original${item.profile_path}`

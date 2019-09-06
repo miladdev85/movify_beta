@@ -62,7 +62,7 @@
   width: 110px;
 }
 
-.cast__effect:hover {
+.brightness:hover {
   filter: brightness(125%);
 }
 
