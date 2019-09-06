@@ -4,17 +4,16 @@ import { Link } from "react-router-dom";
 import queryString from "query-string";
 
 function Slideshow({ type, location, match, items, showIndex, direction, handleSelect }) {
-  const getToLink = item => {
+  const getToLink = id => {
     const parsedQuery = queryString.parse(location.search);
     let toLink;
     if (type === "movie") {
       toLink = {
-        pathname: match.url,
-        search: queryString.stringify({ ...parsedQuery, details: item.id })
+        pathname: `/movies/details/${id}`
       };
     } else {
       toLink = {
-        pathname: `/tv/details/${item.id}`
+        pathname: `/tv/details/${id}`
       };
     }
     return toLink;
@@ -29,7 +28,7 @@ function Slideshow({ type, location, match, items, showIndex, direction, handleS
           alt="First slide"
         />
         <Carousel.Caption>
-          <Link to={getToLink(item)} className="text-reset text-decoration-none">
+          <Link to={getToLink(item.id)} className="text-reset text-decoration-none">
             <h3 className="m-0 hvr-wobble-horizontal d-inline-block">{item.title || item.name}</h3>
           </Link>
           <div>
