@@ -25,8 +25,8 @@ class Trailer extends Component {
     const { trailer } = this.state;
 
     return (
-      <div>
-        {trailer.key ? (
+      <>
+        {trailer ? (
           <>
             <div
               className="embed-responsive embed-responsive-4by3 mb-3"
@@ -54,7 +54,7 @@ class Trailer extends Component {
         ) : (
           <SadFace />
         )}
-      </div>
+      </>
     );
   }
 }
