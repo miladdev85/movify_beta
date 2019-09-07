@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import CastList from "./CastList";
 import Loading from "./Loading";
 import SadFace from "./SadFace";
+import Subtitle from "./Subtitle";
 import { mediaHelper } from "./Helpers";
 import axios from "axios";
 
@@ -12,16 +13,15 @@ class Cast extends Component {
     isDownloading: false,
     error: false
   };
-  source = this.props.match.path.includes("/movies/") ? "movie" : "tv";
 
   componentDidMount() {
     this.setState({ isDownloading: true }, () => this.getCasts());
   }
 
   getCasts = async () => {
-    const { match } = this.props;
+    const { match, source } = this.props;
     try {
-      let response = await axios.get(mediaHelper.mediaCastsUrl(this.source, match.params.id));
+      let response = await axios.get(mediaHelper.mediaCastsUrl(source, match.params.id));
       response.data.cast.sort((a, b) => a.order - b.order);
       response = response.data.cast.splice(0, 6);
       this.setState({ casts: response, isDownloading: false });
@@ -32,14 +32,16 @@ class Cast extends Component {
 
   render() {
     const { isDownloading, error, casts } = this.state;
+    const { source } = this.props;
 
     return (
       <>
         {isDownloading && <Loading />}
-        {isDownloading === false && error && <SadFace />}
-        {isDownloading === false && casts.length > 0 && (
+        {!isDownloading && error && <SadFace />}
+        {!isDownloading && casts.length > 0 && (
           <div>
-            <CastList casts={casts} from={this.source} />
+            <Subtitle text={`${source === "movie" ? "Top" : "Series"} Cast`} />
+            <CastList casts={casts} from={source} />
           </div>
         )}
       </>

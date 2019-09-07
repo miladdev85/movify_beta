@@ -8,7 +8,7 @@ function TvShowHero({ tvshow }) {
       backdrop={tvshow.backdrop_path}
       image={tvshow.poster_path}
       title={tvshow.name}
-      year={tvshow.first_air_date || ""}
+      year={tvshow.first_air_date}
       genres={tvshow.genres}
       text={tvshow.overview}
       createdBy={tvshow.created_by}
@@ -19,7 +19,10 @@ function TvShowHero({ tvshow }) {
           <div className="row">
             {tvshow.created_by.map(c => (
               <div key={c.id} className="col-4">
-                <Link className="text-reset text-decoration-none" to={`/people/${c.id}`}>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to={{ pathname: `/people/${c.id}`, search: `?from=tv` }}
+                >
                   <p className="m-0">{c.name}</p>
                 </Link>
                 <p className="text-muted small">Creator</p>

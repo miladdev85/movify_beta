@@ -9,7 +9,7 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
   };
 
   return (
-    <div style={backgroundStyle} className="fade__in">
+    <div style={backgroundStyle}>
       <div className="container">
         <div className="row py-3">
           <div className="col-12 col-md-4 m-0 p-0">
@@ -19,13 +19,13 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
                   ? `https://image.tmdb.org/t/p/original${image}`
                   : "https://static-assets.noovie.com/images/no-poster.png"
               }
-              alt=""
+              alt={`${title} poster`}
               className="img-fluid p-2 rounded"
             />
           </div>
           <div className="col d-flex flex-column text-white justify-content-center pt-2 pt-lg-0">
             <h2 className="font-weight-bold">
-              {title} <span className="text-muted small">({year.substring(0, 4)})</span>
+              {title} {year && <span className="text-muted small">({year.substring(0, 4)})</span>}
             </h2>
             <ul className="list-inline">
               {genres.map(g => (

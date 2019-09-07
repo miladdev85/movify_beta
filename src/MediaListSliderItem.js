@@ -11,7 +11,7 @@ function MediaListSliderItem({ fromRecs, col, mediaArr, startPosition, endPositi
           key={item.id}
           className={`${col} ${fromRecs ? "container__recs" : "container__slider"}`}
         >
-          <ParsedLink className="text-decoration-none poster__link" id={item.id}>
+          <ParsedLink className="text-decoration-none brightness" id={item.id}>
             <img
               src={
                 item.poster_path

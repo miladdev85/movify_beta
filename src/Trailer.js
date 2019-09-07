@@ -3,6 +3,7 @@ import { mediaHelper } from "./Helpers";
 import SadFace from "./SadFace";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import Subtitle from "./Subtitle";
 import "./Trailer.css";
 
 class Trailer extends Component {
@@ -23,9 +24,9 @@ class Trailer extends Component {
 
   render() {
     const { trailer } = this.state;
-
     return (
       <>
+        <Subtitle text="Trailer" />
         {trailer ? (
           <>
             <div

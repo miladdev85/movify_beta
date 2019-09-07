@@ -2,15 +2,15 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import "./List.css";
 
-const CastList = React.memo(props => {
+const CastList = React.memo(({ casts, from }) => {
   return (
     <div>
       <div className="row pt-2">
-        {props.casts.map(cast => {
+        {casts.map(cast => {
           return (
             <div key={cast.credit_id} className="text-center col-4 col-md-3 col-lg-2 mb-sm-1">
               <Link
-                to={{ pathname: `/people/${cast.id}`, search: `?from=${props.from}` }}
+                to={{ pathname: `/people/${cast.id}`, search: `?from=${from}` }}
                 className="text-decoration-none brightness"
               >
                 <img

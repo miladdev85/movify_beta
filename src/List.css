@@ -48,7 +48,6 @@
 }
 
 .poster__link:hover {
-  text-decoration: none;
   filter: brightness(130%);
 }
 

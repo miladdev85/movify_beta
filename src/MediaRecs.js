@@ -5,6 +5,7 @@ import SadFace from "./SadFace";
 import Loading from "./Loading";
 import { mediaHelper } from "./Helpers";
 import axios from "axios";
+import Subtitle from "./Subtitle";
 
 class MediaRecs extends Component {
   state = {
@@ -14,7 +15,6 @@ class MediaRecs extends Component {
     spreadItems: false,
     error: false
   };
-  source = this.props.match.path.includes("/movies/") ? "movie" : "tv";
 
   componentDidMount() {
     this.setState({ isDownloading: true }, () => this.getRecommendedItems());
@@ -26,10 +26,10 @@ class MediaRecs extends Component {
 
   getRecommendedItems = async () => {
     const { page } = this.state;
-    const { match } = this.props;
+    const { match, source } = this.props;
     try {
       const response = await axios.get(
-        mediaHelper.mediaRecommendationsUrl(this.source, match.params.id, page)
+        mediaHelper.mediaRecommendationsUrl(source, match.params.id, page)
       );
 
       const shouldSpread = page < response.data.total_pages ? true : false;
@@ -46,12 +46,14 @@ class MediaRecs extends Component {
 
   render() {
     const { isDownloading, error, items, spreadItems } = this.state;
+    const { source } = this.props;
     return (
       <>
+        <Subtitle text={`Recommended ${source === "movie" ? "Movies" : "Shows"}`} />
         {!isDownloading && error && <SadFace />}
         {!isDownloading && items.length === 0 && <SadFace />}
         {isDownloading && <Loading />}
-        {!isDownloading && !error && (
+        {!isDownloading && !error && items.length > 0 && (
           <MediaListSlider
             col="col-6 col-md-3 col-lg-3"
             items={items}

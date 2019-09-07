@@ -1,10 +1,11 @@
 import React from "react";
+import Subtitle from "./Subtitle";
 import { today } from "./Helpers";
 
-function TvSeasonInfo({ tvshow }) {
-  const filteredSeason = tvshow.seasons.filter(season => season.air_date !== null);
+function TvSeason({ tvshow }) {
+  const filteredSeason =
+    tvshow.seasons.length > 0 && tvshow.seasons.filter(season => season.air_date !== null);
   const lastSeason = filteredSeason[filteredSeason.length - 1];
-
   const seasonOverview = (season, title) => {
     let overviewText;
     if (!season.overview) {
@@ -65,7 +66,12 @@ function TvSeasonInfo({ tvshow }) {
     }
   };
 
-  return <div className="my-4">{lastSeason && displaySeasonCard(lastSeason, tvshow)}</div>;
+  return (
+    <div className="my-4">
+      <Subtitle text="Season Info" />
+      {lastSeason && displaySeasonCard(lastSeason, tvshow)}
+    </div>
+  );
 }
 
-export default TvSeasonInfo;
+export default TvSeason;

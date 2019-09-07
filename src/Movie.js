@@ -11,7 +11,7 @@ import { mediaHelper } from "./Helpers";
 import SadFace from "./SadFace";
 import { getItem } from "./Prova";
 
-const Movie = ({ match }) => {
+const Movie = ({ match, source }) => {
   const [item, setItem] = useState({});
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(false);
@@ -19,18 +19,16 @@ const Movie = ({ match }) => {
     let didCancel = false;
     window.scrollTo(0, 0);
     if (didCancel === false) {
-      getItem("movie", match.params.id, setItem, setIsDownloading, setError);
+      getItem(source, match.params.id, setItem, setIsDownloading, setError);
     }
     return () => (didCancel = true);
-  }, [match.params.id]);
-
-  const source = match.path.includes("/movies/") ? "movie" : "tv";
+  }, [match.params.id, source]);
 
   return (
     <div>
       {isDownloading && <Loading />}
-      {isDownloading === false && error && <SadFace />}
-      {isDownloading === false && item.id && (
+      {!isDownloading && error && <SadFace />}
+      {!isDownloading && item.id && (
         <div className="fade__in">
           <MediaHero
             backdrop={item.backdrop_path}
@@ -41,17 +39,14 @@ const Movie = ({ match }) => {
             text={item.overview}
           />
           <div className="container">
-            <Subtitle text="Top Cast" />
-            <Cast />
+            <Cast source="movie" />
             <Subtitle text="Details" />
             <MovieDetail item={item} />
             <div className="row">
               <div className="col-12 col-xl-7">
-                <Subtitle text="Recommended Movies" />
-                <MediaRecs />
+                <MediaRecs source="movie" />
               </div>
               <div className="col">
-                <Subtitle text="Trailer" />
                 <Trailer />
               </div>
             </div>
@@ -60,6 +55,7 @@ const Movie = ({ match }) => {
                 <Subtitle text="Similar Movies" />
                 <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaSimilarUrl(source, match.params.id)}
+                  source={source}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="235px"
                 />

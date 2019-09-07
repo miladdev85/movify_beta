@@ -73,19 +73,15 @@ class MoreMediaFetcher extends Component {
 
   render() {
     const { items, isDownloading, error } = this.state;
-    const { col, match, imgHeight } = this.props;
-    const source = match.path.includes("/tv/") ? "tv" : "movie";
-
-    if (error || items.length === 0) return <SadFace />;
+    const { col, imgHeight, source } = this.props;
 
     return (
       <>
-        {isDownloading ? (
-          <Loading />
-        ) : (
-          <div className="container mt-4">
-            <MediaListItem from={source} items={items} col={col} imgHeight={imgHeight} />
-          </div>
+        {!isDownloading && error && <SadFace />}
+        {!isDownloading && items.length === 0 && <SadFace />}
+        {isDownloading && <Loading />}
+        {!isDownloading && !error && items.length > 0 && (
+          <MediaListItem source={source} items={items} col={col} imgHeight={imgHeight} />
         )}
       </>
     );

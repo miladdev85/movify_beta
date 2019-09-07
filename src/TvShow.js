@@ -4,14 +4,14 @@ import TvShowFacts from "./TvShowFacts";
 import Loading from "./Loading";
 import TvShowHero from "./TvShowHero";
 import Subtitle from "./Subtitle";
-import TvSeasonInfo from "./TvSeasonInfo";
+import TvSeason from "./TvSeason";
 import MediaRecs from "./MediaRecs";
 import MoreMediaFetcher from "./MoreMediaFetcher";
 import { tvHelper, mediaHelper } from "./Helpers";
 import axios from "axios";
 import "./TvShow.css";
 
-function TvShow({ match }) {
+function TvShow({ match, source }) {
   const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
@@ -34,9 +34,7 @@ function TvShow({ match }) {
     }
   }, [match.params.id, item.id]);
 
-  const source = match.path.includes("/movies/") ? "movie" : "tv";
-
-  if (!item.id && isLoading === false) return null;
+  if (!item.id && !isLoading) return null;
 
   return (
     <>
@@ -44,26 +42,23 @@ function TvShow({ match }) {
         <Loading />
       ) : (
         <>
-          <div>
+          <div className="fade__in">
             <TvShowHero tvshow={item} />
           </div>
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-10">
-                <Subtitle text="Series Cast" />
-                <Cast />
-                <Subtitle text="Season Info" />
-                <TvSeasonInfo tvshow={item} />
-                <Subtitle text="Recommended Shows" />
-                <MediaRecs />
+                <Cast source={source} />
+                <TvSeason tvshow={item} />
+                <MediaRecs source={source} />
                 <Subtitle text="Similar Shows" />
                 <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaSimilarUrl(source, match.params.id)}
+                  source={source}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="200px"
                 />
               </div>
-
               <div className="d-none d-md-block col-2 pl-4">
                 <Subtitle text="Facts" />
                 <TvShowFacts tvshow={item} keywords={keywords} />
