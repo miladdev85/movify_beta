@@ -1,13 +1,15 @@
 import React from "react";
-import ParsedLink from "./ParsedLink";
+import { Link } from "react-router-dom";
 
-function MediaListItem({ items, col, imgHeight }) {
+function MediaListItem({ items, col, imgHeight, from }) {
+  const linkType = from === "tv" ? "tv" : "movies";
+
   return (
     <div className="row">
       {items.map(item => {
         return (
           <div key={item.id} className={`${col}`}>
-            <ParsedLink id={item.id} className="text-reset poster__link">
+            <Link to={`${`/${linkType}/details/${item.id}`}`} className="text-reset poster__link">
               <img
                 style={{ height: `${imgHeight}` }}
                 src={
@@ -19,7 +21,7 @@ function MediaListItem({ items, col, imgHeight }) {
                 className="img-fluid rounded fade__in"
               />
               <p className="item__title">{item.name || item.title}</p>
-            </ParsedLink>
+            </Link>
           </div>
         );
       })}
