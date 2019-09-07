@@ -36,7 +36,7 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
               ))}
             </ul>
             <h5 className="font-weight-bold pt-3">Overview</h5>
-            <p>{textFormat(text, "", 1200)}</p>
+            <p>{textFormat(text, 1200)}</p>
             {children}
           </div>
         </div>

@@ -20,13 +20,13 @@ function TvItem({ item }) {
         </Link>
       </div>
       <div className="col mt-2">
-        <div className="d-flex flex-column" style={{ minHeight: "98%" }}>
+        <div className="d-flex flex-column justify-content-between" style={{ minHeight: "98%" }}>
           <Link className="text-decoration-none text-reset" to={`/tv/details/${item.id}`}>
             <h5>{item.name}</h5>
           </Link>
           <p className="text-muted small">First air date: {item.first_air_date}</p>
-          <p className="small">{textFormat(item.overview, item.name, 300)}</p>
-          <div className="mt-auto">
+          <p className="small">{textFormat(item.overview, 100)}</p>
+          <div className="">
             <div className="border-top mb-1"></div>
             <Link to={`/tv/details/${item.id}`} className="text-muted small text-decoration-none">
               More info

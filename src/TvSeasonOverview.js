@@ -14,7 +14,7 @@ function TvSeasonOverview({ season, title }) {
     } else {
       overviewText = season.overview;
     }
-    return textFormat(overviewText, "", 300);
+    return textFormat(overviewText, 300);
   };
 
   return <p>{seasonOverview()}</p>;
