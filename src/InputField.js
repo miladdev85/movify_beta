@@ -18,7 +18,7 @@ function InputField(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (searchText) {
+    if (searchText.length > 2) {
       props.history.push({
         pathname: "/search",
         search: `?query=${searchText}`

@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import InputField from "./InputField";
 import SearchListMenu from "./SearchListMenu";
 import SearchListItem from "./SearchListItem";
+import SadFace from "./SadFace";
 import { searchHelper } from "./Helpers";
 import queryString from "query-string";
 import axios from "axios";
@@ -12,7 +13,8 @@ export class Search extends Component {
     items: [],
     searchText: "",
     isDownloading: false,
-    filterBy: "all"
+    filterBy: "all",
+    error: false
   };
 
   componentDidMount() {
@@ -32,8 +34,12 @@ export class Search extends Component {
   }
 
   getSearch = async query => {
-    const response = await axios.get(searchHelper.searchUrl(query));
-    this.setState({ isDownloading: false, items: response.data.results });
+    try {
+      const response = await axios.get(searchHelper.searchUrl(query));
+      this.setState({ isDownloading: false, items: response.data.results });
+    } catch (error) {
+      this.setState({ isDownloading: false, error: true });
+    }
   };
 
   handleFilter = e => {
@@ -50,19 +56,19 @@ export class Search extends Component {
   };
 
   render() {
-    const { filterBy, isDownloading } = this.state;
+    const { filterBy, isDownloading, error } = this.state;
 
     return (
       <div className="container">
         <div className="col-12 col-lg-6 offset-lg-3">
           <InputField btnName="Go!" placeholder="Search for a movie, tv show, person..." />
         </div>
-        {isDownloading ? (
-          <Loading />
-        ) : (
+        {error && <SadFace />}
+        {isDownloading && <Loading />}
+        {!error && !isDownloading && (
           <>
             <SearchListMenu handleChange={this.handleFilter} filterBy={filterBy} />
-            <div className="row">
+            <div className="row p-3">
               {this.displayResults().map(item => {
                 return <SearchListItem key={item.id + item.media_type} item={item} />;
               })}

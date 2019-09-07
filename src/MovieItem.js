@@ -25,7 +25,7 @@ function MovieItem({ item }) {
             <h5>{item.title}</h5>
           </Link>
           <p className="text-muted small">Release date: {item.release_date}</p>
-          <p className="small">{textFormat(item.overview, item.title)}</p>
+          <p className="small">{textFormat(item.overview, item.title, 300)}</p>
           <div className="mt-auto">
             <div className="border-top mb-1"></div>
             <Link

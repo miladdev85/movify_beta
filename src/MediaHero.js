@@ -1,4 +1,5 @@
 import React from "react";
+import { textFormat } from "./ListItemFns";
 import "./MediaHero.css";
 
 function MediaHero({ backdrop, image, title, year, genres = [], text, children }) {
@@ -35,7 +36,7 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
               ))}
             </ul>
             <h5 className="font-weight-bold pt-3">Overview</h5>
-            <p>{text}</p>
+            <p>{textFormat(text, "", 1200)}</p>
             {children}
           </div>
         </div>

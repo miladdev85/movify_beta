@@ -1,5 +1,5 @@
-export const textFormat = (paragraph, title) => {
-  let maxLength = 300;
+export const textFormat = (paragraph, title = "", length = 300) => {
+  let maxLength = length;
   if (title.length > 25 && paragraph.length > 270) maxLength = 270;
 
   if (paragraph.length > maxLength) {

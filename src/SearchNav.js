@@ -66,7 +66,7 @@ export class SearchNav extends Component {
   handleSubmit = e => {
     const { inputText } = this.state;
     e.preventDefault();
-    if (inputText) {
+    if (inputText.length > 2) {
       this.props.history.push({
         pathname: "/search",
         search: `?query=${inputText}`
