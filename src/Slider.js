@@ -21,14 +21,14 @@ class Slider extends Component {
   // Fetch most popular media and store them. Use their IDs to fetch more details. Store more detailed media object in state.
 
   getMovies = async () => {
-    const { source } = this.props;
-    let discoverUrl = source === "movie" ? mediaHelper.discoverMovieUrl : mediaHelper.discoverTvUrl;
+    const { type } = this.props;
+    let discoverUrl = type === "movie" ? mediaHelper.discoverMovieUrl : mediaHelper.discoverTvUrl;
     let response = await axios.get(discoverUrl);
     response = response.data.results.splice(0, 8);
 
     const media = await Promise.all(
       response.map(async m => {
-        const response = await axios.get(mediaHelper.mediaUrl(source, m.id));
+        const response = await axios.get(mediaHelper.mediaUrl(type, m.id));
         return response.data;
       })
     );

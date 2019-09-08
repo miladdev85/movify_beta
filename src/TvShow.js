@@ -11,7 +11,7 @@ import { tvHelper, mediaHelper } from "./Helpers";
 import axios from "axios";
 import "./TvShow.css";
 
-function TvShow({ match, source }) {
+function TvShow({ match, type }) {
   const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
@@ -48,13 +48,13 @@ function TvShow({ match, source }) {
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-10">
-                <Cast source={source} />
+                <Cast type={type} />
                 <TvSeason tvshow={item} />
-                <MediaRecs source={source} />
+                <MediaRecs type={type} />
                 <Subtitle text="Similar Shows" />
                 <MoreMediaFetcher
-                  fetchUrl={mediaHelper.mediaSimilarUrl(source, match.params.id)}
-                  source={source}
+                  fetchUrl={mediaHelper.mediaSimilarUrl(type, match.params.id)}
+                  type={type}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="200px"
                 />

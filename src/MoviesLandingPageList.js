@@ -6,7 +6,7 @@ import SadFace from "./SadFace";
 import queryString from "query-string";
 import axios from "axios";
 
-const MoviesLandingPageList = ({ location, match, source }) => {
+const MoviesLandingPageList = ({ location, match, type }) => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -97,7 +97,7 @@ const MoviesLandingPageList = ({ location, match, source }) => {
       {items.length > 0 && (
         <MediaListSlider
           col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"
-          source={source}
+          type={type}
           items={items}
           addPage={addPage}
           spreadItems={spreadItems}

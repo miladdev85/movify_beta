@@ -8,7 +8,7 @@ import Genres from "./Genres";
 const MoviesLandingPage = () => {
   return (
     <div className="fade__in">
-      <Slider source="movie" />
+      <Slider type="movie" />
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-3 py-md-2">
@@ -21,7 +21,7 @@ const MoviesLandingPage = () => {
           </div>
           <div className="col-md-9">
             <Genres />
-            <MoviesLandingPageList source="movie" />
+            <MoviesLandingPageList type="movie" />
           </div>
         </div>
       </div>

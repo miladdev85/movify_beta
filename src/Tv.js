@@ -7,8 +7,8 @@ function Tv() {
   return (
     <div>
       <Route exact path="/tv" render={() => <Redirect to="/tv/popular" />} />
-      <Route exact path="/tv/:section" render={props => <TvMain source="tv" {...props} />} />
-      <Route path="/tv/details/:id" render={props => <TvShow source="tv" {...props} />} />
+      <Route exact path="/tv/:section" render={props => <TvMain type="tv" {...props} />} />
+      <Route path="/tv/details/:id" render={props => <TvShow type="tv" {...props} />} />
     </div>
   );
 }
