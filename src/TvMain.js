@@ -7,7 +7,7 @@ import { mediaHelper } from "./Helpers";
 const TvMain = ({ match, source }) => {
   return (
     <div className="fade__in">
-      <Slider type="tv" />
+      <Slider source="tv" />
       <TvNav />
       <div className="container mt-4">
         <MoreMediaFetcher

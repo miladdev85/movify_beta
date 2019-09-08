@@ -8,7 +8,7 @@ import Genres from "./Genres";
 const MoviesLandingPage = () => {
   return (
     <div className="fade__in">
-      <Slider type="movie" />
+      <Slider source="movie" />
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-3 py-md-2">

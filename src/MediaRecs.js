@@ -56,6 +56,7 @@ class MediaRecs extends Component {
         {!isDownloading && !error && items.length > 0 && (
           <MediaListSlider
             col="col-6 col-md-3 col-lg-3"
+            source={source}
             items={items}
             fromRecs={true}
             addPage={this.addPage}

@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import ParsedLink from "./ParsedLink";
 
-function Slideshow({ items, showIndex, direction, handleSelect }) {
+function Slideshow({ items, showIndex, direction, handleSelect, source }) {
   const slideShow = items.map(item => {
     return (
       <Carousel.Item key={item.id} className="slider__container">
@@ -12,7 +12,7 @@ function Slideshow({ items, showIndex, direction, handleSelect }) {
           alt="First slide"
         />
         <Carousel.Caption>
-          <ParsedLink id={item.id} className="text-reset text-decoration-none">
+          <ParsedLink id={item.id} source={source} className="text-reset text-decoration-none">
             <h3 className="m-0 hvr-wobble-horizontal d-inline-block">{item.title || item.name}</h3>
           </ParsedLink>
           <div>
