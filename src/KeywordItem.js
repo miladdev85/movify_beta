@@ -24,9 +24,7 @@ function KeywordItem({ items, type }) {
               </div>
               <div className="col-8 col-md-9 col-lg-10 d-flex flex-column justify-content-around">
                 <h6 className="font-weight-bold">{item.name || item.title}</h6>
-                <p className="text-secondary">
-                  {textFormat(item.overview, item.name || item.title)}
-                </p>
+                <p className="text-secondary">{textFormat(item.overview, 300)}</p>
               </div>
             </div>
           </Link>
