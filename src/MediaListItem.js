@@ -1,7 +1,9 @@
 import React from "react";
+import Image from "./Image";
 import ParsedLink from "./ParsedLink";
 
 function MediaListItem({ items, col, imgHeight, source, type }) {
+  const imgStyle = { height: `${imgHeight}` };
   return (
     <div className="row">
       {items.map(item => {
@@ -13,15 +15,12 @@ function MediaListItem({ items, col, imgHeight, source, type }) {
               source={source}
               className="text-reset text-decoration-none brightness"
             >
-              <img
-                style={{ height: `${imgHeight}` }}
-                src={
-                  item.poster_path
-                    ? `https://image.tmdb.org/t/p/original${item.poster_path}`
-                    : "https://static-assets.noovie.com/images/no-poster.png"
-                }
+              <Image
+                style={imgStyle}
+                source={item.poster_path}
+                type="poster"
                 alt={item.name}
-                className="img-fluid rounded fade__in"
+                className="rounded fade__in"
               />
               <p className="item__title">{item.name || item.title}</p>
             </ParsedLink>

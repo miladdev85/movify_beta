@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "./Image";
 import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 import "./MovieDetail.css";
@@ -8,15 +9,7 @@ function MovieDetail({ item, location }) {
   return (
     <div className="row detail__container mt-4">
       <div className="col-lg-7 mb-3">
-        <img
-          src={
-            item.backdrop_path
-              ? `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
-              : "https://imgcld.yatra.com/ytimages/image/upload/t_mobiledetailsimg/v1/default.jpg"
-          }
-          className="img-fluid rounded"
-          alt={`${item.title}`}
-        />
+        <Image source={item.backdrop_path} type="backdrop" alt={item.title} className="rounded" />
       </div>
       <div className="col d-flex flex-column text-muted">
         <h4>

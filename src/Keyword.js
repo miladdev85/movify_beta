@@ -15,13 +15,13 @@ function Keyword({ match, location }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const getTvShows = async () => {
+    const getItems = async () => {
       setIsLoading(true);
       const response = await axios.get(mediaHelper.withKeyword(parsedQuery.type, match.params.id));
       setItems(response.data.results);
       setIsLoading(false);
     };
-    getTvShows();
+    getItems();
   }, [parsedQuery.type, match.params.id]);
 
   if (!items.length === 0 && isLoading === false) return null;

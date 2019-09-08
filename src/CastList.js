@@ -1,8 +1,9 @@
 import React from "react";
 import ParsedLink from "./ParsedLink";
+import Image from "./Image";
 import "./List.css";
 
-const CastList = React.memo(({ casts, type }) => {
+const CastList = React.memo(({ casts, source }) => {
   return (
     <div>
       <div className="row pt-2">
@@ -11,18 +12,15 @@ const CastList = React.memo(({ casts, type }) => {
             <div key={cast.credit_id} className="text-center col-4 col-md-3 col-lg-2 mb-sm-1">
               <ParsedLink
                 type="cast"
-                source={type}
+                source={source}
                 id={cast.id}
                 className="text-decoration-none brightness"
               >
-                <img
-                  src={
-                    cast.profile_path
-                      ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
-                      : "https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
-                  }
-                  alt={`${cast.name} poster`}
-                  className="img-fluid rounded-circle cast__image"
+                <Image
+                  source={cast.profile_path}
+                  type="cast"
+                  alt={cast.name}
+                  className="rounded-circle cast__image"
                 />
                 <p className="item__title">{cast.name}</p>
                 <p className="item__subtitle">{cast.character}</p>

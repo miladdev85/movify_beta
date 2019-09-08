@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "./Image";
 import { textFormat } from "./ListItemFns";
 import "./MediaHero.css";
 
@@ -14,15 +15,7 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
       <div className="container">
         <div className="row py-3">
           <div className="col-12 col-md-4 m-0 p-0">
-            <img
-              src={
-                image
-                  ? `https://image.tmdb.org/t/p/original${image}`
-                  : "https://static-assets.noovie.com/images/no-poster.png"
-              }
-              alt={`${title} poster`}
-              className="img-fluid p-2 rounded"
-            />
+            <Image source={image} type="poster" alt={title} className="p-2 rounded" />
           </div>
           <div className="col d-flex flex-column text-white justify-content-center pt-2 pt-lg-0">
             <h2 className="font-weight-bold">

@@ -1,4 +1,5 @@
 import React from "react";
+import { BASE_IMAGE_URL, NO_POSTER_IMG } from "./CONSTANTS";
 import { Link } from "react-router-dom";
 import { textFormat } from "./ListItemFns";
 
@@ -10,11 +11,7 @@ function MovieItem({ item }) {
           <img
             style={{ minHeight: "298px" }}
             className="img-fluid brightness"
-            src={
-              item.poster_path
-                ? `https://image.tmdb.org/t/p/original${item.poster_path}`
-                : "https://static-assets.noovie.com/images/no-poster.png"
-            }
+            src={item.poster_path ? BASE_IMAGE_URL + item.poster_path : NO_POSTER_IMG}
             alt={item.title}
           />
         </Link>

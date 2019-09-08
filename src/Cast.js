@@ -41,7 +41,7 @@ class Cast extends Component {
         {!isDownloading && casts.length > 0 && (
           <div>
             <Subtitle text={`${type === "movie" ? "Top" : "Series"} Cast`} />
-            <CastList casts={casts} type={type} />
+            <CastList casts={casts} source={type} />
           </div>
         )}
       </>
