@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import MoviesLandingPage from "./MoviesLandingPage";
 import Movie from "./Movie";
 
-function Tv() {
+function Movies() {
   return (
     <div>
       <Route exact path="/movies" render={() => <Redirect to="/movies/popular" />} />
@@ -17,4 +17,4 @@ function Tv() {
   );
 }
 
-export default Tv;
+export default Movies;

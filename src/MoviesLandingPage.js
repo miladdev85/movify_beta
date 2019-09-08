@@ -21,7 +21,7 @@ const MoviesLandingPage = () => {
           </div>
           <div className="col-md-9">
             <Genres />
-            <MoviesLandingPageList />
+            <MoviesLandingPageList source="movie" />
           </div>
         </div>
       </div>

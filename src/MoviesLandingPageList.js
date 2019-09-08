@@ -6,18 +6,18 @@ import SadFace from "./SadFace";
 import queryString from "query-string";
 import axios from "axios";
 
-const MoviesLandingPageList = props => {
+const MoviesLandingPageList = ({ location, match, source }) => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
   const [spreadItems, setSpreadItems] = useState(false);
-  const parsedQuery = queryString.parse(props.location.search);
+  const parsedQuery = queryString.parse(location.search);
   const prevGenreRef = useRef();
   const prevSectionRef = useRef();
 
   useEffect(() => {
     prevGenreRef.current = parsedQuery.genre;
-    prevSectionRef.current = props.match.params.section;
+    prevSectionRef.current = match.params.section;
   });
 
   const prevGenre = prevGenreRef.current;
@@ -30,7 +30,7 @@ const MoviesLandingPageList = props => {
   const getMovies = async () => {
     setIsDownloading(true);
     let url;
-    switch (props.match.params.section) {
+    switch (match.params.section) {
       case "new-releases":
         url = genreHelper.newReleasesUrl(page, parsedQuery.genre);
         break;
@@ -81,7 +81,7 @@ const MoviesLandingPageList = props => {
   useEffect(() => {
     if (
       prevGenre !== parsedQuery.genre ||
-      (prevSection !== undefined && prevSection !== props.match.params.section)
+      (prevSection !== undefined && prevSection !== match.params.section)
     ) {
       if (page === 0) {
         return;
@@ -89,7 +89,7 @@ const MoviesLandingPageList = props => {
         setPage(0);
       }
     }
-  }, [props.match.params.section, parsedQuery.genre, prevGenre, prevSection, page]);
+  }, [match.params.section, parsedQuery.genre, prevGenre, prevSection, page]);
 
   return (
     <>
@@ -97,6 +97,7 @@ const MoviesLandingPageList = props => {
       {items.length > 0 && (
         <MediaListSlider
           col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"
+          source={source}
           items={items}
           addPage={addPage}
           spreadItems={spreadItems}
