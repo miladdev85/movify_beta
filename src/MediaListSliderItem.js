@@ -2,7 +2,7 @@ import React from "react";
 import ParsedLink from "./ParsedLink";
 import ReleaseDate from "./ReleaseDate";
 
-function MediaListSliderItem({ fromRecs, col, mediaArr, startPosition, endPosition, source }) {
+function MediaListSliderItem({ fromRecs, col, mediaArr, startPosition, endPosition, type }) {
   return mediaArr
     .filter((item, index) => index >= startPosition && index <= endPosition)
     .map(item => {
@@ -11,7 +11,7 @@ function MediaListSliderItem({ fromRecs, col, mediaArr, startPosition, endPositi
           key={item.id}
           className={`${col} ${fromRecs ? "container__recs" : "container__slider"}`}
         >
-          <ParsedLink className="text-decoration-none brightness" id={item.id} source={source}>
+          <ParsedLink className="text-decoration-none brightness" id={item.id} type={type}>
             <img
               src={
                 item.poster_path

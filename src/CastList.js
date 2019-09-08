@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ParsedLink from "./ParsedLink";
 import "./List.css";
 
-const CastList = React.memo(({ casts, from }) => {
+const CastList = React.memo(({ casts, type }) => {
   return (
     <div>
       <div className="row pt-2">
         {casts.map(cast => {
           return (
             <div key={cast.credit_id} className="text-center col-4 col-md-3 col-lg-2 mb-sm-1">
-              <Link
-                to={{ pathname: `/people/${cast.id}`, search: `?from=${from}` }}
+              <ParsedLink
+                type="cast"
+                source={type}
+                id={cast.id}
                 className="text-decoration-none brightness"
               >
                 <img
@@ -24,7 +26,7 @@ const CastList = React.memo(({ casts, from }) => {
                 />
                 <p className="item__title">{cast.name}</p>
                 <p className="item__subtitle">{cast.character}</p>
-              </Link>
+              </ParsedLink>
             </div>
           );
         })}

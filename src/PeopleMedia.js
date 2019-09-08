@@ -26,7 +26,8 @@ function PeopleMedia({ showMovies, displayItems, person, toggle }) {
       </div>
       {person.id && (
         <MediaListItem
-          source={showMovies ? "movie" : "tv"}
+          type="people"
+          source={showMovies ? "movies" : "tv"}
           items={displayItems}
           col="col-6 col-lg-4 col-xl-3 pb-2"
           imgHeight="258px"

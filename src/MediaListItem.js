@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ParsedLink from "./ParsedLink";
 
-function MediaListItem({ items, col, imgHeight, source }) {
-  const linkType = source === "tv" ? "tv" : "movies";
-
+function MediaListItem({ items, col, imgHeight, source, type }) {
   return (
     <div className="row">
       {items.map(item => {
         return (
           <div key={item.id} className={`${col}`}>
-            <Link
-              to={`${`/${linkType}/details/${item.id}`}`}
+            <ParsedLink
+              id={item.id}
+              type={type}
+              source={source}
               className="text-reset text-decoration-none brightness"
             >
               <img
@@ -24,7 +24,7 @@ function MediaListItem({ items, col, imgHeight, source }) {
                 className="img-fluid rounded fade__in"
               />
               <p className="item__title">{item.name || item.title}</p>
-            </Link>
+            </ParsedLink>
           </div>
         );
       })}

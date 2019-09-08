@@ -11,7 +11,7 @@ import { mediaHelper } from "./Helpers";
 import SadFace from "./SadFace";
 import { getItem } from "./Prova";
 
-const Movie = ({ match, source }) => {
+const Movie = ({ match, type }) => {
   const [item, setItem] = useState({});
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(false);
@@ -19,10 +19,10 @@ const Movie = ({ match, source }) => {
     let didCancel = false;
     window.scrollTo(0, 0);
     if (didCancel === false) {
-      getItem(source, match.params.id, setItem, setIsDownloading, setError);
+      getItem(type, match.params.id, setItem, setIsDownloading, setError);
     }
     return () => (didCancel = true);
-  }, [match.params.id, source]);
+  }, [match.params.id, type]);
 
   return (
     <div>
@@ -39,12 +39,12 @@ const Movie = ({ match, source }) => {
             text={item.overview}
           />
           <div className="container">
-            <Cast source="movie" />
+            <Cast type="movie" />
             <Subtitle text="Details" />
             <MovieDetail item={item} />
             <div className="row">
               <div className="col-12 col-xl-7">
-                <MediaRecs source="movie" />
+                <MediaRecs type="movie" />
               </div>
               <div className="col">
                 <Trailer />
@@ -54,8 +54,8 @@ const Movie = ({ match, source }) => {
               <div className="col">
                 <Subtitle text="Similar Movies" />
                 <MoreMediaFetcher
-                  fetchUrl={mediaHelper.mediaSimilarUrl(source, match.params.id)}
-                  source={source}
+                  fetchUrl={mediaHelper.mediaSimilarUrl(type, match.params.id)}
+                  type={type}
                   col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
                   imgHeight="235px"
                 />

@@ -19,9 +19,9 @@ class Cast extends Component {
   }
 
   getCasts = async () => {
-    const { match, source } = this.props;
+    const { match, type } = this.props;
     try {
-      let response = await axios.get(mediaHelper.mediaCastsUrl(source, match.params.id));
+      let response = await axios.get(mediaHelper.mediaCastsUrl(type, match.params.id));
       response.data.cast.sort((a, b) => a.order - b.order);
       response = response.data.cast.splice(0, 6);
       this.setState({ casts: response, isDownloading: false });
@@ -32,7 +32,7 @@ class Cast extends Component {
 
   render() {
     const { isDownloading, error, casts } = this.state;
-    const { source } = this.props;
+    const { type } = this.props;
 
     return (
       <>
@@ -40,8 +40,8 @@ class Cast extends Component {
         {!isDownloading && error && <SadFace />}
         {!isDownloading && casts.length > 0 && (
           <div>
-            <Subtitle text={`${source === "movie" ? "Top" : "Series"} Cast`} />
-            <CastList casts={casts} from={source} />
+            <Subtitle text={`${type === "movie" ? "Top" : "Series"} Cast`} />
+            <CastList casts={casts} type={type} />
           </div>
         )}
       </>

@@ -26,10 +26,10 @@ class MediaRecs extends Component {
 
   getRecommendedItems = async () => {
     const { page } = this.state;
-    const { match, source } = this.props;
+    const { match, type } = this.props;
     try {
       const response = await axios.get(
-        mediaHelper.mediaRecommendationsUrl(source, match.params.id, page)
+        mediaHelper.mediaRecommendationsUrl(type, match.params.id, page)
       );
 
       const shouldSpread = page < response.data.total_pages ? true : false;
@@ -46,17 +46,17 @@ class MediaRecs extends Component {
 
   render() {
     const { isDownloading, error, items, spreadItems } = this.state;
-    const { source } = this.props;
+    const { type } = this.props;
     return (
       <>
-        <Subtitle text={`Recommended ${source === "movie" ? "Movies" : "Shows"}`} />
+        <Subtitle text={`Recommended ${type === "movie" ? "Movies" : "Shows"}`} />
         {!isDownloading && error && <SadFace />}
         {!isDownloading && items.length === 0 && <SadFace />}
         {isDownloading && <Loading />}
         {!isDownloading && !error && items.length > 0 && (
           <MediaListSlider
             col="col-6 col-md-3 col-lg-3"
-            source={source}
+            type={type}
             items={items}
             fromRecs={true}
             addPage={this.addPage}

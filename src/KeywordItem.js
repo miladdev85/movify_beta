@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ParsedLink from "./ParsedLink";
 import { textFormat } from "./ListItemFns";
 import "./KeywordItem.css";
 
 function KeywordItem({ items, type }) {
-  const displayItems = type => {
-    let linkType = type === "movie" ? "/movies/details/" : "/tv/details/";
+  const displayItems = source => {
     return items.map(item => (
       <div key={item.id} className="row mb-4 fade__in">
         <div className="col-10 offset-1 bg-light keyword__link">
-          <Link to={`${linkType}${item.id}`} className="text-decoration-none text-reset ">
+          <ParsedLink id={item.id} source={source} className="text-decoration-none text-reset ">
             <div className="row shadow-sm">
               <div className="col-4 col-md-3 col-lg-2 p-0">
                 <img
@@ -27,7 +26,7 @@ function KeywordItem({ items, type }) {
                 <p className="text-secondary">{textFormat(item.overview, 300)}</p>
               </div>
             </div>
-          </Link>
+          </ParsedLink>
         </div>
       </div>
     ));
