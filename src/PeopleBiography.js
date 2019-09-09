@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GenericModal from "./GenericModal";
+import Image from "./Image";
 
 const PeopleBiography = React.memo(({ person }) => {
   const [showButton, setShowButton] = useState(false);
@@ -35,14 +36,11 @@ const PeopleBiography = React.memo(({ person }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
-                src={
-                  person.profile_path
-                    ? `https://image.tmdb.org/t/p/original${person.profile_path}`
-                    : "https://blog.ramboll.com/fehmarnbelt/wp-content/themes/ramboll2/images/profile-img.jpg"
-                }
-                className="img-fluid imdb__image rounded"
+              <Image
+                source={person.profile_path}
+                type="person"
                 alt={person.name}
+                className="imdb__image rounded"
               />
               <div className="imdb__back">
                 <i className="fas fa-external-link-alt fa-2x text-white pb-1" />

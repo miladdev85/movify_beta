@@ -1,15 +1,17 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import Image from "./Image";
 import ParsedLink from "./ParsedLink";
 
 function Slideshow({ items, showIndex, direction, handleSelect, type }) {
   const slideShow = items.map(item => {
     return (
       <Carousel.Item key={item.id} className="slider__container">
-        <img
+        <Image
+          source={item.backdrop_path}
+          type="backdrop"
+          alt={item.name || item.title}
           className="slider__image"
-          src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-          alt="First slide"
         />
         <Carousel.Caption>
           <ParsedLink id={item.id} type={type} className="text-reset text-decoration-none">

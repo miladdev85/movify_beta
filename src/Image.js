@@ -6,6 +6,7 @@ import {
   NO_CAST_IMG,
   NO_PEOPLE_IMG
 } from "./CONSTANTS";
+import NO_POP_IMG from "./pop_img_no.png";
 
 function Image({ source, alt, className, type, style }) {
   let noImage;
@@ -22,6 +23,9 @@ function Image({ source, alt, className, type, style }) {
       break;
     case "person":
       noImage = NO_PEOPLE_IMG;
+      break;
+    case "popular":
+      noImage = NO_POP_IMG;
       break;
     default:
       noImage = "";

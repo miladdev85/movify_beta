@@ -4,20 +4,17 @@ import MovieItem from "./MovieItem";
 import PersonItem from "./PersonItem";
 
 function SearchListItem({ item }) {
-  const mediaType = object => {
-    if (object.media_type === "person") {
-      return <PersonItem item={object} />;
-    } else if (object.media_type === "movie") {
-      return <MovieItem item={object} />;
-    } else {
-      return <TvItem item={object} />;
-    }
-  };
+  console.log("rendered");
+  const imgStyle = { minHeight: "298px" };
 
   if (!item.id) return null;
   return (
     <div className="col-12 offset-lg-1 col-lg-5 shadow-sm my-3">
-      <div className="row">{mediaType(item)}</div>
+      <div className="row">
+        {item.media_type === "person" && <PersonItem item={item} style={imgStyle} />}
+        {item.media_type === "movie" && <MovieItem item={item} style={imgStyle} />}
+        {item.media_type === "tv" && <TvItem item={item} style={imgStyle} />}
+      </div>
     </div>
   );
 }

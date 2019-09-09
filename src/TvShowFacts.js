@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function TvShowFacts({ tvshow, keywords }) {
+  console.log(tvshow.networks);
   return (
     <div>
       <h6>Status</h6>

@@ -1,20 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Image from "./Image";
 
-function PersonItem({ item }) {
+function PersonItem({ item, style }) {
   return (
     <>
       <div className="col-5 p-0">
         <Link to={`/people/${item.id}`}>
-          <img
-            style={{ minHeight: "298px" }}
-            className="img-fluid brightness"
-            src={
-              item.profile_path
-                ? `https://image.tmdb.org/t/p/original${item.profile_path}`
-                : "https://sprucegrovelandscaping.com/wp-content/uploads/2016/04/Photo-Not-Available.jpg"
-            }
+          <Image
+            style={style}
+            source={item.profile_path}
+            type="person"
             alt={item.name}
+            className="brightness"
           />
         </Link>
       </div>

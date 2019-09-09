@@ -1,18 +1,19 @@
 import React from "react";
-import { BASE_IMAGE_URL, NO_POSTER_IMG } from "./CONSTANTS";
+import Image from "./Image";
 import { Link } from "react-router-dom";
 import { textFormat } from "./ListItemFns";
 
-function MovieItem({ item }) {
+function MovieItem({ item, style }) {
   return (
     <>
       <div className="col-5 p-0">
         <Link to={`/movies/details/${item.id}`}>
-          <img
-            style={{ minHeight: "298px" }}
-            className="img-fluid brightness"
-            src={item.poster_path ? BASE_IMAGE_URL + item.poster_path : NO_POSTER_IMG}
+          <Image
+            style={style}
+            source={item.poster_path}
+            type="poster"
             alt={item.title}
+            className="brightness"
           />
         </Link>
       </div>

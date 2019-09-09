@@ -3,8 +3,8 @@ import { peopleHelper } from "./Helpers";
 import Loading from "./Loading";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Image from "./Image";
 import "./People.css";
-import pop_img from "./pop_img_no.png";
 
 class PopularPeople extends Component {
   state = {
@@ -50,14 +50,11 @@ class PopularPeople extends Component {
                   >
                     <div className="">
                       <Link className="people__link text-reset" to={`/people/${person.id}`}>
-                        <img
-                          src={
-                            person.profile_path
-                              ? `https://image.tmdb.org/t/p/original${person.profile_path}`
-                              : pop_img
-                          }
-                          className="img-fluid popular_people_img rounded"
+                        <Image
+                          source={person.profile_path}
+                          type="popular"
                           alt={person.name}
+                          className="popular_people_img rounded"
                         />
                         <div>
                           <span className="m-0">{person.name}</span>
