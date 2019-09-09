@@ -4,8 +4,7 @@ import MovieItem from "./MovieItem";
 import PersonItem from "./PersonItem";
 
 function SearchListItem({ item }) {
-  console.log("rendered");
-  const imgStyle = { minHeight: "298px" };
+  const imgStyle = { minHeight: 298 };
 
   if (!item.id) return null;
   return (

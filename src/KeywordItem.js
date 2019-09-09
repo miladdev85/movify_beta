@@ -8,11 +8,11 @@ function KeywordItem({ items, type }) {
   return (
     <div className="container">
       {items.map(item => (
-        <div key={item.id} className="row mb-4 fade__in">
+        <div key={item.id} className="row mb-4">
           <div className="col-10 offset-1 bg-light keyword__link">
             <Link
               to={`${type === "tv" ? `/tv/details/${item.id}` : `/movies/details/${item.id}`}`}
-              className="text-decoration-none text-reset "
+              className="text-decoration-none text-reset"
             >
               <div className="row shadow-sm">
                 <div className="col-4 col-md-3 col-lg-2 p-0">

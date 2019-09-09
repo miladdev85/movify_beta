@@ -49,16 +49,18 @@ class PopularPeople extends Component {
                     className="col-6 col-md-4 col-lg-3 col-xl-2 pb-3 people__list"
                   >
                     <div className="">
-                      <Link className="people__link text-reset" to={`/people/${person.id}`}>
+                      <Link
+                        className="people__link text-reset brightness"
+                        to={`/people/${person.id}`}
+                      >
                         <Image
                           source={person.profile_path}
                           type="popular"
                           alt={person.name}
-                          className="popular_people_img rounded"
-                        />
-                        <div>
+                          className="rounded"
+                        >
                           <span className="m-0">{person.name}</span>
-                        </div>
+                        </Image>
                       </Link>
                     </div>
                   </div>

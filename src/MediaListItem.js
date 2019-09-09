@@ -20,9 +20,10 @@ function MediaListItem({ items, col, imgHeight, source, type }) {
                 source={item.poster_path}
                 type="poster"
                 alt={item.name}
-                className="rounded fade__in"
-              />
-              <p className="item__title">{item.name || item.title}</p>
+                className="rounded"
+              >
+                <p className="item__title">{item.name || item.title}</p>
+              </Image>
             </ParsedLink>
           </div>
         );

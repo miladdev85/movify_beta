@@ -22,7 +22,7 @@ class PeopleDetail extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    const showMovies = this.searchQuery.from === "movie" ? true : false;
+    const showMovies = this.searchQuery.from === "tv" ? false : true;
     this.setState({ isLoading: true, showMovies }, () => this.getPerson());
   }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BASE_IMAGE_URL,
   NO_POSTER_IMG,
@@ -7,8 +7,10 @@ import {
   NO_PEOPLE_IMG
 } from "./CONSTANTS";
 import NO_POP_IMG from "./pop_img_no.png";
+import "./Link.css";
 
-function Image({ source, alt, className, type, style }) {
+function Image({ source, alt, className, type, style, children }) {
+  const [animate, setAnimate] = useState(false);
   let noImage;
 
   switch (type) {
@@ -32,12 +34,16 @@ function Image({ source, alt, className, type, style }) {
   }
 
   return (
-    <img
-      src={source ? BASE_IMAGE_URL + source : noImage}
-      className={`img-fluid ${className}`}
-      alt={alt}
-      style={{ ...style }}
-    />
+    <div className={`${animate ? "fade__in" : "invisible"}`}>
+      <img
+        src={source ? BASE_IMAGE_URL + source : noImage}
+        className={`img-fluid ${className}`}
+        alt={alt}
+        style={{ ...style }}
+        onLoad={() => setAnimate(true)}
+      />
+      {children}
+    </div>
   );
 }
 

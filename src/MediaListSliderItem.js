@@ -18,9 +18,10 @@ function MediaListSliderItem({ fromRecs, col, mediaArr, startPosition, endPositi
               type="poster"
               alt={item.title}
               className={`${fromRecs ? "recs_poster__img" : "poster__img"} rounded`}
-            />
-            <p className="item__title">{item.title || item.name}</p>
-            <ReleaseDate item={item} />
+            >
+              <p className="item__title">{item.title || item.name}</p>
+              <ReleaseDate item={item} />
+            </Image>
           </ParsedLink>
         </div>
       );

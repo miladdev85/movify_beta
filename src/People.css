@@ -1,5 +1,4 @@
 .people__list {
-  animation: fadeIn ease 1.3s;
 }
 
 pre {
@@ -16,10 +15,6 @@ pre {
 .arrow__down:hover {
   cursor: pointer;
   color: #535353;
-}
-
-.people__detail__container {
-  animation: fadeIn ease 1.5s;
 }
 
 .people__link:hover {
@@ -41,17 +36,4 @@ pre {
   font-size: 0.8em;
   margin: 0 0 2px 3px;
   color: rgb(153, 153, 153);
-}
-
-.popular_people_img:hover {
-  filter: brightness(130%);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

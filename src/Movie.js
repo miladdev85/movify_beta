@@ -29,7 +29,7 @@ const Movie = ({ match, type }) => {
       {isDownloading && <Loading />}
       {!isDownloading && error && <SadFace />}
       {!isDownloading && item.id && (
-        <div className="fade__in">
+        <div className="">
           <MediaHero
             backdrop={item.backdrop_path}
             image={item.poster_path}

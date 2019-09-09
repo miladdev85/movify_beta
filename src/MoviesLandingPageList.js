@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { genreHelper } from "./Helpers";
 import MediaListSlider from "./MediaListSlider";
 import SadFace from "./SadFace";
+import Loading from "./Loading";
 import queryString from "query-string";
 import axios from "axios";
 
@@ -93,7 +94,8 @@ const MoviesLandingPageList = ({ location, match, type }) => {
 
   return (
     <>
-      {isDownloading === false && items.length === 0 && <SadFace />}
+      {isDownloading && <Loading />}
+      {!isDownloading && items.length === 0 && <SadFace />}
       {items.length > 0 && (
         <MediaListSlider
           col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"

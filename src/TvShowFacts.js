@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function TvShowFacts({ tvshow, keywords }) {
-  console.log(tvshow.networks);
   return (
     <div>
       <h6>Status</h6>
@@ -51,7 +50,7 @@ function TvShowFacts({ tvshow, keywords }) {
           <img
             src={`https://image.tmdb.org/t/p/h60${tvshow.networks[0].logo_path}`}
             alt={tvshow.networks[0].name}
-            width={60}
+            width={50}
           />
         </div>
       )}

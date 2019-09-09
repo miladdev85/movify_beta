@@ -21,9 +21,10 @@ const CastList = React.memo(({ casts, source }) => {
                   type="cast"
                   alt={cast.name}
                   className="rounded-circle cast__image"
-                />
-                <p className="item__title">{cast.name}</p>
-                <p className="item__subtitle">{cast.character}</p>
+                >
+                  <p className="item__title">{cast.name}</p>
+                  <p className="item__subtitle">{cast.character}</p>
+                </Image>
               </ParsedLink>
             </div>
           );

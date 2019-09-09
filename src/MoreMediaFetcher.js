@@ -74,7 +74,6 @@ class MoreMediaFetcher extends Component {
   render() {
     const { items, isDownloading, error } = this.state;
     const { col, imgHeight, type } = this.props;
-
     return (
       <>
         {!isDownloading && error && <SadFace />}
