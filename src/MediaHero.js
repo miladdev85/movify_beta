@@ -29,7 +29,11 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
               ))}
             </ul>
             <h5 className="font-weight-bold pt-3">Overview</h5>
-            <p>{textFormat(text, 1200)}</p>
+            {text ? (
+              <p>{textFormat(text, 1200)}</p>
+            ) : (
+              <p>No description available for this title</p>
+            )}
             {children}
           </div>
         </div>

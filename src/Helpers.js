@@ -49,11 +49,8 @@ export const mediaHelper = {
   mediaCastsUrl: function(type, id) {
     return `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${API}`;
   },
-  sectionTvUrl: function(urlParam, page) {
-    const section = urlParam.replace(/-/g, "_");
-    return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&language=en-US&page=${page}`;
-  },
-  sectionTvUrlTest: function(urlParam) {
+  // WARNING: Change the below replace function ASAP. You will have bugs in the future!!!
+  sectionTvUrl: function(urlParam) {
     const section = urlParam.replace(/-/g, "_");
     return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&language=en-US`;
   },
