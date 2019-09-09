@@ -10,7 +10,7 @@ const MoviesLandingPage = () => {
     <div className="fade__in">
       <Slider type="movie" />
       <div className="container">
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col-md-3 py-md-2">
             <div className="col">
               <Subtitle text="Discover" />

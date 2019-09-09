@@ -1,4 +1,10 @@
-export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
+export const BASE_POSTER_URL = "https://image.tmdb.org/t/p/w500";
+
+export const BASE_CAST_URL = "https://image.tmdb.org/t/p/w185";
+
+export const BASE_PERSON_URL = "https://image.tmdb.org/t/p/w500";
+
+export const BASE_BACKDROP_URL = "https://image.tmdb.org/t/p/original";
 
 export const NO_CAST_IMG =
   "https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg";

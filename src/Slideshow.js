@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { BASE_IMAGE_URL, NO_BACKDROP_IMG } from "./CONSTANTS";
+import { BASE_BACKDROP_URL, NO_BACKDROP_IMG } from "./CONSTANTS";
 import ParsedLink from "./ParsedLink";
 
 function Slideshow({ items, showIndex, direction, handleSelect, type }) {
@@ -9,7 +9,7 @@ function Slideshow({ items, showIndex, direction, handleSelect, type }) {
       <Carousel.Item key={item.id} className="slider__container">
         <img
           className="slider__image"
-          src={item.backdrop_path ? BASE_IMAGE_URL + item.backdrop_path : NO_BACKDROP_IMG}
+          src={item.backdrop_path ? BASE_BACKDROP_URL + item.backdrop_path : NO_BACKDROP_IMG}
           alt={item.name || item.title}
         />
         <Carousel.Caption>
