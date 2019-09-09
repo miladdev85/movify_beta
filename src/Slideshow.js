@@ -1,17 +1,16 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import Image from "./Image";
+import { BASE_IMAGE_URL, NO_BACKDROP_IMG } from "./CONSTANTS";
 import ParsedLink from "./ParsedLink";
 
 function Slideshow({ items, showIndex, direction, handleSelect, type }) {
   const slideShow = items.map(item => {
     return (
       <Carousel.Item key={item.id} className="slider__container">
-        <Image
-          source={item.backdrop_path}
-          type="backdrop"
-          alt={item.name || item.title}
+        <img
           className="slider__image"
+          src={item.backdrop_path ? BASE_IMAGE_URL + item.backdrop_path : NO_BACKDROP_IMG}
+          alt={item.name || item.title}
         />
         <Carousel.Caption>
           <ParsedLink id={item.id} type={type} className="text-reset text-decoration-none">
