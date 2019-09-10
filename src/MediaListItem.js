@@ -22,7 +22,7 @@ function MediaListItem({ items, col, imgHeight, source, type }) {
                 alt={item.name}
                 className="rounded"
               >
-                <p className="item__title">{item.name || item.title}</p>
+                <p className="item__title  text-center">{item.name || item.title}</p>
               </Image>
             </ParsedLink>
           </div>

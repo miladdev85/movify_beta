@@ -26,7 +26,7 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
 
   return (
     <>
-      <div className="row">
+      <div className="row text-center">
         <MediaListSliderItem
           mediaArr={items}
           type={type}
