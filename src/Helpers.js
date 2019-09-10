@@ -54,10 +54,10 @@ export const mediaHelper = {
     const section = urlParam.replace(/-/g, "_");
     return `https://api.themoviedb.org/3/tv/${section}?api_key=${API}&language=en-US`;
   },
-  addPagination: function(url, page) {
-    return `${url}&page=${page}`;
+  keywordsUrl: function(type, id) {
+    return `https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${API}&language=en-US`;
   },
-  withKeyword: function(type, keyword) {
+  mediaWithKeyword: function(type, keyword) {
     return `https://api.themoviedb.org/3/discover/${type}?api_key=${API}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_keywords=${keyword}`;
   },
   trailerUrl: function(id) {
@@ -69,10 +69,7 @@ export const tvHelper = {
   tvShowUrl: function(id) {
     return `https://api.themoviedb.org/3/tv/${id}?api_key=${API}&language=en-US`;
   },
-  tvShowCast: function(id) {
-    return `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API}&language=en-US`;
-  },
-  getTvKeywords: function(id) {
+  tvKeywordsUrl: function(id) {
     return `https://api.themoviedb.org/3/tv/${id}/keywords?api_key=${API}&language=en-US`;
   },
   getTvRecommendations: function(id) {

@@ -3,7 +3,7 @@ import MediaListItem from "./MediaListItem";
 import Loading from "./Loading";
 import { withRouter } from "react-router-dom";
 import SadFace from "./SadFace";
-import { mediaHelper, genericBottomScroll } from "./Helpers";
+import { genericBottomScroll } from "./Helpers";
 import axios from "axios";
 import throttle from "lodash.throttle";
 
@@ -47,11 +47,15 @@ class MoreMediaFetcher extends Component {
     }
   };
 
+  urlWithPagination = (url, page) => {
+    return `${url}&page=${page}`;
+  };
+
   getItems = async () => {
     const { page, items } = this.state;
     const { fetchUrl } = this.props;
     try {
-      const response = await axios.get(mediaHelper.addPagination(fetchUrl, page));
+      const response = await axios.get(this.urlWithPagination(fetchUrl, page));
 
       const filteredResponse = response.data.results.filter(
         item => !items.find(i => i.id === item.id)

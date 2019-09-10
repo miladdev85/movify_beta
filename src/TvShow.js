@@ -7,7 +7,7 @@ import Subtitle from "./Subtitle";
 import TvSeason from "./TvSeason";
 import MediaRecs from "./MediaRecs";
 import MoreMediaFetcher from "./MoreMediaFetcher";
-import { tvHelper, mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Helpers";
 import axios from "axios";
 import "./TvShow.css";
 
@@ -21,8 +21,8 @@ function TvShow({ match, type }) {
       setIsLoading(true);
       const getTvShow = async () => {
         try {
-          const showResponse = await axios.get(tvHelper.tvShowUrl(match.params.id));
-          const keywordResponse = await axios.get(tvHelper.getTvKeywords(match.params.id));
+          const showResponse = await axios.get(mediaHelper.mediaUrl(type, match.params.id));
+          const keywordResponse = await axios.get(mediaHelper.keywordsUrl(type, match.params.id));
           setItem(showResponse.data);
           setKeywords(keywordResponse.data.results);
           setIsLoading(false);
@@ -32,7 +32,7 @@ function TvShow({ match, type }) {
       };
       getTvShow();
     }
-  }, [match.params.id, item.id]);
+  }, [match.params.id, item.id, type]);
 
   if (!item.id && !isLoading) return null;
 

@@ -9,17 +9,30 @@ import Cast from "./Cast";
 import MoreMediaFetcher from "./MoreMediaFetcher";
 import { mediaHelper } from "./Helpers";
 import SadFace from "./SadFace";
-import { getItem } from "./Prova";
+import axios from "axios";
+// import { getItem } from "./Prova";
 
 const Movie = ({ match, type }) => {
   const [item, setItem] = useState({});
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(false);
+
   useEffect(() => {
     let didCancel = false;
     window.scrollTo(0, 0);
+
+    const getItem = async () => {
+      setIsDownloading(true);
+      try {
+        const response = await axios.get(mediaHelper.mediaUrl(type, match.params.id));
+        setItem(response.data);
+      } catch (error) {
+        setError(error);
+      }
+      setIsDownloading(false);
+    };
     if (didCancel === false) {
-      getItem(type, match.params.id, setItem, setIsDownloading, setError);
+      getItem();
     }
     return () => (didCancel = true);
   }, [match.params.id, type]);
@@ -29,7 +42,7 @@ const Movie = ({ match, type }) => {
       {isDownloading && <Loading />}
       {!isDownloading && error && <SadFace />}
       {!isDownloading && item.id && (
-        <div className="">
+        <div>
           <MediaHero
             backdrop={item.backdrop_path}
             image={item.poster_path}

@@ -17,7 +17,9 @@ function Keyword({ match, location }) {
     window.scrollTo(0, 0);
     const getItems = async () => {
       setIsLoading(true);
-      const response = await axios.get(mediaHelper.withKeyword(parsedQuery.type, match.params.id));
+      const response = await axios.get(
+        mediaHelper.mediaWithKeyword(parsedQuery.type, match.params.id)
+      );
       setItems(response.data.results);
       setIsLoading(false);
     };
