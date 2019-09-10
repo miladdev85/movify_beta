@@ -43,7 +43,7 @@ function Image({ source, alt, className, type, style, children }) {
   }
 
   return (
-    <div className={`${animate ? "fade__in" : "invisible"}`}>
+    <div className={`${animate ? "fade__in" : "invisible"} text-center`}>
       <img
         src={source ? url + source : noImage}
         className={`img-fluid ${className}`}
