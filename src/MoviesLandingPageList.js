@@ -69,6 +69,9 @@ const MoviesLandingPageList = ({ location, match, type }) => {
     setIsDownloading(false);
   };
 
+  // Eventuelly a bug below. Wrap getMovies above in useCallback instead of this quick-fix.
+  // And remove eslint-disable / enable.
+
   /* eslint-disable */
   useEffect(() => {
     if (page === 0) {
