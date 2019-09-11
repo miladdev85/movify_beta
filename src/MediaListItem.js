@@ -2,13 +2,12 @@ import React from "react";
 import Image from "./Image";
 import ParsedLink from "./ParsedLink";
 
-function MediaListItem({ items, col, imgHeight, source, type }) {
-  const imgStyle = { height: `${imgHeight}` };
+function MediaListItem({ items, className, imgClass, source, type }) {
   return (
     <div className="row">
       {items.map(item => {
         return (
-          <div key={item.id} className={`${col}`}>
+          <div key={item.id} className={`${className}`}>
             <ParsedLink
               id={item.id}
               type={type}
@@ -16,13 +15,12 @@ function MediaListItem({ items, col, imgHeight, source, type }) {
               className="text-reset text-decoration-none brightness"
             >
               <Image
-                style={imgStyle}
                 source={item.poster_path}
                 type="poster"
                 alt={item.name}
-                className="rounded"
+                className={`${imgClass} rounded`}
               >
-                <p className="item__title  text-center">{item.name || item.title}</p>
+                <p className="item__title text-center">{item.name || item.title}</p>
               </Image>
             </ParsedLink>
           </div>

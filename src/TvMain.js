@@ -12,8 +12,8 @@ const TvMain = ({ match, type }) => {
       <div className="container mt-4">
         <MoreMediaFetcher
           fetchUrl={mediaHelper.sectionTvUrl(match.params.section)}
-          col="col-6 col-md-4 col-lg-3 col-xl-2 p-2"
-          imgHeight="278px"
+          className="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
+          imgClass="tv_main"
           type={type}
         />
       </div>

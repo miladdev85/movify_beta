@@ -12,44 +12,45 @@
   color: rgb(153, 153, 153);
 }
 
-.item__description {
-  font-weight: 400;
-  font-size: 0.9em;
-  margin: 0 0 2px 3px;
-  color: rgb(70, 70, 70);
+.container__mainmovie {
+  min-height: 380px;
 }
 
-.poster__link {
-  min-height: 350px;
+.container__tv {
+  min-height: 380px;
 }
 
-.container__slider {
-  min-height: 370px;
-}
-
-.container__recs {
-  min-height: 335px;
+.container__movie {
+  min-height: 320px;
 }
 
 .poster__img {
   height: 275px;
 }
 
-.recs_poster__img {
+.tv_main {
+  height: 275px;
+}
+
+.tv_similar {
+  height: 210px;
+}
+
+.movie_similar {
+  height: 245px;
+}
+
+.tv_recs_poster {
+  height: 305px;
+}
+
+.movie_recs_poster {
   min-height: 225px;
   max-height: 275px;
 }
 
-.poster__link2 {
-  max-height: 350px;
-}
-
-.poster__link:hover {
-  filter: brightness(130%);
-}
-
-.selected {
-  box-shadow: -1px 3px 9px 1px rgb(0, 0, 0);
+.search__image {
+  height: 300px;
 }
 
 .cast__image {
@@ -73,4 +74,35 @@
 
 .arrow:hover {
   opacity: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .container__mainmovie {
+    min-height: 320px;
+  }
+  .poster__img {
+    height: 225px;
+  }
+  .movie_recs_poster {
+    min-height: 225px;
+    max-height: 225px;
+  }
+  .container__tv {
+    min-height: 320px;
+  }
+  .tv_recs_poster {
+    height: 225px;
+  }
+  .tv_similar {
+    height: 225px;
+  }
+  .tv_main {
+    height: 225px;
+  }
+  .movie_similar {
+    height: 225px;
+  }
+  .search__image {
+    height: 240px;
+  }
 }

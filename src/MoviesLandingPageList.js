@@ -86,7 +86,8 @@ class MoviesLandingPageList extends Component {
         {!isDownloading && items.length === 0 && <SadFace />}
         {items.length > 0 && (
           <MediaListSlider
-            col="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3"
+            className="col-6 col-md-5 offset-md-1 offset-lg-0 col-lg-3 container__mainmovie"
+            fromRecs={false}
             type={this.props.type}
             items={items}
             addPage={this.addPage}

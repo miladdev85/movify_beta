@@ -50,13 +50,13 @@ function TvShow({ match, type }) {
               <div className="col-12 col-md-10">
                 <Cast type={type} />
                 <TvSeason tvshow={item} />
-                <MediaRecs type={type} />
+                <MediaRecs type={type} className="container__tv" />
                 <Subtitle text="Similar Shows" />
                 <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaSimilarUrl(type, match.params.id)}
                   type={type}
-                  col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
-                  imgHeight="200px"
+                  className="col-6 col-md-4 col-lg-2 pb-3"
+                  imgClass="tv_similar"
                 />
               </div>
               <div className="d-none d-md-block col-2 pl-4">

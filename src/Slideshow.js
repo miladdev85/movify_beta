@@ -6,7 +6,7 @@ import ParsedLink from "./ParsedLink";
 function Slideshow({ items, showIndex, direction, handleSelect, type }) {
   const slideShow = items.map(item => {
     return (
-      <Carousel.Item key={item.id} className="slider__container">
+      <Carousel.Item key={item.id} className="slider__container fade__in">
         <img
           className="slider__image"
           src={item.backdrop_path ? BASE_BACKDROP_URL + item.backdrop_path : NO_BACKDROP_IMG}

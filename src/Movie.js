@@ -57,7 +57,7 @@ const Movie = ({ match, type }) => {
             <MovieDetail item={item} />
             <div className="row">
               <div className="col-12 col-xl-7">
-                <MediaRecs type="movie" />
+                <MediaRecs type="movie" className="container__movie" />
               </div>
               <div className="col">
                 <Trailer />
@@ -69,8 +69,8 @@ const Movie = ({ match, type }) => {
                 <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaSimilarUrl(type, match.params.id)}
                   type={type}
-                  col="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
-                  imgHeight="235px"
+                  className="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
+                  imgClass="movie_similar"
                 />
               </div>
             </div>

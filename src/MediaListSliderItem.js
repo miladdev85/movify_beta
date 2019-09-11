@@ -3,21 +3,24 @@ import Image from "./Image";
 import ParsedLink from "./ParsedLink";
 import ReleaseDate from "./ReleaseDate";
 
-function MediaListSliderItem({ fromRecs, col, mediaArr, startPosition, endPosition, type }) {
+function MediaListSliderItem({ fromRecs, className, mediaArr, startPosition, endPosition, type }) {
+  const imgClass = fromRecs
+    ? type === "movie"
+      ? "movie_recs_poster"
+      : "tv_recs_poster"
+    : "poster__img";
+
   return mediaArr
     .filter((item, index) => index >= startPosition && index <= endPosition)
     .map(item => {
       return (
-        <div
-          key={item.id}
-          className={`${col} ${fromRecs ? "container__recs" : "container__slider"}`}
-        >
+        <div key={item.id} className={`${className}`}>
           <ParsedLink className="text-decoration-none brightness" id={item.id} type={type}>
             <Image
               source={item.poster_path}
               type="poster"
               alt={item.title}
-              className={`${fromRecs ? "recs_poster__img" : "poster__img"} rounded`}
+              className={`${imgClass} rounded`}
             >
               <p className="item__title">{item.title || item.name}</p>
               <ReleaseDate item={item} />

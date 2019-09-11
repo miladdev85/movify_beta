@@ -9,16 +9,10 @@ html {
 
 .ram {
   border: 1px solid red;
-  /* max-width: 30px; */
 }
 
 .ram2 {
-  border: 2px solid rgb(8, 0, 255);
-}
-
-.ram3 {
-  /* border: 2px solid green; */
-  min-height: 350px;
+  border: 1px solid rgb(8, 0, 255);
 }
 
 .form-control:focus {

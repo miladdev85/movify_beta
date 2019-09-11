@@ -2,17 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Image from "./Image";
 
-function PersonItem({ item, style }) {
+function PersonItem({ item }) {
   return (
     <>
       <div className="col-5 p-0">
         <Link to={`/people/${item.id}`}>
           <Image
-            style={style}
             source={item.profile_path}
             type="person"
             alt={item.name}
-            className="brightness"
+            className="brightness search__image"
           />
         </Link>
       </div>

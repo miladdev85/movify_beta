@@ -46,7 +46,7 @@ class MediaRecs extends Component {
 
   render() {
     const { isDownloading, error, items, spreadItems } = this.state;
-    const { type } = this.props;
+    const { type, className } = this.props;
     return (
       <>
         <Subtitle text={`Recommended ${type === "movie" ? "Movies" : "Shows"}`} />
@@ -55,7 +55,7 @@ class MediaRecs extends Component {
         {isDownloading && <Loading />}
         {!isDownloading && !error && items.length > 0 && (
           <MediaListSlider
-            col="col-6 col-md-3 col-lg-3"
+            className={`${className} col-6 col-md-3 col-lg-3`}
             type={type}
             items={items}
             fromRecs={true}

@@ -4,7 +4,16 @@ import queryString from "query-string";
 import MediaListSliderItem from "./MediaListSliderItem";
 import "./List.css";
 
-const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItems, col, type }) => {
+const MediaListSlider = ({
+  location,
+  fromRecs,
+  items,
+  match,
+  addPage,
+  spreadItems,
+  className,
+  type
+}) => {
   const [startPosition, setStartPosition] = useState(0);
   const [endPosition, setEndPosition] = useState(3);
   const queryObj = queryString.parse(location.search);
@@ -32,7 +41,7 @@ const MediaListSlider = ({ location, fromRecs, items, match, addPage, spreadItem
           type={type}
           startPosition={startPosition}
           endPosition={endPosition}
-          col={col}
+          className={className}
           fromRecs={fromRecs}
         />
       </div>

@@ -3,7 +3,7 @@ import ParsedLink from "./ParsedLink";
 import Image from "./Image";
 import "./List.css";
 
-const CastList = React.memo(({ casts, source }) => {
+const CastList = ({ casts, source }) => {
   return (
     <div>
       <div className="row pt-2">
@@ -32,6 +32,6 @@ const CastList = React.memo(({ casts, source }) => {
       </div>
     </div>
   );
-});
+};
 
 export default CastList;

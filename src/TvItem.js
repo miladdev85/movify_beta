@@ -3,17 +3,16 @@ import Image from "./Image";
 import { Link } from "react-router-dom";
 import { textFormat } from "./ListItemFns";
 
-function TvItem({ item, style }) {
+function TvItem({ item }) {
   return (
     <>
       <div className="col-5 p-0">
         <Link to={`/tv/details/${item.id}`}>
           <Image
-            style={style}
             source={item.poster_path}
             type="poster"
             alt={item.name}
-            className="brightness"
+            className="brightness search__image"
           />
         </Link>
       </div>

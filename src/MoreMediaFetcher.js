@@ -77,14 +77,14 @@ class MoreMediaFetcher extends Component {
 
   render() {
     const { items, isDownloading, error } = this.state;
-    const { col, imgHeight, type } = this.props;
+    const { className, imgClass, type } = this.props;
     return (
       <>
         {!isDownloading && error && <SadFace />}
         {!isDownloading && items.length === 0 && <SadFace />}
         {isDownloading && <Loading />}
         {!isDownloading && !error && items.length > 0 && (
-          <MediaListItem type={type} items={items} col={col} imgHeight={imgHeight} />
+          <MediaListItem type={type} items={items} className={className} imgClass={imgClass} />
         )}
       </>
     );

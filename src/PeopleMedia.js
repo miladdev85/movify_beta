@@ -29,8 +29,8 @@ function PeopleMedia({ showMovies, displayItems, person, toggle }) {
           type="people"
           source={showMovies ? "movies" : "tv"}
           items={displayItems}
-          col="col-6 col-lg-4 col-xl-3 pb-2"
-          imgHeight="258px"
+          className="col-6 col-lg-4 col-xl-3 pb-2"
+          imgClass="poster__img"
         />
       )}
     </div>
