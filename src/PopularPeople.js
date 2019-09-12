@@ -82,7 +82,7 @@ class PopularPeople extends Component {
               {page < totalPages && (
                 <button
                   onClick={this.addPage}
-                  className="btn btn-sm btn-outline-secondary text-center"
+                  className="btn btn-sm btn-outline-secondary text-center mt-5"
                 >
                   Get More
                 </button>
