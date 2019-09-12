@@ -89,8 +89,9 @@ export const searchHelper = {
 };
 
 export const peopleHelper = {
-  popularPeopleUrl: `https://api.themoviedb.org/3/person/popular?api_key=${API}&language=en-US&page=1`,
-  trendingPeopleUrl: `https://api.themoviedb.org/3/trending/person/week?api_key=${API}&language=en-US&page=1`,
+  trendingPeopleUrl: function(page) {
+    return `https://api.themoviedb.org/3/trending/person/week?api_key=${API}&language=en-US&page=${page}`;
+  },
   personUrl: function(id) {
     return `https://api.themoviedb.org/3/person/${id}?api_key=${API}&language=en-US`;
   },

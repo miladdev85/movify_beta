@@ -9,7 +9,10 @@ import "./People.css";
 class PopularPeople extends Component {
   state = {
     people: [],
-    isDownloading: false
+    page: 1,
+    totalPages: null,
+    isDownloading: false,
+    gettingMore: false
   };
 
   componentDidMount() {
@@ -17,7 +20,8 @@ class PopularPeople extends Component {
   }
 
   getPopularPeople = async () => {
-    const response = await axios.get(peopleHelper.trendingPeopleUrl);
+    const { page } = this.state;
+    const response = await axios.get(peopleHelper.trendingPeopleUrl(page));
     response.data.results.map(people => {
       people.known_for_title = [];
       if (people.known_for.length > 0) {
@@ -28,12 +32,23 @@ class PopularPeople extends Component {
         return people;
       }
     });
-    this.setState({ isDownloading: false, people: response.data.results });
+    this.setState(prevState => ({
+      isDownloading: false,
+      people: [...prevState.people, ...response.data.results],
+      totalPages: response.data.total_pages,
+      gettingMore: false
+    }));
+  };
+
+  addPage = () => {
+    this.setState(
+      prevState => ({ gettingMore: true, page: prevState.page + 1 }),
+      () => this.getPopularPeople()
+    );
   };
 
   render() {
-    const { people, isDownloading } = this.state;
-
+    const { people, isDownloading, gettingMore, totalPages, page } = this.state;
     return (
       <>
         {isDownloading ? (
@@ -41,30 +56,37 @@ class PopularPeople extends Component {
         ) : (
           <div className="container">
             <h3 className="mt-5 mb-4">Popular People</h3>
-            <div className="row">
-              {people.length > 0 &&
-                people.map(person => (
-                  <div
-                    key={person.id}
-                    className="col-6 col-md-4 col-lg-3 col-xl-2 pb-3 people__list"
-                  >
-                    <div className="">
-                      <Link
-                        className="people__link text-reset brightness"
-                        to={`/people/${person.id}`}
+            <div className="row text-center">
+              {people.map(person => (
+                <div key={person.id} className="col-6 col-md-4 col-lg-3 col-xl-2 pb-3 people__list">
+                  <div className="">
+                    <Link
+                      className="people__link text-reset brightness"
+                      to={`/people/${person.id}`}
+                    >
+                      <Image
+                        source={person.profile_path}
+                        type="popular"
+                        alt={person.name}
+                        className="rounded people__image"
                       >
-                        <Image
-                          source={person.profile_path}
-                          type="popular"
-                          alt={person.name}
-                          className="rounded"
-                        >
-                          <span className="m-0">{person.name}</span>
-                        </Image>
-                      </Link>
-                    </div>
+                        <span className="m-0">{person.name}</span>
+                      </Image>
+                    </Link>
                   </div>
-                ))}
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              {gettingMore && <Loading />}
+              {page < totalPages && (
+                <button
+                  onClick={this.addPage}
+                  className="btn btn-sm btn-outline-secondary text-center"
+                >
+                  Get More
+                </button>
+              )}
             </div>
           </div>
         )}

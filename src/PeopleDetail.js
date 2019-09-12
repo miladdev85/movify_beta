@@ -50,9 +50,8 @@ class PeopleDetail extends Component {
         filteredTvArr.push(item);
       }
     }
-
-    filteredTvArr.splice(8);
-    filteredMovArr.splice(8);
+    filteredTvArr.splice(12);
+    filteredMovArr.splice(12);
 
     person.topTvCredits = filteredTvArr;
     person.topMovieCredits = filteredMovArr;

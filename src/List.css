@@ -59,6 +59,10 @@
   width: 110px;
 }
 
+.people__image {
+  height: 240px;
+}
+
 .brightness:hover {
   filter: brightness(125%);
 }
@@ -104,5 +108,8 @@
   }
   .search__image {
     height: 240px;
+  }
+  .people__image {
+    height: 225px;
   }
 }
