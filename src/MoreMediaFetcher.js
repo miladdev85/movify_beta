@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import SadFace from "./SadFace";
 import { genericBottomScroll } from "./Helpers";
 import axios from "axios";
-import throttle from "lodash.throttle";
+import debounce from "lodash.debounce";
 
 class MoreMediaFetcher extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class MoreMediaFetcher extends Component {
       page: 1,
       error: false
     };
-    this.throttledScroll = throttle(this.handleScroll, 300);
+    this.throttledScroll = debounce(this.handleScroll, 100);
   }
 
   componentDidMount() {
@@ -40,10 +40,16 @@ class MoreMediaFetcher extends Component {
   }
 
   handleScroll = () => {
-    const { items, page } = this.state;
+    const { items, page, isDownloading } = this.state;
     let nearBottom = genericBottomScroll(items, document.documentElement);
-    if (nearBottom) {
-      this.setState({ page: page + 1 }, () => this.getItems());
+    if (nearBottom && !isDownloading) {
+      this.setState(
+        prevState => ({ page: prevState.page + 1 }),
+        () => {
+          console.log(page);
+          this.getItems();
+        }
+      );
     }
   };
 
@@ -52,7 +58,8 @@ class MoreMediaFetcher extends Component {
   };
 
   getItems = async () => {
-    const { page, items } = this.state;
+    const { items, page } = this.state;
+    console.log(page);
     const { fetchUrl } = this.props;
     try {
       const response = await axios.get(this.urlWithPagination(fetchUrl, page));
@@ -65,11 +72,14 @@ class MoreMediaFetcher extends Component {
         window.removeEventListener("scroll", this.throttledScroll);
       }
 
-      this.setState({
-        error: false,
-        isDownloading: false,
-        items: [...items, ...filteredResponse]
-      });
+      this.setState(
+        {
+          error: false,
+          isDownloading: false,
+          items: [...items, ...filteredResponse]
+        },
+        () => console.log(this.state.items, this.state.page)
+      );
     } catch (err) {
       this.setState({ isDownloading: false, error: true });
     }

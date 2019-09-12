@@ -6,7 +6,7 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "framer-motion": "^1.6.7",
-    "lodash.throttle": "^4.1.1",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.24.0",
     "query-string": "^6.8.3",
     "react": "^16.9.0",

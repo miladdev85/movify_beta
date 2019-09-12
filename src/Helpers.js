@@ -103,7 +103,7 @@ export const peopleHelper = {
 };
 
 export const genericBottomScroll = (items, element) => {
-  if (items.length && window.innerHeight + element.scrollTop > element.offsetHeight - 700) {
+  if (items.length && window.innerHeight + element.scrollTop > element.offsetHeight - 1000) {
     return true;
   } else {
     return false;
