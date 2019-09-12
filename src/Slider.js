@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { mediaHelper } from "./Helpers";
+import { sliderHelper, mediaHelper } from "./Network";
 import axios from "axios";
 import Slideshow from "./Slideshow";
 import Loading from "./Loading";
@@ -22,7 +22,7 @@ class Slider extends Component {
 
   getMovies = async () => {
     const { type } = this.props;
-    let discoverUrl = type === "movie" ? mediaHelper.discoverMovieUrl : mediaHelper.discoverTvUrl;
+    let discoverUrl = type === "movie" ? sliderHelper.sliderMovieUrl : sliderHelper.sliderTvUrl;
     let response = await axios.get(discoverUrl);
     response = response.data.results.splice(0, 8);
 

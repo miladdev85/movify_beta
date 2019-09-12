@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Loading from "./Loading";
-import { peopleHelper } from "./Helpers";
+import { peopleHelper } from "./Network";
 import axios from "axios";
 import queryString from "query-string";
 import PeopleBiography from "./PeopleBiography";

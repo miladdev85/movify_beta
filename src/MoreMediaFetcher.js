@@ -3,7 +3,7 @@ import MediaListItem from "./MediaListItem";
 import Loading from "./Loading";
 import { withRouter } from "react-router-dom";
 import SadFace from "./SadFace";
-import { genericBottomScroll } from "./Helpers";
+import { genericBottomScroll } from "./SharedFns";
 import axios from "axios";
 import debounce from "lodash.debounce";
 

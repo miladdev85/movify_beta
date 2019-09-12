@@ -4,7 +4,7 @@ import CastList from "./CastList";
 import Loading from "./Loading";
 import SadFace from "./SadFace";
 import Subtitle from "./Subtitle";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import axios from "axios";
 
 class Cast extends Component {

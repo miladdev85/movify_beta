@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "./Slider";
 import TvNav from "./TvNav";
 import MoreMediaFetcher from "./MoreMediaFetcher";
-import { mediaHelper } from "./Helpers";
+import { tvHelper } from "./Network";
 
 const TvMain = ({ match, type }) => {
   return (
@@ -11,7 +11,7 @@ const TvMain = ({ match, type }) => {
       <TvNav />
       <div className="container mt-4">
         <MoreMediaFetcher
-          fetchUrl={mediaHelper.sectionTvUrl(match.params.section)}
+          fetchUrl={tvHelper.sectionTvUrl(match.params.section)}
           className="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
           imgClass="tv_main"
           type={type}

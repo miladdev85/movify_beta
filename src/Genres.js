@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { genreHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import axios from "axios";
 import queryString from "query-string";
 import "./Genres.css";
@@ -11,7 +11,7 @@ function Genres(props) {
   const parsedQuery = queryString.parse(props.location.search);
 
   const getGenres = async () => {
-    let response = await axios.get(genreHelper.genreUrl);
+    let response = await axios.get(mediaHelper.genreUrl);
     response = response.data.genres.splice(0, 18);
     setGenres(response);
   };

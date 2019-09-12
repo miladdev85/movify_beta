@@ -2,7 +2,6 @@ import React from "react";
 import Slider from "./Slider";
 import Subtitle from "./Subtitle";
 import DiscoverMenu from "./DiscoverMenu";
-
 import MoviesLandingPageList from "./MoviesLandingPageList";
 import Genres from "./Genres";
 

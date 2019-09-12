@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const BASE_POSTER_URL = "https://image.tmdb.org/t/p/w500";
 
 export const BASE_CAST_URL = "https://image.tmdb.org/t/p/w185";
@@ -16,3 +18,11 @@ export const NO_BACKDROP_IMG =
 
 export const NO_PEOPLE_IMG =
   "https://sprucegrovelandscaping.com/wp-content/uploads/2016/04/Photo-Not-Available.jpg";
+
+export const TODAY = moment().format("YYYY-MM-DD");
+export const NEXTMONTH = moment()
+  .add(1, "M")
+  .format("YYYY-MM-DD");
+export const PREVMONTH = moment()
+  .subtract(1, "M")
+  .format("YYYY-MM-DD");

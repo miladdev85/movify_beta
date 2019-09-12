@@ -3,7 +3,7 @@ import MediaListSlider from "./MediaListSlider";
 import { withRouter } from "react-router-dom";
 import SadFace from "./SadFace";
 import Loading from "./Loading";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import axios from "axios";
 import Subtitle from "./Subtitle";
 

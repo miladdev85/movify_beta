@@ -7,10 +7,9 @@ import Trailer from "./Trailer";
 import MediaRecs from "./MediaRecs";
 import Cast from "./Cast";
 import MoreMediaFetcher from "./MoreMediaFetcher";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import SadFace from "./SadFace";
 import axios from "axios";
-// import { getItem } from "./Prova";
 
 const Movie = ({ match, type }) => {
   const [item, setItem] = useState({});

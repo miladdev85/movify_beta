@@ -4,7 +4,7 @@ import InputField from "./InputField";
 import SearchListMenu from "./SearchListMenu";
 import SearchListItem from "./SearchListItem";
 import SadFace from "./SadFace";
-import { searchHelper } from "./Helpers";
+import { searchHelper } from "./Network";
 import queryString from "query-string";
 import axios from "axios";
 

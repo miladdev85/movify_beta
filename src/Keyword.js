@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import KeywordItem from "./KeywordItem";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import Dropdown from "react-bootstrap/Dropdown";
 import queryString from "query-string";
 import axios from "axios";

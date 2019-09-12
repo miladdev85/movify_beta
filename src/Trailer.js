@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import SadFace from "./SadFace";
 import { withRouter } from "react-router-dom";
 import axios from "axios";

@@ -7,7 +7,7 @@ import Subtitle from "./Subtitle";
 import TvSeason from "./TvSeason";
 import MediaRecs from "./MediaRecs";
 import MoreMediaFetcher from "./MoreMediaFetcher";
-import { mediaHelper } from "./Helpers";
+import { mediaHelper } from "./Network";
 import axios from "axios";
 import "./TvShow.css";
 

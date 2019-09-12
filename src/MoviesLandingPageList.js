@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { genreHelper } from "./Helpers";
+import { movieHelper } from "./Network";
 import MediaListSlider from "./MediaListSlider";
 import SadFace from "./SadFace";
 import Loading from "./Loading";
@@ -39,25 +39,25 @@ class MoviesLandingPageList extends Component {
     let url;
     switch (match.params.section) {
       case "new-releases":
-        url = genreHelper.newReleasesUrl(page, parsedQuery.genre);
+        url = movieHelper.newReleasesUrl(page, parsedQuery.genre);
         break;
       case "swedish":
-        url = genreHelper.swedishUrl(page, parsedQuery.genre);
+        url = movieHelper.swedishUrl(page, parsedQuery.genre);
         break;
       case "coming-soon":
-        url = genreHelper.comingSoonUrl(page, parsedQuery.genre);
+        url = movieHelper.comingSoonUrl(page, parsedQuery.genre);
         break;
       case "popular":
-        url = genreHelper.popularUrl(page, parsedQuery.genre);
+        url = movieHelper.popularUrl(page, parsedQuery.genre);
         break;
       case "top-rated":
-        url = genreHelper.topRatedUrl(page, parsedQuery.genre);
+        url = movieHelper.topRatedUrl(page, parsedQuery.genre);
         break;
       case "old-movies":
-        url = genreHelper.oldiesUrl(page, parsedQuery.genre);
+        url = movieHelper.oldiesUrl(page, parsedQuery.genre);
         break;
       default:
-        url = genreHelper.popularUrl(parsedQuery.genre);
+        url = movieHelper.popularUrl(parsedQuery.genre);
     }
     const response = await axios.get(url);
     const responsePage = response.data.page;

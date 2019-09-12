@@ -1,13 +1,8 @@
+import { TODAY, NEXTMONTH, PREVMONTH } from "./CONSTANTS";
+
 export const API = process.env.REACT_APP_TMDB_API_KEY;
 export const baseUrl = "https://api.themoviedb.org/3";
 export const baseDiscoverMovieUrl = `${baseUrl}/discover/movie?api_key=${API}&language=en-US&region=US&sort_by=`;
-export const today = moment().format("YYYY-MM-DD");
-export const nextMonth = moment()
-  .add(1, "M")
-  .format("YYYY-MM-DD");
-export const prevMonth = moment()
-  .subtract(1, "M")
-  .format("YYYY-MM-DD");
 
 export const movieHelper = {
   popularUrl: function(page, genres = "") {
@@ -20,10 +15,10 @@ export const movieHelper = {
     return `${baseDiscoverMovieUrl}popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.lte=1950&with_genres=${genres}`;
   },
   comingSoonUrl: function(page, genres = "") {
-    return `${baseDiscoverMovieUrl}popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${today}&primary_release_date.lte=${nextMonth}&with_genres=${genres}`;
+    return `${baseDiscoverMovieUrl}popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${TODAY}&primary_release_date.lte=${NEXTMONTH}&with_genres=${genres}`;
   },
   newReleasesUrl: function(page, genres = "") {
-    return `${baseDiscoverMovieUrl}popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${prevMonth}&primary_release_date.lte=${today}&with_genres=${genres}`;
+    return `${baseDiscoverMovieUrl}popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${PREVMONTH}&primary_release_date.lte=${TODAY}&with_genres=${genres}`;
   },
   topRatedUrl: function(page, genres = "") {
     return `${baseDiscoverMovieUrl}vote_average.desc&include_adult=false&include_video=false&page=${page}&vote_count.gte=5000&with_genres=${genres}`;
@@ -37,7 +32,6 @@ export const sliderHelper = {
 
 export const mediaHelper = {
   genreUrl: `${baseUrl}/genre/movie/list?api_key=${API}&language=en-US`,
-
   mediaUrl: function(type, id) {
     return `${baseUrl}/${type}/${id}?api_key=${API}&language=en-US`;
   },
@@ -76,9 +70,11 @@ export const searchHelper = {
 };
 
 export const peopleHelper = {
-  trendingPeopleUrl: `${baseUrl}/trending/person/week?api_key=${API}&language=en-US&page=1`,
   personUrl: function(id) {
     return `${baseUrl}/person/${id}?api_key=${API}&language=en-US`;
+  },
+  trendingPeopleUrl: function(page) {
+    return `https://api.themoviedb.org/3/trending/person/week?api_key=${API}&language=en-US&page=${page}`;
   },
   personMovieCredits: function(id) {
     return `${baseUrl}/person/${id}/movie_credits?api_key=${API}&language=en-US`;

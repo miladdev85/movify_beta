@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "./Image";
 import { Link } from "react-router-dom";
-import { textFormat } from "./ListItemFns";
+import { textFormat } from "./SharedFns";
 
 function MovieItem({ item }) {
   return (

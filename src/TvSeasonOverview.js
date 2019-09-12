@@ -1,12 +1,12 @@
 import React from "react";
-import { today } from "./Helpers";
-import { textFormat } from "./ListItemFns";
+import { TODAY } from "./CONSTANTS";
+import { textFormat } from "./SharedFns";
 
 function TvSeasonOverview({ season, title }) {
   const seasonOverview = () => {
     let overviewText;
     if (!season.overview) {
-      if (today >= season.air_date) {
+      if (TODAY >= season.air_date) {
         overviewText = `${season.name} of ${title} premiered on ${season.air_date}.`;
       } else {
         overviewText = `${season.name} of ${title} is set to premiere on ${season.air_date}.`;

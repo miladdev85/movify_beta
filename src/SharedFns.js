@@ -10,3 +10,11 @@ export const textFormat = (paragraph, length = 300) => {
     return;
   }
 };
+
+export const genericBottomScroll = (items, element) => {
+  if (items.length && window.innerHeight + element.scrollTop > element.offsetHeight - 1000) {
+    return true;
+  } else {
+    return false;
+  }
+};

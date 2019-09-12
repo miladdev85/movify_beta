@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { peopleHelper } from "./Helpers";
+import { peopleHelper } from "./Network";
 import Loading from "./Loading";
 import axios from "axios";
 import { Link } from "react-router-dom";
