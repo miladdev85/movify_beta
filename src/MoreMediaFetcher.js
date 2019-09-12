@@ -40,16 +40,10 @@ class MoreMediaFetcher extends Component {
   }
 
   handleScroll = () => {
-    const { items, page, isDownloading } = this.state;
+    const { items, isDownloading } = this.state;
     let nearBottom = genericBottomScroll(items, document.documentElement);
     if (nearBottom && !isDownloading) {
-      this.setState(
-        prevState => ({ page: prevState.page + 1 }),
-        () => {
-          console.log(page);
-          this.getItems();
-        }
-      );
+      this.setState(prevState => ({ page: prevState.page + 1 }), () => this.getItems());
     }
   };
 
@@ -59,7 +53,6 @@ class MoreMediaFetcher extends Component {
 
   getItems = async () => {
     const { items, page } = this.state;
-    console.log(page);
     const { fetchUrl } = this.props;
     try {
       const response = await axios.get(this.urlWithPagination(fetchUrl, page));
@@ -72,14 +65,11 @@ class MoreMediaFetcher extends Component {
         window.removeEventListener("scroll", this.throttledScroll);
       }
 
-      this.setState(
-        {
-          error: false,
-          isDownloading: false,
-          items: [...items, ...filteredResponse]
-        },
-        () => console.log(this.state.items, this.state.page)
-      );
+      this.setState({
+        error: false,
+        isDownloading: false,
+        items: [...items, ...filteredResponse]
+      });
     } catch (err) {
       this.setState({ isDownloading: false, error: true });
     }
