@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Image from "./Image";
 import { textFormat } from "./SharedFns";
-import "./KeywordItem.css";
 
 function KeywordItem({ items, type }) {
   return (

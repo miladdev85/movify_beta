@@ -58,7 +58,7 @@ class PopularPeople extends Component {
             <h3 className="mt-5 mb-4">Popular People</h3>
             <div className="row text-center">
               {people.map(person => (
-                <div key={person.id} className="col-6 col-md-4 col-lg-3 col-xl-2 pb-3 people__list">
+                <div key={person.id} className="col-6 col-md-4 col-lg-3 col-xl-2 pb-3">
                   <div className="">
                     <Link
                       className="people__link text-reset brightness"

@@ -18,11 +18,6 @@ pre {
   text-decoration: none;
 }
 
-.people__image {
-  object-fit: cover;
-  height: 240px;
-}
-
 .people__title {
   font-size: 0.9em;
   color: rgb(62, 62, 62);
@@ -33,4 +28,47 @@ pre {
   font-size: 0.8em;
   margin: 0 0 2px 3px;
   color: rgb(153, 153, 153);
+}
+
+.imdb__image {
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.imdb__back {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.imdb__container:hover .imdb__image {
+  filter: brightness(35%);
+}
+
+.imdb__container:hover .imdb__back {
+  opacity: 1;
+}
+
+.imdb__text {
+  width: 190px;
+  color: white;
+  font-size: 20px;
+}
+
+.detail__box {
+  box-shadow: 1px 0px 3px 0px rgb(214, 214, 214);
+}
+
+.personal__title {
+  font-size: 0.9rem;
+  color: rgb(0, 0, 0);
+}
+
+.personal__text {
+  font-size: 0.8rem;
+  color: grey;
 }

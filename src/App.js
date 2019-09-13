@@ -8,7 +8,7 @@ import Tv from "./Tv";
 import Search from "./Search";
 import FAQ from "./FAQ";
 import Footer from "./Footer";
-
+import "./Animations.css";
 import "./App.css";
 
 function App() {

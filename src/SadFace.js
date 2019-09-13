@@ -1,5 +1,4 @@
 import React from "react";
-import "./SadFace.css";
 
 function SadFace() {
   return (

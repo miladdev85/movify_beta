@@ -4,7 +4,6 @@ import SadFace from "./SadFace";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import Subtitle from "./Subtitle";
-import "./Trailer.css";
 
 class Trailer extends Component {
   state = {
@@ -41,13 +40,13 @@ class Trailer extends Component {
               />
             </div>
             <div className="d-flex ">
-              <span className="badge p-2 bg-light text-secondary font-weight-light ">
+              <span className="badge p-2 bg-light text-secondary font-weight-light">
                 {trailer.size > 720 ? "Full HD" : "HD"}
               </span>
-              <span className="badge p-2 bg-light text-secondary font-weight-light  mx-1">
+              <span className="badge p-2 bg-light text-secondary font-weight-light mx-1">
                 {trailer.iso_3166_1}
               </span>
-              <span className="badge p-2 bg-light text-secondary font-weight-light  ml-auto">
+              <span className="badge p-2 bg-light text-secondary font-weight-light ml-auto">
                 {trailer.site}
               </span>
             </div>

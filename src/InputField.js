@@ -42,7 +42,7 @@ function InputField(props) {
           />
           <div className="input-group-append">
             <button className="btn btn-outline-success" type="submit" id="button-addon2">
-              {props.btnName}
+              {props.buttonText}
             </button>
           </div>
         </div>

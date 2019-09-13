@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Loading from "./Loading";
+import SadFace from "./SadFace";
 import { peopleHelper } from "./Network";
 import axios from "axios";
 import queryString from "query-string";
 import PeopleBiography from "./PeopleBiography";
 import PeopleInfo from "./PeopleInfo";
 import PeopleMedia from "./PeopleMedia";
-import "./PeopleDetail.css";
 
 class PeopleDetail extends Component {
   constructor(props) {
@@ -76,12 +76,9 @@ class PeopleDetail extends Component {
     const displayItems = showMovies ? person.topMovieCredits : person.topTvCredits;
 
     if (!isLoading && !person.id) {
-      return (
-        <div className="d-flex justify-content-center">
-          <span className="emoji text-dark">&#9785;</span>
-        </div>
-      );
+      return <SadFace />;
     }
+
     return (
       <>
         {isLoading ? (
@@ -89,7 +86,7 @@ class PeopleDetail extends Component {
         ) : (
           <>
             <PeopleBiography person={person} />
-            <div className="container ">
+            <div className="container">
               <div className="row">
                 <PeopleInfo person={person} />
                 <PeopleMedia

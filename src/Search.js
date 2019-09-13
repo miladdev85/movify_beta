@@ -7,6 +7,7 @@ import SadFace from "./SadFace";
 import { searchHelper } from "./Network";
 import queryString from "query-string";
 import axios from "axios";
+import "./Search.css";
 
 export class Search extends Component {
   state = {
@@ -61,7 +62,7 @@ export class Search extends Component {
     return (
       <div className="container">
         <div className="col-12 col-lg-6 offset-lg-3">
-          <InputField btnName="Go!" placeholder="Search for a movie, tv show, person..." />
+          <InputField buttonText="Go!" placeholder="Search for a movie, tv show, person..." />
         </div>
         {error && <SadFace />}
         {isDownloading && <Loading />}

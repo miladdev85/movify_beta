@@ -1,7 +1,6 @@
 import React from "react";
 import ParsedLink from "./ParsedLink";
 import Image from "./Image";
-import "./List.css";
 
 const CastList = ({ casts, source }) => {
   return (

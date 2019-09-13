@@ -9,7 +9,6 @@ import MediaRecs from "./MediaRecs";
 import MoreMediaFetcher from "./MoreMediaFetcher";
 import { mediaHelper } from "./Network";
 import axios from "axios";
-import "./TvShow.css";
 
 function TvShow({ match, type }) {
   const [item, setItem] = useState({});
