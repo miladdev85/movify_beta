@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 import MediaListSliderItem from "./MediaListSliderItem";
-import "./List.css";
+import "./MediaListSlider.css";
 
 const MediaListSlider = ({
   location,

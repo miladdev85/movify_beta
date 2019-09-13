@@ -75,6 +75,8 @@ export class SearchNav extends Component {
     }
   };
 
+  style = { color: "#7c7c7d", cursor: "pointer" };
+
   render() {
     const { showSearchInput } = this.state;
     return (
@@ -110,7 +112,8 @@ export class SearchNav extends Component {
           {!showSearchInput && (
             <Shade
               key="Shade"
-              className="nav__search d-none d-lg-inline-block"
+              style={this.style}
+              className=" d-none d-lg-inline-block"
               onClick={this.handleClick}
             >
               <i className="fas fa-search" />

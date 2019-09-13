@@ -16,7 +16,8 @@ function PeopleMedia({ showMovies, displayItems, person, toggle }) {
               checked={!showMovies}
             />
             <label
-              className="custom-control-label small text-muted p-1 toggle__link"
+              style={{ cursor: "pointer" }}
+              className="custom-control-label small text-muted p-1"
               htmlFor="mediaSwitch"
             >
               TV Shows

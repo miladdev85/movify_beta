@@ -6,7 +6,6 @@ import { mediaHelper } from "./Network";
 import Dropdown from "react-bootstrap/Dropdown";
 import queryString from "query-string";
 import axios from "axios";
-import "./KeywordItem.css";
 
 function Keyword({ match, location }) {
   const [items, setItems] = useState([]);

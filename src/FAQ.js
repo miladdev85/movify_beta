@@ -1,11 +1,10 @@
 import React from "react";
-// import Accordion from "./Accordion";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 
 function FAQ() {
   return (
-    <div className="container mt-5 w-50 fade__in">
+    <div className="container mt-5 fade__in">
       <h1 className="text-center">Frågor och svar</h1>
       <div className="mt-5">
         <Accordion>
@@ -106,8 +105,9 @@ function FAQ() {
                 </p>
                 <p>
                   Jag har ingen prestige i det jag gör utan jag är ute efter att lära mig mer och
-                  bredda mig. Min lösning behöver inte vara korrekt och jag tar till mig feedback
-                  mer än gärna samt att jag ständigt försöker bli bättre på det jag kan.
+                  bredda mig. Jag anser inte att min lösning ska vara den som gäller eller är det
+                  korrekta, utan jag tar till mig feedback mer än gärna samt att jag ständigt
+                  försöker bli bättre på det jag kan.
                 </p>
               </Card.Body>
             </Accordion.Collapse>

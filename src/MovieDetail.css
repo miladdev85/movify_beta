@@ -10,3 +10,16 @@
   background-color: #dfdfdf;
   cursor: pointer;
 }
+
+.rating {
+  font-weight: 400;
+}
+
+.item__text {
+  font-size: 1em;
+  color: rgb(121, 121, 121);
+}
+
+.detail__container {
+  min-height: 380px;
+}

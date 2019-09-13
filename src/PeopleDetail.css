@@ -27,10 +27,6 @@
   font-size: 20px;
 }
 
-.detail__container {
-  animation: fadeIn ease 1.5s;
-}
-
 .detail__box {
   box-shadow: 1px 0px 3px 0px rgb(214, 214, 214);
 }
@@ -43,17 +39,4 @@
 .personal__text {
   font-size: 0.8rem;
   color: grey;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.toggle__link {
-  cursor: pointer;
 }

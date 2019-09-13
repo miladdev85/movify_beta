@@ -83,7 +83,7 @@ class PeopleDetail extends Component {
       );
     }
     return (
-      <div className="detail__container">
+      <>
         {isLoading ? (
           <Loading />
         ) : (
@@ -102,7 +102,7 @@ class PeopleDetail extends Component {
             </div>
           </>
         )}
-      </div>
+      </>
     );
   }
 }

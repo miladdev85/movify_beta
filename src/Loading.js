@@ -1,19 +1,23 @@
 import React from "react";
-import "./Loading.css";
 
 function Loading() {
+  const ballStyle = {
+    backgroundColor: "rgb(175, 175, 175)",
+    width: "5rem",
+    height: "5rem"
+  };
   return (
-    <div className="d-flex justify-content-center ball__container mt-5 pt-5">
-      <div className="spinner-grow ball" role="status">
+    <div style={{ minHeight: 600 }} className="d-flex justify-content-center mt-5 pt-5">
+      <div style={ballStyle} className="spinner-grow" role="status">
         <span className="sr-only">Loading...</span>
       </div>
-      <div className="spinner-grow ball" role="status">
+      <div style={ballStyle} className="spinner-grow" role="status">
         <span className="sr-only">Loading...</span>
       </div>
-      <div className="spinner-grow ball" role="status">
+      <div style={ballStyle} className="spinner-grow" role="status">
         <span className="sr-only">Loading...</span>
       </div>
-      <div className="spinner-grow ball" role="status">
+      <div style={ballStyle} className="spinner-grow" role="status">
         <span className="sr-only">Loading...</span>
       </div>
     </div>

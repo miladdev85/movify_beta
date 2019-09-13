@@ -59,7 +59,7 @@ function Genres(props) {
             <button
               type="button"
               onClick={() => addGenre(genre.id)}
-              className={`btn btn__col btn-outline-primary rounded-pill btn-sm ${selectedGenres.includes(
+              className={`btn btn__color btn-outline-primary rounded-pill btn-sm ${selectedGenres.includes(
                 genre.id
               ) && "active"}`}
               aria-pressed={`mixed`}

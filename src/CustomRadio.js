@@ -1,5 +1,4 @@
 import React from "react";
-import "./CustomRadio.css";
 
 function CustomRadio(props) {
   return (
@@ -13,7 +12,7 @@ function CustomRadio(props) {
         name={props.id}
         className="custom-control-input"
       />
-      <label className="custom-control-label" htmlFor={props.id}>
+      <label className="custom-control-label" style={{ cursor: "pointer" }} htmlFor={props.id}>
         {props.label}
       </label>
     </div>

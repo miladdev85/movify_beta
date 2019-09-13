@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "./Image";
 import { textFormat } from "./SharedFns";
-import "./MediaHero.css";
 
 function MediaHero({ backdrop, image, title, year, genres = [], text, children }) {
   const backgroundStyle = {

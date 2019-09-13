@@ -64,7 +64,7 @@ const PeopleBiography = React.memo(({ person }) => {
                 show={showModal}
                 onHide={() => setShowModal(false)}
                 person={person}
-                title={"Biography"}
+                title="Biography"
                 maintitle={person.name}
                 textcontent={biographyText(person.biography)}
               />
