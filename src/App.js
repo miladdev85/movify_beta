@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import Header from "./Header";
-import People from "./People";
-import Keyword from "./Keyword";
-import Movies from "./Movies";
-import Tv from "./Tv";
-import Search from "./Search";
-import FAQ from "./FAQ";
-import Footer from "./Footer";
+import Header from "./Components/Header";
+import People from "./Components/People/People";
+import Keyword from "./Components/Keyword/Keyword";
+import Movies from "./Components/Movie/Movies";
+import Tv from "./Components/Tv/Tv";
+import Search from "./Components/Search/Search";
+import FAQ from "./Components/FAQ";
+import Footer from "./Components/Footer";
 import "./Animations.css";
 import "./App.css";
 

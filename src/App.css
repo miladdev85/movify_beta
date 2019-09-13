@@ -11,8 +11,6 @@ html {
   border: 1px solid red;
 }
 
-/* USED IN MOST COMPONENTS */
-
 .item__title {
   font-weight: 600;
   margin: 5px 0 0 0px;
@@ -81,6 +79,14 @@ html {
 .brightness:hover {
   filter: brightness(125%);
 }
+
+/* ADD HOVER EFFECT FOR CHILD IMAGES OF PARSEDLINK */
+
+a.brightness div:hover {
+  filter: brightness(130%);
+}
+
+/* END OF ADD HOVER EFFECT FOR CHILD IMAGES OF PARSEDLINK */
 
 /* MOBILE FRIENDLY  */
 
