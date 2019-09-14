@@ -38,7 +38,7 @@
 
 /* FADE IN */
 .fade__in {
-  animation: fadeIn ease 0.8s;
+  animation: fadeIn ease 0.7s;
 }
 
 @keyframes fadeIn {
