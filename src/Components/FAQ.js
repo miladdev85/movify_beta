@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 
 function FAQ() {
-  useEffect(() => window.scrollTo(0, 0), []);
   return (
     <div className="container mt-5 fade__in">
       <h1 className="text-center">Frågor och svar</h1>

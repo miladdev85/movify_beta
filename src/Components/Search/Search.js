@@ -19,7 +19,6 @@ export class Search extends Component {
   };
 
   componentDidMount() {
-    window.scrollTo(0, 0);
     if (this.props.location.search) {
       const parsedQuery = queryString.parse(this.props.location.search);
       this.setState({ isDownloading: true }, () => this.getSearch(parsedQuery.query));

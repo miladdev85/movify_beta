@@ -5,7 +5,6 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "framer-motion": "^1.6.7",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.24.0",
     "query-string": "^6.8.3",
@@ -14,8 +13,7 @@
     "react-dom": "^16.9.0",
     "react-pose": "^4.0.8",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "react-spring": "^8.0.27"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

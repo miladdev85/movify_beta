@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { BASE_BACKDROP_URL, NO_BACKDROP_IMG } from "../../Utils/CONSTANTS";
 import ParsedLink from "../Shared/ParsedLink";
 
 function Slideshow({ items, showIndex, direction, handleSelect, type }) {
-  const [animate, setAnimate] = useState(false);
   const slideShow = items.map(item => {
     return (
       <Carousel.Item key={item.id} className="slider__container fade__in">
         <img
-          className={`${animate ? "fade__in slider__image" : "invisible"}`}
+          className="slider__image"
           src={item.backdrop_path ? BASE_BACKDROP_URL + item.backdrop_path : NO_BACKDROP_IMG}
           alt={item.name || item.title}
-          onLoad={() => setAnimate(true)}
         />
         <Carousel.Caption>
           <ParsedLink id={item.id} type={type} className="text-reset text-decoration-none">

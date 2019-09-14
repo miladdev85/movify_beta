@@ -10,7 +10,7 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
   };
 
   return (
-    <div style={backgroundStyle}>
+    <div style={backgroundStyle} className="fade__in">
       <div className="container">
         <div className="row py-3">
           <div className="col-12 col-md-4 m-0 p-0">
