@@ -1,16 +1,24 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import TvMain from "./TvMain";
-import TvShow from "./TvShow";
+import Slider from "../Slider/Slider";
+import TvNav from "./TvNav";
+import MoreMediaFetcher from "../Shared/MoreMediaFetcher";
+import { tvHelper } from "../../Utils/Network";
 
-function Tv() {
+const Tv = ({ match, type }) => {
   return (
-    <div>
-      <Route exact path="/tv" render={() => <Redirect to="/tv/popular" />} />
-      <Route exact path="/tv/:section" render={props => <TvMain type="tv" {...props} />} />
-      <Route path="/tv/details/:id" render={props => <TvShow type="tv" {...props} />} />
+    <div className="fade__in">
+      <Slider type="tv" />
+      <TvNav />
+      <div className="container mt-4">
+        <MoreMediaFetcher
+          fetchUrl={tvHelper.sectionTvUrl(match.params.section)}
+          className="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"
+          imgClass="tv_main"
+          type={type}
+        />
+      </div>
     </div>
   );
-}
+};
 
 export default Tv;

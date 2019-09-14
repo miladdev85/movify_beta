@@ -1,16 +1,32 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import MoviesLandingPage from "./MoviesLandingPage";
-import Movie from "./Movie";
+import Slider from "../Slider/Slider";
+import Subtitle from "../Shared/Subtitle";
+import DiscoverMenu from "./DiscoverMenu";
+import MoviesLandingPageList from "./MoviesLandingPageList";
+import Genres from "./Genres";
 
-function Movies() {
+const Movies = () => {
   return (
-    <div>
-      <Route exact path="/movies" render={() => <Redirect to="/movies/popular" />} />
-      <Route exact path="/movies/:section" component={MoviesLandingPage} />
-      <Route exact path="/movies/details/:id" render={props => <Movie type="movie" {...props} />} />
+    <div className="fade__in">
+      <Slider type="movie" />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3 py-md-2">
+            <div className="col">
+              <Subtitle text="Discover" />
+              <div className="text-center">
+                <DiscoverMenu />
+              </div>
+            </div>
+          </div>
+          <div className="col-md-9">
+            <Genres />
+            <MoviesLandingPageList type="movie" />
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Movies;

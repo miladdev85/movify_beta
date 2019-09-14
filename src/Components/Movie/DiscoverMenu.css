@@ -7,3 +7,8 @@
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
+
+.active {
+  background-color: #007bffcc;
+  color: rgb(255, 255, 255);
+}
