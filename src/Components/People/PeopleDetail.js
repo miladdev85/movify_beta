@@ -26,6 +26,29 @@ class PeopleDetail extends Component {
     this.setState({ isLoading: true, showMovies }, () => this.getPerson());
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const { person, showMovies } = this.state;
+    if (person !== nextState.person) {
+      return true;
+    }
+    if (showMovies !== nextState.showMovies) {
+      return true;
+    }
+    return false;
+  }
+
+  getPerson = async () => {
+    const { id } = this.props.match.params;
+    try {
+      const person = await axios.get(peopleHelper.personUrl(id));
+      const movieCredits = await axios.get(peopleHelper.personMovieCredits(id));
+      const tvCredits = await axios.get(peopleHelper.personTvCredits(id));
+      this.setPerson(tvCredits.data, movieCredits.data, person.data);
+    } catch (error) {
+      this.setState({ downloadError: true, isLoading: false });
+    }
+  };
+
   setPerson = (tv, movie, person) => {
     const topTvCredits = [...tv.cast, ...tv.crew];
     const topMovieCredits = [...movie.cast, ...movie.crew];
@@ -59,31 +82,15 @@ class PeopleDetail extends Component {
     this.setState({ person, isLoading: false, downloadError: false });
   };
 
-  getPerson = async () => {
-    const { id } = this.props.match.params;
-    try {
-      const person = await axios.get(peopleHelper.personUrl(id));
-      const movieCredits = await axios.get(peopleHelper.personMovieCredits(id));
-      const tvCredits = await axios.get(peopleHelper.personTvCredits(id));
-      this.setPerson(tvCredits.data, movieCredits.data, person.data);
-    } catch (error) {
-      this.setState({ downloadError: true, isLoading: false });
-    }
-  };
-
   render() {
-    const { person, isLoading, showMovies } = this.state;
+    const { person, isLoading, showMovies, error } = this.state;
     const displayItems = showMovies ? person.topMovieCredits : person.topTvCredits;
 
-    if (!isLoading && !person.id) {
-      return <SadFace />;
-    }
+    if (error) return <SadFace />;
 
     return (
       <>
-        {isLoading ? (
-          <Loading />
-        ) : (
+        {person.id && !isLoading ? (
           <>
             <PeopleBiography person={person} />
             <div className="container">
@@ -98,6 +105,8 @@ class PeopleDetail extends Component {
               </div>
             </div>
           </>
+        ) : (
+          <Loading />
         )}
       </>
     );

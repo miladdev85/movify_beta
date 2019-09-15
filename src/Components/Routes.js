@@ -16,9 +16,9 @@ const Routes = () => {
       <Route exact path={"/"} render={() => <Redirect to="/movies" />} />
       <Route exact path="/movies" render={() => <Redirect to="/movies/popular" />} />
       <Route exact path="/movies/:section" component={Movies} />
-      <Route exact path="/tv/:section" render={props => <Tv type="tv" {...props} />} />
-      <Route exact path="/tv" render={() => <Redirect to="/tv/popular" />} />
       <Route exact path="/movies/details/:id" render={props => <Movie type="movie" {...props} />} />
+      <Route exact path="/tv" render={() => <Redirect to="/tv/popular" />} />
+      <Route exact path="/tv/:section" render={props => <Tv type="tv" {...props} />} />
       <Route path="/tv/details/:id" render={props => <TvShow type="tv" {...props} />} />
       <Route exact path="/people" component={People} />
       <Route exact path="/people/:id" render={props => <PeopleDetail {...props} />} />

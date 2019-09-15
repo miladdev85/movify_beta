@@ -18,7 +18,7 @@ class Cast extends Component {
     this.setState({ isDownloading: true }, () => this.getCasts());
   }
 
-  shouldComponentUpdate(prevProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.state.casts !== nextState.casts;
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
-function InputField(props) {
+const InputField = React.memo(props => {
   const [searchText, setSearchText] = useState("");
   const searchQuery = queryString.parse(props.location.search);
 
@@ -25,7 +25,6 @@ function InputField(props) {
       });
     }
   };
-
   return (
     <div className="text-center mt-5">
       <form onSubmit={handleSubmit}>
@@ -49,6 +48,6 @@ function InputField(props) {
       </form>
     </div>
   );
-}
+});
 
 export default withRouter(InputField);

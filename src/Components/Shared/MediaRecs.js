@@ -20,7 +20,7 @@ class MediaRecs extends Component {
     this.setState({ isDownloading: true }, () => this.getRecommendedItems());
   }
 
-  shouldComponentUpdate(prevProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.state.items !== nextState.items;
   }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import GenreList from "./GenreList";
 import { withRouter } from "react-router-dom";
 import { mediaHelper } from "../../Utils/Network";
 import axios from "axios";
@@ -53,22 +54,7 @@ function Genres(props) {
 
   return (
     <ul className="nav justify-content-center pt-1 pb-4">
-      {genres.map(genre => {
-        return (
-          <div key={genre.id} className={`nav-item px-1 mb-2`}>
-            <button
-              type="button"
-              onClick={() => addGenre(genre.id)}
-              className={`btn btn__color btn-outline-primary rounded-pill btn-sm ${selectedGenres.includes(
-                genre.id
-              ) && "active"}`}
-              aria-pressed={`mixed`}
-            >
-              {genre.name}
-            </button>
-          </div>
-        );
-      })}
+      <GenreList genres={genres} addGenre={addGenre} selectedGenres={selectedGenres} />;
     </ul>
   );
 }

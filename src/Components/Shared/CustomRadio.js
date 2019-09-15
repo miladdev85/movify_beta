@@ -1,6 +1,6 @@
 import React from "react";
 
-function CustomRadio(props) {
+const CustomRadio = props => {
   return (
     <div className="custom-control custom-radio custom-control-inline">
       <input
@@ -17,6 +17,6 @@ function CustomRadio(props) {
       </label>
     </div>
   );
-}
+};
 
 export default CustomRadio;

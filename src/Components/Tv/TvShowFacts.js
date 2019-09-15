@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TvShowFacts({ tvshow, keywords }) {
+const TvShowFacts = React.memo(({ tvshow, keywords }) => {
   return (
     <div>
       <h6>Status</h6>
@@ -70,6 +70,6 @@ function TvShowFacts({ tvshow, keywords }) {
       )}
     </div>
   );
-}
+});
 
 export default TvShowFacts;

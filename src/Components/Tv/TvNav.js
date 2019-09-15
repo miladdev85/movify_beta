@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function TvNav() {
+const TvNav = React.memo(() => {
   return (
     <div className="container mt-5">
       <ul className="nav justify-content-center">
@@ -28,6 +28,6 @@ function TvNav() {
       </ul>
     </div>
   );
-}
+});
 
 export default TvNav;

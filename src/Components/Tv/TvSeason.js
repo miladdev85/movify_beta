@@ -4,11 +4,10 @@ import TvSeasonImage from "./TvSeasonImage";
 import TvSeasonTitle from "./TvSeasonTitle";
 import TvSeasonOverview from "./TvSeasonOverview";
 
-function TvSeason({ tvshow }) {
+const TvSeason = React.memo(({ tvshow }) => {
   const filteredSeason =
     tvshow.seasons.length > 0 && tvshow.seasons.filter(season => season.air_date !== null);
   const lastSeason = filteredSeason[filteredSeason.length - 1];
-
   return (
     <div className="my-4">
       <Subtitle text="Season Info" />
@@ -25,6 +24,6 @@ function TvSeason({ tvshow }) {
       </div>
     </div>
   );
-}
+});
 
 export default TvSeason;

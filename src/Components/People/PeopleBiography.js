@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GenericModal from "../GenericModal";
 import Image from "../Shared/Image";
 
-const PeopleBiography = React.memo(({ person }) => {
+const PeopleBiography = ({ person }) => {
   const [showButton, setShowButton] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const maxLength = 800;
@@ -25,7 +25,6 @@ const PeopleBiography = React.memo(({ person }) => {
       return `We don't have a biography for ${person.name}`;
     }
   };
-
   return (
     <div className="bg-light">
       <div className="container">
@@ -74,6 +73,6 @@ const PeopleBiography = React.memo(({ person }) => {
       </div>
     </div>
   );
-});
+};
 
 export default PeopleBiography;

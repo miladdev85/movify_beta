@@ -15,7 +15,7 @@ class Trailer extends Component {
     this.setState({ isDownloading: true }, () => this.getTrailer());
   }
 
-  shouldComponentUpdate(prevProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.state.trailer !== nextState.trailer;
   }
 

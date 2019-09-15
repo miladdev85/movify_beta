@@ -10,7 +10,7 @@ import MoreMediaFetcher from "../Shared/MoreMediaFetcher";
 import { mediaHelper } from "../../Utils/Network";
 import axios from "axios";
 
-function TvShow({ match, type }) {
+const TvShow = ({ match, type }) => {
   const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
@@ -34,7 +34,6 @@ function TvShow({ match, type }) {
   }, [match.params.id, item.id, type]);
 
   if (!item.id && !isLoading) return null;
-
   return (
     <>
       {isLoading ? (
@@ -68,6 +67,6 @@ function TvShow({ match, type }) {
       )}
     </>
   );
-}
+};
 
 export default TvShow;

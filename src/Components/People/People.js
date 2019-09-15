@@ -1,9 +1,8 @@
 import React, { Component } from "react";
+import PeopleList from "./PeopleList";
 import { peopleHelper } from "../../Utils/Network";
 import Loading from "../Shared/Loading";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Image from "../Shared/Image";
 import "./People.css";
 
 class People extends Component {
@@ -11,12 +10,17 @@ class People extends Component {
     people: [],
     page: 1,
     totalPages: null,
-    isDownloading: false,
-    gettingMore: false
+    isDownloading: false
   };
 
   componentDidMount() {
     this.setState({ isDownloading: true }, () => this.getPopularPeople());
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { people } = this.state;
+
+    return people !== nextState.people;
   }
 
   getPopularPeople = async () => {
@@ -35,20 +39,16 @@ class People extends Component {
     this.setState(prevState => ({
       isDownloading: false,
       people: [...prevState.people, ...response.data.results],
-      totalPages: response.data.total_pages,
-      gettingMore: false
+      totalPages: response.data.total_pages
     }));
   };
 
   addPage = () => {
-    this.setState(
-      prevState => ({ gettingMore: true, page: prevState.page + 1 }),
-      () => this.getPopularPeople()
-    );
+    this.setState(prevState => ({ page: prevState.page + 1 }), () => this.getPopularPeople());
   };
 
   render() {
-    const { people, isDownloading, gettingMore, totalPages, page } = this.state;
+    const { people, isDownloading, totalPages, page } = this.state;
     return (
       <>
         {isDownloading ? (
@@ -57,28 +57,9 @@ class People extends Component {
           <div className="container">
             <h3 className="mt-5 mb-4">Popular People</h3>
             <div className="row text-center">
-              {people.map(person => (
-                <div key={person.id} className="col-6 col-md-4 col-lg-3 col-xl-2 pb-3">
-                  <div className="">
-                    <Link
-                      className="people__link text-reset brightness"
-                      to={`/people/${person.id}`}
-                    >
-                      <Image
-                        source={person.profile_path}
-                        type="popular"
-                        alt={person.name}
-                        className="rounded people__image"
-                      >
-                        <span className="m-0">{person.name}</span>
-                      </Image>
-                    </Link>
-                  </div>
-                </div>
-              ))}
+              {people.length > 0 && <PeopleList people={people} />}
             </div>
             <div className="text-center">
-              {gettingMore && <Loading />}
               {page < totalPages && (
                 <button
                   onClick={this.addPage}

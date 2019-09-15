@@ -18,7 +18,7 @@ class Slider extends Component {
     this.setState({ isDownloading: true }, () => this.getMovies());
   }
 
-  shouldComponentUpdate(prevProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.state.media !== nextState.media;
   }
 

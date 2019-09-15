@@ -39,8 +39,16 @@ class MoreMediaFetcher extends Component {
     }
   }
 
-  shouldComponentUpdate(prevProps, nextState) {
-    return this.state.items !== nextState.items;
+  shouldComponentUpdate(nextProps, nextState) {
+    const { items } = this.state;
+    const { section } = this.props.match.params;
+    if (items !== nextState.items) {
+      return true;
+    }
+    if (section !== nextProps.section) {
+      return true;
+    }
+    return false;
   }
 
   handleScroll = () => {

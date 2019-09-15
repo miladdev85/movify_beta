@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { mediaHelper } from "../../Utils/Network";
 import Dropdown from "react-bootstrap/Dropdown";
 import queryString from "query-string";
+import SadFace from "../Shared/SadFace";
 import axios from "axios";
 import "./Keyword.css";
 
@@ -26,7 +27,7 @@ function Keyword({ match, location }) {
     getItems();
   }, [parsedQuery.type, match.params.id]);
 
-  if (!items.length === 0 && isLoading === false) return null;
+  if (!items.length === 0 && isLoading === false) return <SadFace />;
 
   return (
     <>
@@ -52,7 +53,7 @@ function Keyword({ match, location }) {
               </Dropdown>
             </div>
           </div>
-          <KeywordItem items={items} type={parsedQuery.type} />
+          {items.length > 0 && <KeywordItem items={items} type={parsedQuery.type} />}
         </>
       )}
     </>

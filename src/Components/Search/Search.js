@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Loading from "../Shared/Loading";
 import InputField from "./InputField";
 import SearchListMenu from "./SearchListMenu";
-import SearchListItem from "./SearchListItem";
+import SearchList from "./SearchList";
 import SadFace from "../Shared/SadFace";
 import { searchHelper } from "../../Utils/Network";
 import queryString from "query-string";
@@ -28,6 +28,7 @@ export class Search extends Component {
   componentDidUpdate(prevProps) {
     let oldQuery = prevProps.location.search;
     let newQuery = this.props.location.search;
+
     const parsedQuery = queryString.parse(newQuery);
     if (newQuery !== oldQuery) {
       this.setState({ isDownloading: true }, () => this.getSearch(parsedQuery.query));
@@ -58,6 +59,7 @@ export class Search extends Component {
 
   render() {
     const { filterBy, isDownloading, error } = this.state;
+    const resultList = this.displayResults();
 
     return (
       <div className="container">
@@ -70,9 +72,7 @@ export class Search extends Component {
           <>
             <SearchListMenu handleChange={this.handleFilter} filterBy={filterBy} />
             <div className="row p-3">
-              {this.displayResults().map(item => {
-                return <SearchListItem key={item.id + item.media_type} item={item} />;
-              })}
+              <SearchList list={resultList} />
             </div>
           </>
         )}

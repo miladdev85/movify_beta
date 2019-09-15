@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MediaHero from "../Shared/MediaHero";
 
-function TvShowHero({ tvshow }) {
+const TvShowHero = React.memo(({ tvshow }) => {
   return (
     <MediaHero
       backdrop={tvshow.backdrop_path}
@@ -33,6 +33,6 @@ function TvShowHero({ tvshow }) {
       )}
     </MediaHero>
   );
-}
+});
 
 export default TvShowHero;

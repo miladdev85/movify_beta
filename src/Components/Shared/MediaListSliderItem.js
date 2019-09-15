@@ -12,23 +12,21 @@ function MediaListSliderItem({ fromRecs, className, mediaArr, startPosition, end
 
   return mediaArr
     .filter((item, index) => index >= startPosition && index <= endPosition)
-    .map(item => {
-      return (
-        <div key={item.id} className={`${className}`}>
-          <ParsedLink className="text-decoration-none brightness" id={item.id} type={type}>
-            <Image
-              source={item.poster_path}
-              type="poster"
-              alt={item.title}
-              className={`${imgClass} rounded`}
-            >
-              <p className="item__title">{item.title || item.name}</p>
-              <ReleaseDate item={item} />
-            </Image>
-          </ParsedLink>
-        </div>
-      );
-    });
+    .map(item => (
+      <div key={item.id} className={`${className}`}>
+        <ParsedLink className="text-decoration-none brightness" id={item.id} type={type}>
+          <Image
+            source={item.poster_path}
+            type="poster"
+            alt={item.title}
+            className={`${imgClass} rounded`}
+          >
+            <p className="item__title">{item.title || item.name}</p>
+            <ReleaseDate item={item} />
+          </Image>
+        </ParsedLink>
+      </div>
+    ));
 }
 
 export default MediaListSliderItem;
