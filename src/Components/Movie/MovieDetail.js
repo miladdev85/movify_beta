@@ -3,7 +3,7 @@ import Image from "../Shared/Image";
 import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 
-function MovieDetail({ item, location }) {
+const MovieDetail = React.memo(({ item, location }) => {
   const queryObj = queryString.parse(location.search);
   return (
     <div className="row detail__container mt-4">
@@ -45,6 +45,6 @@ function MovieDetail({ item, location }) {
       </div>
     </div>
   );
-}
+});
 
 export default withRouter(MovieDetail);

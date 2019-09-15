@@ -18,6 +18,10 @@ class Slider extends Component {
     this.setState({ isDownloading: true }, () => this.getMovies());
   }
 
+  shouldComponentUpdate(prevProps, nextState) {
+    return this.state.media !== nextState.media;
+  }
+
   // Fetch most popular media and store them. Use their IDs to fetch more details. Store more detailed media object in state.
 
   getMovies = async () => {

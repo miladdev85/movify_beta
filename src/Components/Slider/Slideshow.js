@@ -34,7 +34,7 @@ function Slideshow({ items, showIndex, direction, handleSelect, type }) {
 
   return (
     <Carousel
-      interval={9000}
+      interval={5000}
       activeIndex={showIndex}
       direction={direction}
       onSelect={handleSelect}

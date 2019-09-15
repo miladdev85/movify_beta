@@ -39,6 +39,10 @@ class MoreMediaFetcher extends Component {
     }
   }
 
+  shouldComponentUpdate(prevProps, nextState) {
+    return this.state.items !== nextState.items;
+  }
+
   handleScroll = () => {
     const { items, isDownloading } = this.state;
     let nearBottom = genericBottomScroll(items, document.documentElement);
@@ -76,6 +80,8 @@ class MoreMediaFetcher extends Component {
   };
 
   render() {
+    console.log("MoreMedia");
+    // console.log(this.props);
     const { items, isDownloading, error } = this.state;
     const { className, imgClass, type } = this.props;
     return (

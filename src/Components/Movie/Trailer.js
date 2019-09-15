@@ -15,6 +15,10 @@ class Trailer extends Component {
     this.setState({ isDownloading: true }, () => this.getTrailer());
   }
 
+  shouldComponentUpdate(prevProps, nextState) {
+    return this.state.trailer !== nextState.trailer;
+  }
+
   getTrailer = async () => {
     const { match } = this.props;
     const response = await axios.get(mediaHelper.trailerUrl(match.params.id));

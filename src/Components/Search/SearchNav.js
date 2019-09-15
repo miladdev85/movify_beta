@@ -32,6 +32,8 @@ const Shade = posed.div({
   }
 });
 
+const styleCursor = { color: "#7c7c7d", cursor: "pointer" };
+
 export class SearchNav extends Component {
   state = {
     inputText: "",
@@ -75,8 +77,6 @@ export class SearchNav extends Component {
     }
   };
 
-  style = { color: "#7c7c7d", cursor: "pointer" };
-
   render() {
     const { showSearchInput } = this.state;
     return (
@@ -112,7 +112,7 @@ export class SearchNav extends Component {
           {!showSearchInput && (
             <Shade
               key="Shade"
-              style={this.style}
+              style={styleCursor}
               className=" d-none d-lg-inline-block"
               onClick={this.handleClick}
             >

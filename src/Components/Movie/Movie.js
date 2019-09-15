@@ -36,7 +36,6 @@ const Movie = ({ match, type }) => {
     }
     return () => (didCancel = true);
   }, [match.params.id, type]);
-
   return (
     <div>
       {isDownloading && <Loading />}
