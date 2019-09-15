@@ -20,6 +20,10 @@ class MediaRecs extends Component {
     this.setState({ isDownloading: true }, () => this.getRecommendedItems());
   }
 
+  shouldComponentUpdate(prevProps, nextState) {
+    return this.state.items !== nextState.items;
+  }
+
   addPage = () => {
     this.setState({ page: this.state.page + 1 }, () => this.getRecommendedItems());
   };
@@ -50,10 +54,10 @@ class MediaRecs extends Component {
     return (
       <>
         <Subtitle text={`Recommended ${type === "movie" ? "Movies" : "Shows"}`} />
-        {!isDownloading && error && <SadFace />}
+        {error && <SadFace />}
         {!isDownloading && items.length === 0 && <SadFace />}
         {isDownloading && <Loading />}
-        {!isDownloading && !error && items.length > 0 && (
+        {!isDownloading && items.length > 0 && (
           <MediaListSlider
             className={`${className} col-6 col-md-3 col-lg-3`}
             type={type}

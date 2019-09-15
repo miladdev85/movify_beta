@@ -16,7 +16,7 @@ class MoreMediaFetcher extends Component {
       page: 1,
       error: false
     };
-    this.throttledScroll = debounce(this.handleScroll, 100);
+    this.throttledScroll = debounce(this.handleScroll, 200);
   }
 
   componentDidMount() {
@@ -80,8 +80,6 @@ class MoreMediaFetcher extends Component {
   };
 
   render() {
-    console.log("MoreMedia");
-    // console.log(this.props);
     const { items, isDownloading, error } = this.state;
     const { className, imgClass, type } = this.props;
     return (

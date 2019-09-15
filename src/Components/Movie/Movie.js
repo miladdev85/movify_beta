@@ -36,10 +36,11 @@ const Movie = ({ match, type }) => {
     }
     return () => (didCancel = true);
   }, [match.params.id, type]);
+
   return (
     <div>
       {isDownloading && <Loading />}
-      {!isDownloading && error && <SadFace />}
+      {error && <SadFace />}
       {!isDownloading && item.id && (
         <div>
           <MediaHero

@@ -18,6 +18,10 @@ class Cast extends Component {
     this.setState({ isDownloading: true }, () => this.getCasts());
   }
 
+  shouldComponentUpdate(prevProps, nextState) {
+    return this.state.casts !== nextState.casts;
+  }
+
   getCasts = async () => {
     const { match, type } = this.props;
     try {

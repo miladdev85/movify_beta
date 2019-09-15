@@ -8,7 +8,6 @@ function MediaHero({ backdrop, image, title, year, genres = [], text, children }
         url(https://image.tmdb.org/t/p/original${backdrop})`,
     backgroundSize: "cover"
   };
-
   return (
     <div style={backgroundStyle} className="fade__in">
       <div className="container">
