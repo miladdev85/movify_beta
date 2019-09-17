@@ -19,7 +19,7 @@ class Slider extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.media !== nextState.media;
+    return this.state !== nextState;
   }
 
   // Fetch most popular media and store them. Use their IDs to fetch more details. Store more detailed media object in state.
@@ -45,7 +45,6 @@ class Slider extends Component {
 
   render() {
     const { media, showIndex, direction, isDownloading } = this.state;
-
     return (
       <>
         {isDownloading ? (
