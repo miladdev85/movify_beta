@@ -54,7 +54,7 @@ function Genres(props) {
 
   return (
     <ul className="nav justify-content-center pt-1 pb-4">
-      <GenreList genres={genres} addGenre={addGenre} selectedGenres={selectedGenres} />;
+      <GenreList genres={genres} addGenre={addGenre} selectedGenres={selectedGenres} />
     </ul>
   );
 }
