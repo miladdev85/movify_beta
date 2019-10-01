@@ -76,7 +76,7 @@ function FAQ() {
                 <ul>
                   <li>
                     Dubletter av objekt (problem när jag använder mig av objekt.id som key värde i
-                    en array.map funktion)
+                    renderingen)
                   </li>
                   <li>Objekt information som saknas</li>
                   <li>
@@ -166,34 +166,35 @@ function FAQ() {
                   Jag har utgått ifrån att det ska se bra ut på mobila enheter samt att jag ska
                   använda mig av en CSS framework. Valet blev Bootstrap CSS samt enstaka
                   React-Bootstrap komponenter eftersom jag märkte att flertalet jobbannonser och
-                  företag använder Bootstrap. Jag är inte direkt förtjust i Bootstraps design
-                  däremot älskar jag deras Grid system. På det hela stora gillar jag Ant Design och
-                  Material UI mer än Bootstrap. De fokuserar på snygga komponenter samt att deras
-                  React komponenter känns mer "up to date" och officiella. Jag vet inte riktigt vad
-                  som anses vara best practice huruvida man ska använda Bootstrap komponenter eller
-                  klassnamn? Men jag förstår tänket kring bägge och kan tillämpa det som krävs.
+                  företag använder Bootstrap. Jag vet inte riktigt vad som anses vara best practice
+                  huruvida man ska använda Bootstrap komponenter eller klassnamn? Men jag förstår
+                  tänket kring bägge och kan tillämpa det som krävs.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
             <Accordion.Toggle as={Card.Header} eventKey="7" style={{ cursor: "pointer" }}>
-              Du har inte använt Styled Components biblioteket - varför?
+              Känner du till Styled Components?
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="7">
               <Card.Body className="text-muted">
                 <p>
-                  Jag har använt mig av mer generella CSS klasser eftersom jag använder dessa i
-                  media query syfte för att få alla bilder att se bra ut på mobilen. Jag har tittat
-                  en del på Styled Components och förstår konceptet samt användningsområdet. Jag
-                  förstår tänket och skulle inte ha några problem att applicera det.
+                  Yesbox! Men i detta projekt ville jag bli mer bekant med Bootstrap och deras Grid
+                  system. I ett annat projekt har jag använt mig av Styled Components. Det jag
+                  däremot kanske gör med detta projekt är att använda mig av CSS Modules istället
+                  för att ha "globala" CSS klasser.
                 </p>
                 <p>
                   Jag förstår att i större projekt med flera medlemmar blir det svårt att hålla koll
                   på alla CSS stylesheets samt klassnamn som förr eller senare kommer att krocka.
                   Därför har jag delat upp mina klassnamn i olika filer som berör just de
                   komponenterna samt att mina egna klassnamn innehåler "__" i namnet för att kunna
-                  urskilja från Bootstraps klassnamn.
+                  urskilja från Bootstraps klassnamn. Men nu när jag googlat på detta och hittat CSS
+                  Modules kommer jag nog göra om detta projekt och använda mig av CSS Modules.
+                </p>
+                <p>
+                  PS. Jag har ingen aning om hur jag kunde ha missat CSS Modules tidigare :) DS.
                 </p>
               </Card.Body>
             </Accordion.Collapse>

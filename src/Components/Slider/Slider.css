@@ -1,6 +1,6 @@
 .slider__image {
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   height: 100%;
   width: 100%;
   transition: "left 1s";
