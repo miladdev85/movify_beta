@@ -11,6 +11,8 @@ import {
 } from "../../Utils/CONSTANTS";
 import NO_POP_IMG from "../../Assets/Popular_People_Image.png";
 
+// Using state and onLoad event handler on image to set animation effect
+
 function Image({ source, alt, className, type, style, children }) {
   const [animate, setAnimate] = useState(false);
   let noImage;

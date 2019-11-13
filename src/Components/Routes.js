@@ -10,6 +10,10 @@ import Search from "./Search/Search";
 import FAQ from "./FAQ";
 import { Route, Redirect } from "react-router-dom";
 
+// Setting home path to movies but also redirecting /movies to /movies/popular because of styling on the active link
+// Same for tv routes and paths
+// Sending type as props to components because they use that props in order to get appropriate URLs from helper functions
+
 const Routes = () => {
   return (
     <>

@@ -36,6 +36,7 @@ const Movie = ({ match, type }) => {
     }
     return () => (didCancel = true);
   }, [match.params.id, type]);
+
   return (
     <div>
       {isDownloading && <Loading />}
@@ -65,6 +66,10 @@ const Movie = ({ match, type }) => {
             <div className="row">
               <div className="col">
                 <Subtitle text="Similar Movies" />
+
+                {/* Using a helper function to determine which URL to send in as props
+                MoreMediaFetcher is a shared component and requires URL as props */}
+
                 <MoreMediaFetcher
                   fetchUrl={mediaHelper.mediaSimilarUrl(type, match.params.id)}
                   type={type}

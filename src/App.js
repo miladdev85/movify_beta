@@ -5,6 +5,8 @@ import Footer from "./Components/Footer";
 import "./Animations.css";
 import "./App.css";
 
+// Routes component holds all the routes for the site
+
 function App() {
   return (
     <div>

@@ -5,6 +5,9 @@ import DiscoverMenu from "./DiscoverMenu";
 import MoviesLandingPageList from "./MoviesLandingPageList";
 import Genres from "./Genres";
 
+// Passing type to Slider component because it uses that props to fetch either movies or tv shows
+// Also passing type to MoviesLandingPageList which sends it to its child component. Props drilling...
+
 const Movies = React.memo(
   () => {
     return (

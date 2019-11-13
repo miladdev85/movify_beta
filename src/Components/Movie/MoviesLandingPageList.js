@@ -7,17 +7,22 @@ import Loading from "../Shared/Loading";
 import queryString from "query-string";
 import axios from "axios";
 
+// MoreAvailable in state is used in child component to determine if there are more items available or not
+
 class MoviesLandingPageList extends Component {
   state = {
     items: [],
     page: 1,
     isDownloading: false,
-    spreadItems: false
+    moreAvailable: false
   };
 
   componentDidMount() {
     this.setState({ isDownloading: true }, () => this.getMovies());
   }
+
+  // Logic to determine if we should download new media and reset page or not
+  // Checking for section changes and genre changes
 
   componentDidUpdate(prevProps) {
     const oldGenre = prevProps.location.search;
@@ -32,7 +37,9 @@ class MoviesLandingPageList extends Component {
     }
   }
 
-  getMovies = async () => {
+  // Determine appropriate API URL to use based on current URL and page in state
+
+  getUrlToFetch = () => {
     const { match } = this.props;
     const { page } = this.state;
     const parsedQuery = queryString.parse(this.props.location.search);
@@ -59,6 +66,11 @@ class MoviesLandingPageList extends Component {
       default:
         url = movieHelper.popularUrl(parsedQuery.genre);
     }
+    return url;
+  };
+
+  getMovies = async () => {
+    const url = this.getUrlToFetch();
     const response = await axios.get(url);
     const responsePage = response.data.page;
 
@@ -68,18 +80,21 @@ class MoviesLandingPageList extends Component {
           responsePage === 1
             ? response.data.results
             : [...prevState.items, ...response.data.results],
-        spreadItems: responsePage < response.data.total_pages ? true : false,
+        moreAvailable: responsePage < response.data.total_pages ? true : false,
         isDownloading: false
       };
     });
   };
 
   addPage = () => {
-    this.setState({ page: this.state.page + 1 }, () => this.getMovies());
+    this.setState(
+      prevState => ({ page: prevState.page + 1 }),
+      () => this.getMovies()
+    );
   };
 
   render() {
-    const { isDownloading, items, spreadItems } = this.state;
+    const { isDownloading, items, moreAvailable } = this.state;
     return (
       <>
         {isDownloading && <Loading />}
@@ -91,7 +106,7 @@ class MoviesLandingPageList extends Component {
             type={this.props.type}
             items={items}
             addPage={this.addPage}
-            spreadItems={spreadItems}
+            moreAvailable={moreAvailable}
           />
         )}
       </>

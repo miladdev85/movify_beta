@@ -14,6 +14,7 @@ const TvShow = ({ match, type }) => {
   const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     if (parseInt(match.params.id, 10) !== item.id) {

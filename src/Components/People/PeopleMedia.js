@@ -17,7 +17,9 @@ function PeopleMedia({ showMovies, displayItems, person, toggle }) {
             />
             <label
               style={{ cursor: "pointer" }}
-              className="custom-control-label small text-muted p-1"
+              className={`custom-control-label small ${
+                showMovies ? "text-muted" : "font-weight-normal"
+              } p-1`}
               htmlFor="mediaSwitch"
             >
               TV Shows

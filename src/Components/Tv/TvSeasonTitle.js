@@ -1,5 +1,7 @@
 import React from "react";
 
+// Logic for season title text display
+
 function TvSeasonTitle({ season, item }) {
   const displayTitle = () => {
     if (item.in_production === false) {

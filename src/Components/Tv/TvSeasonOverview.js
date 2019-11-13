@@ -2,6 +2,9 @@ import React from "react";
 import { TODAY } from "../../Utils/CONSTANTS";
 import { textFormat } from "../../Utils/SharedFns";
 
+// Logic for overview text based on todays date and information received regardin show
+// Use textFormat helper function to trim down text
+
 function TvSeasonOverview({ season, title }) {
   const seasonOverview = () => {
     let overviewText;

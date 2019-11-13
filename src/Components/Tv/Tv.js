@@ -10,6 +10,8 @@ const Tv = ({ match, type }) => {
       <Slider type="tv" />
       <TvNav />
       <div className="container mt-4">
+        {/* Using a helper function to determine which URL to send in as props
+                MoreMediaFetcher is a shared component and requires URL as props */}
         <MoreMediaFetcher
           fetchUrl={tvHelper.sectionTvUrl(match.params.section)}
           className="col-6 col-md-4 col-lg-3 col-xl-2 pb-2"

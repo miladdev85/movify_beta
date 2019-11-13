@@ -26,16 +26,7 @@ class People extends Component {
   getPopularPeople = async () => {
     const { page } = this.state;
     const response = await axios.get(peopleHelper.trendingPeopleUrl(page));
-    response.data.results.map(people => {
-      people.known_for_title = [];
-      if (people.known_for.length > 0) {
-        return people.known_for.map(mov => {
-          return people.known_for_title.push(mov.title || mov.original_name);
-        });
-      } else {
-        return people;
-      }
-    });
+
     this.setState(prevState => ({
       isDownloading: false,
       people: [...prevState.people, ...response.data.results],
@@ -44,7 +35,10 @@ class People extends Component {
   };
 
   addPage = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }), () => this.getPopularPeople());
+    this.setState(
+      prevState => ({ page: prevState.page + 1 }),
+      () => this.getPopularPeople()
+    );
   };
 
   render() {

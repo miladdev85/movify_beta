@@ -13,6 +13,8 @@ const PeopleBiography = ({ person }) => {
     }
   }, [person.biography.length]);
 
+  // Logic for how biography text should be displayed based on text length and weither or not modal is open
+
   const biographyText = text => {
     if (showModal) {
       return text;

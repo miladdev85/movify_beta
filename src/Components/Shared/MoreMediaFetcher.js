@@ -7,6 +7,8 @@ import { genericBottomScroll } from "../../Utils/SharedFns";
 import axios from "axios";
 import debounce from "lodash.debounce";
 
+// Using debounce function from lodash for infinite scroll - downloading more items when reaching the end of page
+
 class MoreMediaFetcher extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +29,9 @@ class MoreMediaFetcher extends Component {
   componentWillUnmount() {
     window.removeEventListener("scroll", this.throttledScroll);
   }
+
+  // Logic for reseting items and page in state.
+  // Used on TV component because we have a navbar for different sections there
 
   componentDidUpdate(prevProps) {
     const { match } = this.props;
@@ -51,24 +56,34 @@ class MoreMediaFetcher extends Component {
     return false;
   }
 
+  // Using helper function to determine if we have scrolled down enough to begin download more items
+
   handleScroll = () => {
     const { items, isDownloading } = this.state;
     let nearBottom = genericBottomScroll(items, document.documentElement);
     if (nearBottom && !isDownloading) {
-      this.setState(prevState => ({ page: prevState.page + 1 }), () => this.getItems());
+      this.setState(
+        prevState => ({ page: prevState.page + 1 }),
+        () => this.getItems()
+      );
     }
   };
 
-  urlWithPagination = (url, page) => {
+  getUrlWithPagination = (url, page) => {
     return `${url}&page=${page}`;
   };
+
+  // The API can return duplicate media object which is why we check if we have the same object
+  // already in state or not. Filter the response array and return the item only if we don't already have it
+  // We also remove the scroll listener if we have reached the end of available items
 
   getItems = async () => {
     const { items, page } = this.state;
     const { fetchUrl } = this.props;
-    try {
-      const response = await axios.get(this.urlWithPagination(fetchUrl, page));
+    const url = this.getUrlWithPagination(fetchUrl, page);
 
+    try {
+      const response = await axios.get(url);
       const filteredResponse = response.data.results.filter(
         item => !items.find(i => i.id === item.id)
       );

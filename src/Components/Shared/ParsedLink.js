@@ -2,6 +2,8 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 
+// Here we determine what URL search query is needed
+
 function ParsedLink({ id, className, children, match, location, type, source }) {
   const queryObj = queryString.parse(location.search);
   let toLink;

@@ -20,6 +20,8 @@ class PeopleDetail extends Component {
     this.searchQuery = queryString.parse(this.props.location.search);
   }
 
+  // Determine if source is from movies or tv because we use it in child component to control a switch toggle
+
   componentDidMount() {
     window.scrollTo(0, 0);
     const showMovies = this.searchQuery.from === "tv" ? false : true;
@@ -49,6 +51,17 @@ class PeopleDetail extends Component {
     }
   };
 
+  removeDuplicates = array => {
+    const filteredArray = [];
+
+    for (let item of array) {
+      if (!filteredArray.find(other => other.id === item.id)) {
+        filteredArray.push(item);
+      }
+    }
+    return filteredArray;
+  };
+
   setPerson = (tv, movie, person) => {
     const topTvCredits = [...tv.cast, ...tv.crew];
     const topMovieCredits = [...movie.cast, ...movie.crew];
@@ -59,20 +72,9 @@ class PeopleDetail extends Component {
       return b.episode_count - a.episode_count;
     });
 
-    const filteredMovArr = [];
-    const filteredTvArr = [];
+    const filteredMovArr = this.removeDuplicates(topMovieCredits);
+    const filteredTvArr = this.removeDuplicates(topTvCredits);
 
-    for (let item of topMovieCredits) {
-      if (!filteredMovArr.find(other => other.id === item.id)) {
-        filteredMovArr.push(item);
-      }
-    }
-
-    for (let item of topTvCredits) {
-      if (!filteredTvArr.find(other => other.id === item.id)) {
-        filteredTvArr.push(item);
-      }
-    }
     filteredTvArr.splice(12);
     filteredMovArr.splice(12);
 

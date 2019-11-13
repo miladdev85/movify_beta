@@ -10,7 +10,7 @@ const MediaListSlider = ({
   items,
   match,
   addPage,
-  spreadItems,
+  moreAvailable,
   className,
   type
 }) => {
@@ -23,15 +23,19 @@ const MediaListSlider = ({
     setEndPosition(3);
   };
 
+  // Reset position on section and genre change
+
   useEffect(() => {
     resetPositionState();
   }, [match.params.section, queryObj.genre]);
 
+  // Logic to pre fetch data. We fetch data before showing the last current item
+
   useEffect(() => {
-    if (spreadItems && endPosition === items.length - 1) {
+    if (moreAvailable && endPosition === items.length - 1) {
       addPage();
     }
-  }, [endPosition, spreadItems, addPage, items.length]);
+  }, [endPosition, moreAvailable, addPage, items.length]);
 
   return (
     <>

@@ -12,7 +12,7 @@ class MediaRecs extends Component {
     items: [],
     page: 1,
     isDownloading: false,
-    spreadItems: false,
+    moreAvailable: false,
     error: false
   };
 
@@ -25,8 +25,13 @@ class MediaRecs extends Component {
   }
 
   addPage = () => {
-    this.setState({ page: this.state.page + 1 }, () => this.getRecommendedItems());
+    this.setState(
+      prevState => ({ page: prevState.page + 1 }),
+      () => this.getRecommendedItems()
+    );
   };
+
+  // Fetch items but also determine if there are more available items to fetch later
 
   getRecommendedItems = async () => {
     const { page } = this.state;
@@ -36,10 +41,8 @@ class MediaRecs extends Component {
         mediaHelper.mediaRecommendationsUrl(type, match.params.id, page)
       );
 
-      const shouldSpread = page < response.data.total_pages ? true : false;
-
       this.setState({
-        spreadItems: shouldSpread,
+        moreAvailable: page < response.data.total_pages ? true : false,
         items: [...this.state.items, ...response.data.results],
         isDownloading: false
       });
@@ -49,7 +52,7 @@ class MediaRecs extends Component {
   };
 
   render() {
-    const { isDownloading, error, items, spreadItems } = this.state;
+    const { isDownloading, error, items, moreAvailable } = this.state;
     const { type, className } = this.props;
     return (
       <>
@@ -64,7 +67,7 @@ class MediaRecs extends Component {
             items={items}
             fromRecs={true}
             addPage={this.addPage}
-            spreadItems={spreadItems}
+            moreAvailable={moreAvailable}
           />
         )}
       </>
