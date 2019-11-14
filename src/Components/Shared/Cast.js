@@ -22,6 +22,8 @@ class Cast extends Component {
     return this.state.casts !== nextState.casts;
   }
 
+  // Sorting list of cast to ensure we only get most popular cast and only return 6 of them
+
   getCasts = async () => {
     const { match, type } = this.props;
     try {

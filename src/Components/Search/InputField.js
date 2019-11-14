@@ -16,6 +16,8 @@ const InputField = React.memo(props => {
     setSearchText(e.target.value);
   };
 
+  // On submit, push search text as url search query. This will then be used by parent component to download new items
+
   const handleSubmit = e => {
     e.preventDefault();
     if (searchText.length > 2) {

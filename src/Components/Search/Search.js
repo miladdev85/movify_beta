@@ -18,12 +18,17 @@ export class Search extends Component {
     error: false
   };
 
+  // If URL has any search query, start downloading items
+
   componentDidMount() {
     if (this.props.location.search) {
       const parsedQuery = queryString.parse(this.props.location.search);
       this.setState({ isDownloading: true }, () => this.getSearch(parsedQuery.query));
     }
   }
+
+  // Based on URL search query changes, we download new items
+  // Search query is changed and submitted from child component InputField
 
   componentDidUpdate(prevProps) {
     let oldQuery = prevProps.location.search;

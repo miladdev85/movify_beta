@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import SearchNav from "./Search/SearchNav";
 
+// SearchNav is the search icon component with animations only visible on large devices
+
 function Header() {
   return (
     <nav className="navbar navbar-expand navbar-light bg-light font-weight-bold border-bottom px-2">

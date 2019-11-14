@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import queryString from "query-string";
 
-// Here we determine what URL search query is needed
+// Here we determine the URL and and if search query is needed based on media type
 
 function ParsedLink({ id, className, children, match, location, type, source }) {
   const queryObj = queryString.parse(location.search);

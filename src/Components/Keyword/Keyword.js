@@ -14,6 +14,9 @@ function Keyword({ match, location }) {
   const [isLoading, setIsLoading] = useState(false);
   const parsedQuery = queryString.parse(location.search);
 
+  // We check on first mount if url has any keyword related parameters and if so, download items
+  // Also download items on media type change which is changed by dropdown
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const getItems = async () => {

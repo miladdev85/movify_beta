@@ -3,6 +3,8 @@ import TvItem from "./TvItem";
 import MovieItem from "./MovieItem";
 import PersonItem from "./PersonItem";
 
+// Based on media type, we render the right component passing the whole item as props
+
 const SearchList = React.memo(({ list }) => {
   return (
     <>
