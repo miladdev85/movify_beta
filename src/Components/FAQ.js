@@ -16,12 +16,12 @@ function FAQ() {
             <Accordion.Collapse eventKey="0">
               <Card.Body className="text-muted">
                 <p>
-                  Det här är mitt första projekt efter den obligatoriska "To Do" appen som varje
-                  React introduktion verkar innehålla. Tanken har varit att jag ska bekanta mig med
-                  de olika delarna i React så som React Router, React Hooks, React Bootstrap och CSS
-                  i React samt animationer med hjälp av React Pose biblioteket. Projektet är byggt
-                  på egen hand utan någon tutorial eller online kurs. Men självklart en hel del
-                  Google och Stack Overflow häng.
+                  En hemsida som hjälper dig att välja vilken film eller tv serie att titta på eller
+                  upptäcka härnäst. Tanken har varit att jag ska bekanta mig med de olika delarna i
+                  React så som React Router, React Hooks, React Bootstrap och CSS i React samt
+                  animationer med hjälp av React Pose biblioteket. Vidare har projektet fått mig att
+                  fördjupa mig inom React Life Cycles samt optimeringar i form av att eliminera
+                  onödiga renderingar.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -39,12 +39,11 @@ function FAQ() {
                   jag använda search queries? Vill jag att användaren ska kunna dela länk och komma
                   till samma genre, film, serie osv. Ska historiken följa med i search queryn och
                   användas i nästa komponent? Vad ska hanteras via search queries och vad ska
-                  hanteras via match parametern? Detta är ganska stora frågor för en nybörjare anser
-                  jag. Men övning ger färdighet och jag känner mig betydligt tryggare med att
-                  använda React Router efter detta projekt. Att ha byggt den här sidan har även gett
-                  mig en introduktion till React Hooks vilket jag ska fördjupa mig inom härnäst. Och
-                  självklart att lösa alla problem som uppstår och bredda kunskaperna inom olika
-                  områden.
+                  hanteras via match parametern? Detta är ganska stora frågor och kan påverka
+                  användarupplevelsen avsevärt anser jag. Jag kan utan tvekan påstå att jag känner
+                  mig betydligt tryggare med att använda React Router efter detta projekt. Att ha
+                  byggt den här sidan har även gett mig en introduktion till React Hooks vilket jag
+                  ska fördjupa mig inom härnäst.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -60,13 +59,13 @@ function FAQ() {
                   olika "lifecycles". T.ex. att man måste använda useCallback om man skickar med en
                   funktion som props till en child komponent som använder den i useEffect - eftersom
                   child komponenten måste ha den i sin dependency array och useCallback ser till att
-                  den inte skapar nya referenser till funktionen gång på gång. Jag tycker om React
+                  den inte skapar nya referenser till funktionen gång på gång. Jag gillar React
                   Hooks men vissa saker borde vara lite enklare och kanske färdiga "out-of-the-box"
                   som t.ex. att jämföra previousProps med nuvarande props. I dagsläget får man
                   använda sig av useRef för att åstadkomma detta och det medför ytterligare flera
-                  rader kod och då tycker jag nästan att det är enklare att skriva en gammal god
-                  Class komponent. Däremot förstår jag att Hooks är framtiden och jag måste fördjupa
-                  mig inom det.
+                  rader kod och då tycker jag att det kan vara enklare att skriva en "vanlig" Class
+                  komponent istället. Däremot förstår jag att Hooks är framtiden och att det
+                  ständigt kommer att förbättras och jag kommer att använda det mer och mer.
                 </p>
                 <p>
                   Sedan är API som jag använder för att hämta mediainformation svår att hantera
@@ -99,16 +98,14 @@ function FAQ() {
               <Card.Body className="text-muted">
                 <p>
                   Är det ett problem som liknar något jag tidigare varit med om så försöker jag
-                  applicera det jag redan har i min kunskapsbank. Men annars så blir det Google och
-                  Stack Overflow. Det jag märker mer och mer är att mina frågeställningar till
-                  Google blir bättre och bättre för varje dag som går. Mer precisa frågeställningar,
-                  bättre på att sortera ut rätt data, snabbare förståelse, etc.
+                  applicera det jag redan har i min kunskapsbank. I annat fall blir det Google och
+                  Stack Overflow. Övning ger färdighet och frågeställningarna till Google blir
+                  bättre, mer precisa samt att man blir bättre på att sortera ut rätt data.
                 </p>
                 <p>
-                  Jag har ingen prestige i det jag gör utan jag är ute efter att lära mig mer och
-                  bredda mig. Jag anser inte att min lösning ska vara den som gäller eller är det
+                  Jag anser inte att min lösning nödvändigtvis är den som gäller eller är det
                   korrekta, utan jag tar till mig feedback mer än gärna samt att jag ständigt
-                  försöker bli bättre på det jag kan.
+                  försöker utvecklas och bli bättre för varje rad kod som jag skriver.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -125,11 +122,11 @@ function FAQ() {
                   och håller mig självmotiverad.
                 </p>
                 <p>
-                  Jag gillar även att jobba med UI och designen. Jag vill ha snygga men diskreta
+                  Jag gillar även att jobba med UI och design. Jag vill ha snygga men diskreta
                   animationer. Användaren ska njuta av att använda sidan. Både visuellt men också
-                  vad gäller funktionaliteten. Jag anser att jag har ett öga för design och med
-                  hjälp av diverse CSS frameworks blir det väldigt roligt att skapa snygga
-                  komponenter och hemsidor som både ser bra ut men också fungerar bra och snabbt.
+                  vad gäller funktionaliteten. Jag anser att jag har ett öga för design och tycker
+                  att det är väldigt roligt att skapa snygga komponenter och hemsidor som både ser
+                  bra ut och fungerar bra.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -141,17 +138,12 @@ function FAQ() {
             <Accordion.Collapse eventKey="5">
               <Card.Body className="text-muted">
                 <p>
-                  Allt... men vissa koncept inom React måste jag lära mig och bli bättre på snarast.
-                  Detta gäller t.ex. "Single Responsibility Principle". Hur gör jag bäst en
-                  komponent som kan återanvändas? Hur mycket logik ska min komponent få utföra? Vad
-                  är bäst practice? Ska komponent X göras mer generell och återanvändningsbar redan
-                  nu? Är t.ex. min "MoreMediaFetcher" komponent som har samma logik för filmer och
-                  tv serier bra eller dålig? Kanske bra i just detta projekt med tänket är fel?
-                  Detta är frågor som jag tänkt på men jag känner att jag behöver mer "real-life"
-                  erfarenhet och behöver komma ut till ett företag som jobbar med detta och lära mig
-                  på plats. Intresset finns, törsten efter kunskap finns och medvetenheten om
-                  eventuella fel finns. Det enda som saknas är ett jobb där jag får tillämpa och bli
-                  ännu bättre på detta.
+                  Jag vill ständigt förbättras och utvecklas inom området. Övning ger färdighet och
+                  det finns gott om utrymme till förbättring. Specifika koncept så som "Single
+                  Responsibility Principle", React Hooks och "self contained components" är något
+                  jag kommer fördjupa mig mer inom. Jag tror det viktigaste är mitt intresse samt
+                  uthållighet. Jag drivs av problemlösningen och tycker att det är riktigt givande
+                  att programmera och lösa problem och utmaningar som uppstår.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -164,11 +156,8 @@ function FAQ() {
               <Card.Body className="text-muted">
                 <p>
                   Jag har utgått ifrån att det ska se bra ut på mobila enheter samt att jag ska
-                  använda mig av en CSS framework. Valet blev Bootstrap CSS samt enstaka
-                  React-Bootstrap komponenter eftersom jag märkte att flertalet jobbannonser och
-                  företag använder Bootstrap. Jag vet inte riktigt vad som anses vara best practice
-                  huruvida man ska använda Bootstrap komponenter eller klassnamn? Men jag förstår
-                  tänket kring bägge och kan tillämpa det som krävs.
+                  använda mig av ett CSS framework i detta projekt. Valet blev Bootstrap CSS samt
+                  enstaka React-Bootstrap komponenter.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -180,21 +169,17 @@ function FAQ() {
             <Accordion.Collapse eventKey="7">
               <Card.Body className="text-muted">
                 <p>
-                  Yesbox! Men i detta projekt ville jag bli mer bekant med Bootstrap och deras Grid
-                  system. I ett annat projekt har jag använt mig av Styled Components. Det jag
-                  däremot kanske gör med detta projekt är att använda mig av CSS Modules istället
-                  för att ha "globala" CSS klasser.
+                  Yes och jag har använt det i andra projekt. Men i detta projekt ville jag bli mer
+                  bekant med Bootstrap och deras grid system. Det jag däremot kanske gör med detta
+                  projekt i framtiden är att använda mig av CSS Modules istället för att ha globala
+                  CSS klasser.
                 </p>
                 <p>
                   Jag förstår att i större projekt med flera medlemmar blir det svårt att hålla koll
                   på alla CSS stylesheets samt klassnamn som förr eller senare kommer att krocka.
                   Därför har jag delat upp mina klassnamn i olika filer som berör just de
                   komponenterna samt att mina egna klassnamn innehåler "__" i namnet för att kunna
-                  urskilja från Bootstraps klassnamn. Men nu när jag googlat på detta och hittat CSS
-                  Modules kommer jag nog göra om detta projekt och använda mig av CSS Modules.
-                </p>
-                <p>
-                  PS. Jag har ingen aning om hur jag kunde ha missat CSS Modules tidigare :) DS.
+                  urskilja från Bootstraps klassnamn.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -206,12 +191,12 @@ function FAQ() {
             <Accordion.Collapse eventKey="8">
               <Card.Body className="text-muted">
                 <p>
-                  Specifika saker som utförs och är "lätt" att följa med i koden. Antingen genom att
-                  det finns kommenterar eller genom att koden inte "ändrar" något utanför sig själv.
-                  Jag gillar att man försöker förenkla och förkorta, men ibland tycker jag det kan
-                  se väl komplext ut när t.ex. en dokumentationssida har destructured varje
-                  parameter, spreadat alltihopa osv. Det blir lite svårläst enligt mig och ser ut
-                  som ninjakod i vissa fall.
+                  Specifika saker som utförs inom funktionen och att det ska vara "lätt" att följa
+                  med i koden. Antingen genom att det finns kommenterar eller genom att koden inte
+                  ändrar något utanför sig själv. Jag gillar att man försöker förenkla och förkorta,
+                  men ibland kan det bli lite väl förenklat och försvårar istället läsbarheten. Jag
+                  anser även att det är väldigt viktigt för andra att kunna sätta sig in i min kod
+                  och förstå hur jag tänkt och varför jag skrivit som jag skrivit.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -223,16 +208,11 @@ function FAQ() {
             <Accordion.Collapse eventKey="9">
               <Card.Body className="text-muted">
                 <p>
-                  Jag vill hitta ett jobb som junior front-end utvecklare på ett företag som arbetar
-                  i React så att jag kan fördjupa mig inom det och lära mig att bli en bra
-                  programmerare. Funktionell programmering samt nya trender inom React är något som
-                  intresserar mig men jag behöver lite stöttning och coaching - speciellt nu i
-                  början av min resa. Målet är att kunna bygga bra, återanvändningsbara och snygga
-                  komponenter enligt best practice metoder.
-                </p>
-                <p>
-                  React Hooks, HOC-tänket och animationer med hjälp av React Spring är saker som jag
-                  skulle vilja lära mig.
+                  Jag vill fortsätta med att fördjupa mig mer inom React Hooks, Context och Firebase
+                  samt lära mig mer om animationer. Funktionell programmering samt nya trender inom
+                  React är något som intresserar mig och jag försöker hålla mig så uppdaterad jag
+                  kan. Målet är att kunna bygga bra, återanvändningsbara och snygga komponenter
+                  enligt best practice metoder.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
