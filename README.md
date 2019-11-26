@@ -38,6 +38,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+----------------------------------------------------------------------------------------------------------------------------------------
+
 ### Problems in this journey...
 The database used for requesting media items is not consistent when it comes to the information delivered. 
 Due to this, a lot of checking and verifying has to be done.
@@ -50,7 +52,6 @@ Example:
 ### To use Hooks or not...
 Most components started as React Hooks components but the handling of state, dependencies and complexity made me refactor most Hooks components to Class components. React Hooks is something that I will dive in to straight after this.
 
-
--------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
 
 Enjoy! Hope you like the site and please feel free to comment or reach out.
