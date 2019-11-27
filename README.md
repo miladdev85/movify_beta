@@ -1,5 +1,5 @@
 # About this project
-A website where you can find what to watch next. 
+A website where you can find what to watch next.<br/>
 **Keywords:** React, Bootstrap, Responsive design, Async / Await, ES6+ 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
