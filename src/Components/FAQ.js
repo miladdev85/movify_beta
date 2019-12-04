@@ -55,8 +55,8 @@ function FAQ() {
             <Accordion.Collapse eventKey="2">
               <Card.Body className="text-muted">
                 <p>
-                  React Hooks och komplexiteten det innebär vad gäller closures & dependencies i
-                  olika "lifecycles". T.ex. att man måste använda useCallback om man skickar med en
+                  React Hooks och komplexiteten det innebär vad gäller dependencies i olika
+                  "lifecycles". T.ex. att man måste använda useCallback om man skickar med en
                   funktion som props till en child komponent som använder den i useEffect - eftersom
                   child komponenten måste ha den i sin dependency array och useCallback ser till att
                   den inte skapar nya referenser till funktionen gång på gång. Jag gillar React
@@ -195,8 +195,9 @@ function FAQ() {
                   med i koden. Antingen genom att det finns kommenterar eller genom att koden inte
                   ändrar något utanför sig själv. Jag gillar att man försöker förenkla och förkorta,
                   men ibland kan det bli lite väl förenklat och försvårar istället läsbarheten. Jag
-                  anser även att det är väldigt viktigt för andra att kunna sätta sig in i min kod
-                  och förstå hur jag tänkt och varför jag skrivit som jag skrivit.
+                  anser även att min kod skall vara skriven på ett sätt som underlättar för någon
+                  annan att sätta sig in i och förstå hur jag tänkt och varför jag skrivit som jag
+                  skrivit.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
@@ -208,11 +209,11 @@ function FAQ() {
             <Accordion.Collapse eventKey="9">
               <Card.Body className="text-muted">
                 <p>
-                  Jag vill fortsätta med att fördjupa mig mer inom React Hooks, Context och Firebase
-                  samt lära mig mer om animationer. Funktionell programmering samt nya trender inom
-                  React är något som intresserar mig och jag försöker hålla mig så uppdaterad jag
-                  kan. Målet är att kunna bygga bra, återanvändningsbara och snygga komponenter
-                  enligt best practice metoder.
+                  Jag vill fortsätta med att fördjupa mig mer inom React Hooks, Context och NoSQL
+                  databaser så som Firebase samt lära mig mer om animationer. Funktionell
+                  programmering samt nya trender inom React är något som intresserar mig och jag
+                  försöker hålla mig så uppdaterad jag kan. Målet är att kunna bygga bra,
+                  återanvändningsbara och snygga komponenter enligt best practice metoder.
                 </p>
               </Card.Body>
             </Accordion.Collapse>
