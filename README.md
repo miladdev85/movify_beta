@@ -1,5 +1,7 @@
 # About this project
 
+**Note:** I have not maintained this project for almost a year now.
+
 A website where you can find what to watch next.<br/>
 **Keywords:** React, Bootstrap, Responsive design, Async / Await, ES6+
 
