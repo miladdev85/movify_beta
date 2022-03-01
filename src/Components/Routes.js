@@ -7,7 +7,6 @@ import PeopleDetail from "./People/PeopleDetail";
 import Tv from "./Tv/Tv";
 import TvShow from "./Tv/TvShow";
 import Search from "./Search/Search";
-import FAQ from "./FAQ";
 import { Route, Redirect } from "react-router-dom";
 
 // Setting home path to movies but also redirecting /movies to /movies/popular because of styling on the active link
