@@ -28,7 +28,6 @@ const Routes = () => {
       <Route exact path="/people/:id" render={props => <PeopleDetail {...props} />} />
       <Route path="/search" component={Search} />
       <Route path="/keyword/:id" component={Keyword} />
-      <Route path="/faq" component={FAQ} />
     </>
   );
 };
